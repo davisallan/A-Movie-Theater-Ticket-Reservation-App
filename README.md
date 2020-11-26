@@ -3,11 +3,12 @@
 # Design Phase (40 marks)
 
 In this phase you should submit a Design Document that includes a clear description of system’s requirements, and design artefacts in the following order:
+
 • Systems use case diagram.
 • Systems activity diagram
 • A state transition diagram for the following objects in your system:
-o Ticket object
-o Payment object
+  o Ticket object
+  o Payment object
 • A detailed “Scenario” each use case, having all candidate objects underlined, and all
 candidate operations underlined (use single-underline for objects and double-underline for
 operations).
@@ -15,12 +16,12 @@ operations).
 team member must take responsibility one and his/her name must appear on the related
 page).
 • A Design Level Class Specification that includes:
-o Aclassdiagramwithoutattributesandbehaviorthatonlyshowstheclassnameand the relationships among them. The purpose of this diagram is to show the entire system in one page. Please make sure lines never cross each other and the diagram is clear and easy to read.
-Note: You class diagram should be traceable into your use-case scenarios. Mark
-will be deducted for class that are not trace able in these documents.
-o A class diagram with no relationships (no lines), only showing the class details: attributes and behaviours. This diagram can be organized in multiple pages. Please
-try to keep them well organized, clear, and easy to read.
-o A state transition diagram for at least two major and core classes in the system
+  o Aclassdiagramwithoutattributesandbehaviorthatonlyshowstheclassnameand the relationships among them. The purpose    of this diagram is to show the entire system in one page. Please make sure lines never cross each other and the    diagram is clear and easy to read.
+   Note: You class diagram should be traceable into your use-case scenarios. Mark
+   will be deducted for class that are not trace able in these documents.
+  o A class diagram with no relationships (no lines), only showing the class details: attributes and behaviours.     This diagram can be organized in multiple pages. Please
+  try to keep them well organized, clear, and easy to read.
+  o A state transition diagram for at least two major and core classes in the system
 • A Package Diagram
 • A Deployment Diagram
 Note: In this stage you need to apply all possible design strategies and techniques to make the architecture of the system more: reusable, scalable, maintainable, reliable, and using necessary concepts such as modular design, inheritance, realization, aggregation, composition, polymorphism, and appropriate design patterns as needed.
