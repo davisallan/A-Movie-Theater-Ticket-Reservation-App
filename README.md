@@ -1,4 +1,4 @@
-# A-Movie-Theater-Ticket-Reservation-App
+# A-Model.Movie-Theater-Model.Ticket-Reservation-App
 
 # Design Phase (40 marks)
 
@@ -7,7 +7,7 @@ In this phase you should submit a Design Document that includes a clear descript
 • Systems use case diagram.
 • Systems activity diagram
 • A state transition diagram for the following objects in your system:
-  o Ticket object
+  o Model.Ticket object
   o Payment object
 • A detailed “Scenario” each use case, having all candidate objects underlined, and all
 candidate operations underlined (use single-underline for objects and double-underline for
