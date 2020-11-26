@@ -1,7 +1,5 @@
 # A-Movie-Theater-Ticket-Reservation-App
 
-# Deliverables:
-
 # Design Phase (40 marks)
 
 In this phase you should submit a Design Document that includes a clear description of system’s requirements, and design artefacts in the following order:
