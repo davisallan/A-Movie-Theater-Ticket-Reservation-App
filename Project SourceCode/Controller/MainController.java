@@ -8,9 +8,9 @@ import Model.*;
  */
 
 public class MainController {
-	
 
-	RegestiredUser loggedInUser; // keeps track of user that is currently logged in
+
+	RegisteredUser loggedInUser; // keeps track of user that is currently logged in
 	UserController userController;
 	TheatreController theatreController;
 	ReservationController reservationController;
@@ -31,9 +31,9 @@ public class MainController {
 	}
 
 	//login and set the loggedInUser attribute to keep track of the user that is logged in
-	public RegestiredUser login(String email, String password) {
+	public RegisteredUser login(String email, String password) {
 		boolean verifyLogin = userController.login(email, password);
-		RegestiredUser loggedInUser = null;
+		RegisteredUser loggedInUser = null;
 		if(verifyLogin) {
 			loggedInUser = userController.getLoggedInUser(email, password);
 		}
@@ -51,7 +51,7 @@ public class MainController {
 	public void cancelReservation(int ticketId) {
 		if(loggedInUser != null) {
 			CreditCard cc = null;
-			for(RegestiredUser u: userController.getRegisteredUserList()) {
+			for(RegisteredUser u: userController.getRegisteredUserList()) {
 				if(u.getEmail().contentEquals(loggedInUser.getEmail()) && u.getPassword().contentEquals(loggedInUser.getPassword())) {
 					cc = u.getCreditCard();
 				}
@@ -64,11 +64,11 @@ public class MainController {
 		theatreController.getTheatreInfo();
 	}
 
-	public RegestiredUser getLoggedInUser() {
+	public RegisteredUser getLoggedInUser() {
 		return loggedInUser;
 	}
 
-	public void setLoggedInUser(RegestiredUser loggedInUser) {
+	public void setLoggedInUser(RegisteredUser loggedInUser) {
 		this.loggedInUser = loggedInUser;
 	}
 

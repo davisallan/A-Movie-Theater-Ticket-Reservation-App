@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.CreditCard;
-import Model.RegestiredUser;
+import Model.RegisteredUser;
 import Model.UCS;
 import Model.User;
 
@@ -16,9 +16,9 @@ public class UserController {
 		return loginVerified;
 	}
 	
-	public RegestiredUser getLoggedInUser(String email, String password) {
-		RegestiredUser loggedInUser = null;
-		for(RegestiredUser u: ucs.getRegisteredUserList()) {
+	public RegisteredUser getLoggedInUser(String email, String password) {
+		RegisteredUser loggedInUser = null;
+		for(RegisteredUser u: ucs.getRegisteredUserList()) {
 			if(u.getEmail().contentEquals(email) && u.getPassword().contentEquals(password)) {
 				loggedInUser = u;
 			}
@@ -31,12 +31,12 @@ public class UserController {
 		return casualUser;
 	}
 	
-	public RegestiredUser createRegestiredUser(String email, String password, CreditCard cc) {
-		RegestiredUser regestiredUser = createRegestiredUser(email, password, cc);
-		return regestiredUser;
+	public RegisteredUser createRegestiredUser(String email, String password, CreditCard cc) {
+		RegisteredUser registeredUser = createRegestiredUser(email, password, cc);
+		return registeredUser;
 	}
 	
-	public ArrayList<RegestiredUser> getRegisteredUserList(){
+	public ArrayList<RegisteredUser> getRegisteredUserList(){
 		return ucs.getRegisteredUserList();
 	}
 	

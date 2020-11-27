@@ -14,11 +14,11 @@ import java.util.ArrayList;
 public class UCS {
 	
 	//list of registered users
-	private final ArrayList<RegestiredUser> registeredUserList;
+	private final ArrayList<RegisteredUser> registeredUserList;
 
 	//construct Model.UCS
 	//receives registered UserList from database query
-	public UCS(ArrayList<RegestiredUser> registeredUserList) {
+	public UCS(ArrayList<RegisteredUser> registeredUserList) {
 		this.registeredUserList = registeredUserList;
 	}
 	
@@ -26,7 +26,7 @@ public class UCS {
 	public boolean login(String email, String password) {
 		boolean loginVerified = false;
 		
-		for(RegestiredUser u: registeredUserList) {
+		for(RegisteredUser u: registeredUserList) {
 			if(u.getEmail().contentEquals(email) && u.getPassword().contentEquals(password)) {
 				loginVerified = true;
 			}
@@ -41,13 +41,13 @@ public class UCS {
 	}
 	
 	//create registered user
-	public RegestiredUser createRegisteredUser(String email, String password, CreditCard cc) {
-		RegestiredUser regestiredUser = new RegestiredUser(email, password, cc);
-		getRegisteredUserList().add(regestiredUser);
-		return regestiredUser;
+	public RegisteredUser createRegisteredUser(String email, String password, CreditCard cc) {
+		RegisteredUser registeredUser = new RegisteredUser(email, password, cc);
+		getRegisteredUserList().add(registeredUser);
+		return registeredUser;
 	}
 
-	public ArrayList<RegestiredUser> getRegisteredUserList() {
+	public ArrayList<RegisteredUser> getRegisteredUserList() {
 		return registeredUserList;
 	}
 	

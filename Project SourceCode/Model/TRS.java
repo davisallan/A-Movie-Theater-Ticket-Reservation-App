@@ -11,7 +11,7 @@ public class TRS {
 
 	
 	// constructor - Model.TRS should be constructed by database class
-	public TRS(ArrayList<Theatre> theatreList, ArrayList<RegestiredUser> registeredUserList) {
+	public TRS(ArrayList<Theatre> theatreList, ArrayList<RegisteredUser> registeredUserList) {
 		this.theatreList = theatreList;
 	}
 	
