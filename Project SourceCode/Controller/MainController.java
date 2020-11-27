@@ -2,26 +2,21 @@ package Controller;
 
 import Model.*;
 
-import java.util.ArrayList;
-
 /*
  * Main Controller
  * talks to all other controllers to coordinate actions based on GUI input
  */
 
-
 public class MainController {
 	
-	// keeps track of user thats currently logged in
+	// keeps track of user that is currently logged in
 	RegestiredUser loggedInUser;
-
 	UserController UC = new UserController();
 	TheatreController TC = new TheatreController();
 	ReservationController RC = new ReservationController();
 	PaymentController PC = new PaymentController();
 
-	
-	//login and set the loggedInUser attribute to keep track of the user thats logged in
+	//login and set the loggedInUser attribute to keep track of the user that is logged in
 	public RegestiredUser login(String email, String password) {
 		boolean verifyLogin = UC.login(email, password);
 		RegestiredUser loggedInUser = null;
@@ -42,7 +37,7 @@ public class MainController {
 	public void cancelReservation(int ticketId) {
 		if(loggedInUser != null) {
 			CreditCard cc = null;
-			for(RegestiredUser u: UC.getRegestiredUserList()) {
+			for(RegestiredUser u: UC.getRegisteredUserList()) {
 				if(u.getEmail().contentEquals(loggedInUser.getEmail()) && u.getPassword().contentEquals(loggedInUser.getPassword())) {
 					cc = u.getCreditCard();
 				}

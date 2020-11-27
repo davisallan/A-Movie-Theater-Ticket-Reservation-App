@@ -18,7 +18,7 @@ public class UserController {
 	
 	public RegestiredUser getLoggedInUser(String email, String password) {
 		RegestiredUser loggedInUser = null;
-		for(RegestiredUser u: ucs.getRegestiredUserList()) {
+		for(RegestiredUser u: ucs.getRegisteredUserList()) {
 			if(u.getEmail().contentEquals(email) && u.getPassword().contentEquals(password)) {
 				loggedInUser = u;
 			}
@@ -36,8 +36,8 @@ public class UserController {
 		return regestiredUser;
 	}
 	
-	public ArrayList<RegestiredUser> getRegestiredUserList(){
-		return ucs.getRegestiredUserList();
+	public ArrayList<RegestiredUser> getRegisteredUserList(){
+		return ucs.getRegisteredUserList();
 	}
 	
 }

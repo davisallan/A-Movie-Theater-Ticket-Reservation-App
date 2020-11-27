@@ -6,27 +6,27 @@ import java.util.ArrayList;
  * Model.User control system
  * verifies user login
  * creates casual user for ticket reservation
- * creates registerd user for user registration
- * populates RegisteredUserList to keep track of all registerd user info
+ * creates registered user for user registration
+ * populates RegisteredUserList to keep track of all registered user info
  */
 
 
 public class UCS {
 	
-	//list of registerd users
-	private ArrayList<RegestiredUser> regestiredUserList;
+	//list of registered users
+	private final ArrayList<RegestiredUser> registeredUserList;
 
 	//construct Model.UCS
-	//receives regestiredUserList from database query
-	public UCS(ArrayList<RegestiredUser> regestiredUserList) {
-		this.regestiredUserList = regestiredUserList;
+	//receives registered UserList from database query
+	public UCS(ArrayList<RegestiredUser> registeredUserList) {
+		this.registeredUserList = registeredUserList;
 	}
 	
 	//login user
 	public boolean login(String email, String password) {
 		boolean loginVerified = false;
 		
-		for(RegestiredUser u: regestiredUserList) {
+		for(RegestiredUser u: registeredUserList) {
 			if(u.getEmail().contentEquals(email) && u.getPassword().contentEquals(password)) {
 				loginVerified = true;
 			}
@@ -43,11 +43,12 @@ public class UCS {
 	//create registered user
 	public RegestiredUser createRegisteredUser(String email, String password, CreditCard cc) {
 		RegestiredUser regestiredUser = new RegestiredUser(email, password, cc);
+		getRegisteredUserList().add(regestiredUser);
 		return regestiredUser;
 	}
 
-	public ArrayList<RegestiredUser> getRegestiredUserList() {
-		return regestiredUserList;
+	public ArrayList<RegestiredUser> getRegisteredUserList() {
+		return registeredUserList;
 	}
 	
 }
