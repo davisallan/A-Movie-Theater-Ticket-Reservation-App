@@ -11,31 +11,28 @@ public class MainController {
 
 
 	RegisteredUser loggedInUser; // keeps track of user that is currently logged in
-	UserController userController;
-	TheatreController theatreController;
-	ReservationController reservationController;
-	PaymentController paymentController;
-	GUIController guiController;
+	UserController userCtrl;
+	TheatreController theatreCtrl;
+	ReservationController reserveCtrl;
+	PaymentController paymentCtrl;
+	GUIController guiCtrl;
 
-	public MainController(UserController userController,
-						  TheatreController theatreController,
-						  ReservationController reservationController,
-						  PaymentController paymentController,
-						  GUIController guiController)
-	{
-		setUserController(userController);
-		setTheatreController(theatreController);
-		setReservationController(reservationController);
-		setPaymentController(paymentController);
-		setGuiController(guiController);
+	public MainController(UserController userCtrl, TheatreController theatreCtrl,
+						  ReservationController reserveCtrl, PaymentController paymentCtrl,
+						  GUIController guiCtrl) {
+		setUserCtrl(userCtrl);
+		setTheatreCtrl(theatreCtrl);
+		setReserveCtrl(reserveCtrl);
+		setPaymentCtrl(paymentCtrl);
+		setGuiCtrl(guiCtrl);
 	}
 
 	//login and set the loggedInUser attribute to keep track of the user that is logged in
 	public RegisteredUser login(String email, String password) {
-		boolean verifyLogin = userController.login(email, password);
+		boolean verifyLogin = userCtrl.login(email, password);
 		RegisteredUser loggedInUser = null;
 		if(verifyLogin) {
-			loggedInUser = userController.getLoggedInUser(email, password);
+			loggedInUser = userCtrl.getLoggedInUser(email, password);
 		}
 		return loggedInUser;
 	}
@@ -43,25 +40,25 @@ public class MainController {
 	public void createReservation(Theatre theatre, Movie movie, ShowTime showTime, Seat seat) {
 		User user = null;
 		if(loggedInUser == null) {
-			user = userController.createCasualUser();
+			user = userCtrl.createCasualUser();
 		}
-		reservationController.reserve(user, theatre, movie, showTime, seat);
+		reserveCtrl.reserve(user, theatre, movie, showTime, seat);
 	}
 	
 	public void cancelReservation(int ticketId) {
 		if(loggedInUser != null) {
 			CreditCard creditCard = null;
-			for(RegisteredUser u: userController.getRegisteredUserList()) {
+			for(RegisteredUser u: userCtrl.getRegisteredUserList()) {
 				if(u.getEmail().contentEquals(loggedInUser.getEmail()) && u.getPassword().contentEquals(loggedInUser.getPassword())) {
 					creditCard = u.getCreditCard();
 				}
 			}
-			reservationController.cancel(loggedInUser, ticketId, creditCard);
+			reserveCtrl.cancel(loggedInUser, ticketId, creditCard);
 		}
 	}
 	
 	public void updateSelection(Theatre theatre, Movie movie, ShowTime showTime) {
-		theatreController.getTheatreInfo();
+		theatreCtrl.getTheatreInfo();
 	}
 
 	public RegisteredUser getLoggedInUser() {
@@ -72,55 +69,53 @@ public class MainController {
 		this.loggedInUser = loggedInUser;
 	}
 
-	public UserController getUserController() {
-		return userController;
+	public UserController getUserCtrl() {
+		return userCtrl;
 	}
 
-	public void setUserController(UserController userController) {
-		this.userController = userController;
+	public void setUserCtrl(UserController userCtrl) {
+		this.userCtrl = userCtrl;
 	}
 
-	public TheatreController getTheatreController() {
-		return theatreController;
+	public TheatreController getTheatreCtrl() {
+		return theatreCtrl;
 	}
 
-	public void setTheatreController(TheatreController theatreController) {
-		this.theatreController = theatreController;
+	public void setTheatreCtrl(TheatreController theatreCtrl) {
+		this.theatreCtrl = theatreCtrl;
 	}
 
-	public ReservationController getReservationController() {
-		return reservationController;
+	public ReservationController getReserveCtrl() {
+		return reserveCtrl;
 	}
 
-	public void setReservationController(ReservationController reservationController) {
-		this.reservationController = reservationController;
+	public void setReserveCtrl(ReservationController reserveCtrl) {
+		this.reserveCtrl = reserveCtrl;
 	}
 
-	public PaymentController getPaymentController() {
-		return paymentController;
+	public PaymentController getPaymentCtrl() {
+		return paymentCtrl;
 	}
 
-	public void setPaymentController(PaymentController paymentController) {
-		this.paymentController = paymentController;
+	public void setPaymentCtrl(PaymentController paymentCtrl) {
+		this.paymentCtrl = paymentCtrl;
 	}
 
-	public GUIController getGuiController() {
-		return guiController;
+	public GUIController getGuiCtrl() {
+		return guiCtrl;
 	}
 
-	public void setGuiController(GUIController guiController) {
-		this.guiController = guiController;
+	public void setGuiCtrl(GUIController guiCtrl) {
+		this.guiCtrl = guiCtrl;
 	}
 
 	public static void main(String[] args) {
-		UserController userController = new UserController();
-		TheatreController theatreController = new TheatreController();
-		ReservationController reservationController = new ReservationController();
-		PaymentController paymentController = new PaymentController();
-		GUIController guiController = new GUIController();
-		MainController mainController = new MainController(userController, theatreController,
-															reservationController, paymentController,
-															guiController);
+		UserController userCtrl = new UserController();
+		TheatreController theatreCtrl = new TheatreController();
+		ReservationController reserveCtrl = new ReservationController();
+		PaymentController paymentCtrl = new PaymentController();
+		GUIController guiCtrl = new GUIController();
+		MainController mainCtrl = new MainController(userCtrl, theatreCtrl, reserveCtrl, paymentCtrl, guiCtrl);
 
 	}
 }
