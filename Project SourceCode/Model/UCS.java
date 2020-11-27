@@ -36,13 +36,12 @@ public class UCS {
 	
 	//create casual user
 	public User createCasualUser() {
-		User casualUser = new User();
-		return casualUser;
+		return new User();
 	}
 	
 	//create registered user
-	public RegisteredUser createRegisteredUser(String email, String password, CreditCard cc) {
-		RegisteredUser registeredUser = new RegisteredUser(email, password, cc);
+	public RegisteredUser createRegisteredUser(String email, String password, CreditCard creditCard) {
+		RegisteredUser registeredUser = new RegisteredUser(email, password, creditCard);
 		getRegisteredUserList().add(registeredUser);
 		return registeredUser;
 	}

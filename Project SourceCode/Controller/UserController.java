@@ -9,16 +9,16 @@ import java.util.ArrayList;
 
 public class UserController {
 	
-	UCS ucs;
+	UCS userCtrlSys;
 
 	public boolean login(String email, String password) {
-		boolean loginVerified = ucs.login(email, password);
+		boolean loginVerified = userCtrlSys.login(email, password);
 		return loginVerified;
 	}
 	
-	public RegisteredUser getLoggedInUser(String email, String password) {
+	public RegisteredUser loginRegisteredUser(String email, String password) {
 		RegisteredUser loggedInUser = null;
-		for(RegisteredUser u: ucs.getRegisteredUserList()) {
+		for(RegisteredUser u: userCtrlSys.getRegisteredUserList()) {
 			if(u.getEmail().contentEquals(email) && u.getPassword().contentEquals(password)) {
 				loggedInUser = u;
 			}
@@ -27,17 +27,15 @@ public class UserController {
 	}
 	
 	public User createCasualUser() {
-		User casualUser = createCasualUser();
-		return casualUser;
+		return userCtrlSys.createCasualUser();
 	}
 	
-	public RegisteredUser createRegestiredUser(String email, String password, CreditCard cc) {
-		RegisteredUser registeredUser = createRegestiredUser(email, password, cc);
-		return registeredUser;
+	public RegisteredUser createRegisteredUser(String email, String password, CreditCard creditCard) {
+		return userCtrlSys.createRegisteredUser(email, password, creditCard);
 	}
 	
 	public ArrayList<RegisteredUser> getRegisteredUserList(){
-		return ucs.getRegisteredUserList();
+		return userCtrlSys.getRegisteredUserList();
 	}
 	
 }

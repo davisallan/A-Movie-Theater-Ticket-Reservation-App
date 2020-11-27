@@ -28,11 +28,11 @@ public class MainController {
 	}
 
 	//login and set the loggedInUser attribute to keep track of the user that is logged in
-	public RegisteredUser login(String email, String password) {
+	public RegisteredUser loginRegisteredUser(String email, String password) {
 		boolean verifyLogin = userCtrl.login(email, password);
 		RegisteredUser loggedInUser = null;
 		if(verifyLogin) {
-			loggedInUser = userCtrl.getLoggedInUser(email, password);
+			loggedInUser = userCtrl.loginRegisteredUser(email, password);
 		}
 		return loggedInUser;
 	}
