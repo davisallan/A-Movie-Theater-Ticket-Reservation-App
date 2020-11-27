@@ -7,7 +7,7 @@ public class RegisteredUser extends User{
 
 	private String email;
 	private String password;
-	private CreditCard cc;
+	private CreditCard creditCard;
 	private Date registrationDate;
 	private Refund refund;
 	
@@ -15,7 +15,7 @@ public class RegisteredUser extends User{
 		super();
 		setEmail(email);
 		setPassword(password);
-		setCc(creditCard);
+		setCreditCard(creditCard);
 		setRegistrationDate(Calendar.getInstance().getTime());
 	}
 
@@ -35,12 +35,12 @@ public class RegisteredUser extends User{
 		this.password = password;
 	}
 
-	public CreditCard getCc() {
-		return cc;
+	public CreditCard getCreditCard() {
+		return creditCard;
 	}
 
-	public void setCc(CreditCard cc) {
-		this.cc = cc;
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
 	}
 
 	public Date getRegistrationDate() {

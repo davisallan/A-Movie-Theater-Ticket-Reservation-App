@@ -50,13 +50,13 @@ public class MainController {
 	
 	public void cancelReservation(int ticketId) {
 		if(loggedInUser != null) {
-			CreditCard cc = null;
+			CreditCard creditCard = null;
 			for(RegisteredUser u: userController.getRegisteredUserList()) {
 				if(u.getEmail().contentEquals(loggedInUser.getEmail()) && u.getPassword().contentEquals(loggedInUser.getPassword())) {
-					cc = u.getCreditCard();
+					creditCard = u.getCreditCard();
 				}
 			}
-			reservationController.cancel(loggedInUser, ticketId, cc);
+			reservationController.cancel(loggedInUser, ticketId, creditCard);
 		}
 	}
 	

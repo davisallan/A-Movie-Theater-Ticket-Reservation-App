@@ -1,6 +1,6 @@
 package Model;
 
-public class Payement {
+public class Payment {
 
 	private User user;
 	private CreditCard cc;
