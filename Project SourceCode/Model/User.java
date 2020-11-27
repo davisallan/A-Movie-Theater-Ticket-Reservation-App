@@ -9,7 +9,19 @@ public class User{
 	public User() {
 		userId += 1;
 	}
-	
+
+	public void makePayment() {
+
+	}
+
+	public void purchaseTicket() {
+
+	}
+
+	public void cancelTicket(Ticket ticket) {
+
+	}
+
 	public int getUserId() {
 		return userId;
 	}
@@ -28,17 +40,5 @@ public class User{
 
 	public void setVoucher(Voucher voucher) {
 		this.voucher = voucher;
-	}
-
-	public void makePayment() {
-
-	}
-
-	public void purchaseTicket() {
-
-	}
-
-	public void cancelTicket(Ticket ticket) {
-
 	}
 }
