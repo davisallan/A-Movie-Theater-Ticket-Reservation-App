@@ -13,9 +13,12 @@ import java.util.ArrayList;
 
 public class TCS {
 
-	private TheatreController TC;
-//	private Model.Theatre theatre;
-	
+	private Theatre theatre;
+
+	public TCS(Theatre theatre) {
+		setTheatre(theatre);
+	}
+
 	public ArrayList<Movie> getMovies(Theatre selectedTheatre){
 		ArrayList<Movie> movieList = selectedTheatre.getMovieList();
 		return movieList;
@@ -36,5 +39,13 @@ public class TCS {
 		ArrayList<Seat> seatList=null;
 		ArrayList<Movie>  movieList = selectedTheatre.getMovieList();
 		return seatList;
+	}
+
+	public Theatre getTheatre() {
+		return theatre;
+	}
+
+	public void setTheatre(Theatre theatre) {
+		this.theatre = theatre;
 	}
 }
