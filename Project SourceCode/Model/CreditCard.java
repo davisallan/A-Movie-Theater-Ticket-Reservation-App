@@ -64,9 +64,9 @@ public class CreditCard {
 
 	@Override
 	public String toString() {
-		return "Card Name: " + getCardHolderName() +
-				"CC Number: " + getCardNumber() + "\n" +
-				"CVC: " + getCVC() + "\n" +
-				"Expiry " + getExpiry() + "\n";
+		return "Card Name: " + getCardHolderName() + " \n" +
+				"CC Number: " + getCardNumber() + " \n" +
+				"CVC: " + getCVC() + " \n" +
+				"Expiry " + getExpiry();
 	}
 }

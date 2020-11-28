@@ -31,10 +31,14 @@ CREATE TABLE MOVIE (
 DROP TABLE IF EXISTS REGISTERED_USER;
 CREATE TABLE REGISTERED_USER (
 	UserID    		integer not null,
+    FName			varchar(30),
+    LName			varchar(30),
     Email 			varchar(30),
     UserPassword 	varchar(8),
     Card_Name 		varchar(30),
     Credit_card 	varchar(30) not null,
+    CVC				integer, 
+    Expiry			varchar(5),
     primary key(UserId)
     );
 

@@ -56,6 +56,7 @@ public class UCS {
 								rs.getString("Expiry"))));
 
 			}
+			display();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -66,6 +67,12 @@ public class UCS {
 		RegisteredUser registeredUser = new RegisteredUser(userID, fName, lName, email, password, creditCard);
 		getRegisteredUserList().add(registeredUser);
 		return registeredUser;
+	}
+
+	public void display() {
+		for (RegisteredUser user : getRegisteredUserList()) {
+			System.out.println(user);
+		}
 	}
 
 	public ArrayList<RegisteredUser> getRegisteredUserList() {

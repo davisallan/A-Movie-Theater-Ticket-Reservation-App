@@ -94,6 +94,6 @@ public class RegisteredUser extends User{
 		return "Name: " + getfName() + " " + getlName() + "\n" +
 				"Email: " + getEmail() + "\n" +
 				"Password: " + getPassword() + "\n" +
-				"Credit Card" + getCreditCard() + "\n";
+				"Credit Card: \n" + getCreditCard() + "\n";
 	}
 }

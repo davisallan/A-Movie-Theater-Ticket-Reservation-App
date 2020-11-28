@@ -36,11 +36,11 @@ VALUES
 		(12, 2003, '2020-11-12', '22:00:00');
 
         
-INSERT INTO TicketReservationApp.REGISTERED_USER(UserID, Email, UserPassword, Card_Name, Credit_card)
-VALUES  (001, 'davis.allan@ucalgary.ca', 'davis11', 'Davis Allan', 734694398475946),
-		(002, 'bright.anorchie@ucalgary.ca', 'bright11', 'Bright Anorchie', 893749304504546),
-        (003, 'khaled.behairy@ucalgary.ca', 'behairy1',  'Khaled Behairy', 399238340644334),
-        (004, 'micheal.adelure@ucalgary.ca', 'micheal1', 'Micheal Adelure', 128994830843044);
+INSERT INTO TicketReservationApp.REGISTERED_USER(UserID, FName, LName, Email, UserPassword, Card_Name, Credit_card, CVC, Expiry)
+VALUES  (001, 'Davis', 'Allan', 'davis.allan@ucalgary.ca', 'davis11', 'Davis Allan', 734694398475946, 123, 2220),
+		(002, 'Bright', 'Anorchie', 'bright.anorchie@ucalgary.ca', 'bright11', 'Bright Anorchie', 893749304504546, 234, 1521),
+        (003, 'Khaled', 'Behairy', 'khaled.behairy@ucalgary.ca', 'behairy1',  'Khaled Behairy', 399238340644334, 153, 3622),
+        (004, 'Michael', 'Adelure', 'micheal.adelure@ucalgary.ca', 'micheal1', 'Micheal Adelure', 128994830843044, 182, 4823);
         
 INSERT INTO TicketReservationApp.TICKET(TicketID, MovieID, TheaterID)
 VALUES  (1, 2001, 100),
