@@ -20,7 +20,7 @@ public class UserController {
 		return userCtrlSys.login(email, password);
 	}
 	
-	public RegisteredUser loginRegisteredUser(String email, String password) {
+	public RegisteredUser getRegisteredUser(String email, String password) {
 		RegisteredUser loggedInUser = null;
 		for(RegisteredUser u: userCtrlSys.getRegisteredUserList()) {
 			if(u.getEmail().contentEquals(email) && u.getPassword().contentEquals(password)) {
