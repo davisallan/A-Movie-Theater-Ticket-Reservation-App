@@ -35,12 +35,23 @@ public class UCS {
 		}		
 		return loginVerified;
 	}
-	
+
+	public RegisteredUser getRegisteredUser(String email, String password) {
+		RegisteredUser loggedInUser = null;
+		for(RegisteredUser u: getRegisteredUserList()) {
+			if(u.getEmail().contentEquals(email) && u.getPassword().contentEquals(password)) {
+				loggedInUser = u;
+			}
+		}
+		return loggedInUser;
+	}
+
 	//create casual user
 	public User createCasualUser() {
 		return new User();
 	}
 
+	//building registeredUserList from db query
 	public void loadRegisteredUsers(ResultSet rs) {
 		try {
 			while (rs.next()) {

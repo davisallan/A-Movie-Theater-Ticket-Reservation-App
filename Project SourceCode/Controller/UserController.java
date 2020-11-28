@@ -21,13 +21,7 @@ public class UserController {
 	}
 	
 	public RegisteredUser getRegisteredUser(String email, String password) {
-		RegisteredUser loggedInUser = null;
-		for(RegisteredUser u: userCtrlSys.getRegisteredUserList()) {
-			if(u.getEmail().contentEquals(email) && u.getPassword().contentEquals(password)) {
-				loggedInUser = u;
-			}
-		}
-		return loggedInUser;
+		return userCtrlSys.getRegisteredUser(email, password);
 	}
 
 	public void loadRegisteredUsers(ResultSet rs) {
