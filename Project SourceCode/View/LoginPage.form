@@ -16,7 +16,6 @@
         </constraints>
         <properties>
           <font size="22" style="1"/>
-          <icon value="compose@2x.png"/>
           <text value="Log In Page"/>
         </properties>
       </component>

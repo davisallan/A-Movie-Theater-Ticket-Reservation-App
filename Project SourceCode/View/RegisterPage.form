@@ -14,7 +14,6 @@
         </constraints>
         <properties>
           <font size="22" style="1"/>
-          <icon value="you@2x.png"/>
           <text value="Registration Page"/>
           <verticalAlignment value="0"/>
           <verticalTextPosition value="0"/>
