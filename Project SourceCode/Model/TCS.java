@@ -36,7 +36,7 @@ public class TCS {
 	}
 	
 	public ArrayList<Seat> getFreeSeats(Theatre selectedTheatre, Movie selectedMovie, ShowTime selectedShowTime){
-		ArrayList<Seat> seatList=null;
+		ArrayList<Seat> seatList = null;
 		ArrayList<Movie>  movieList = selectedTheatre.getMovieList();
 		return seatList;
 	}

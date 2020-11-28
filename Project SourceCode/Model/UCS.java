@@ -1,8 +1,6 @@
 package Model;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 /*
  * Model.User control system
@@ -14,12 +12,9 @@ import java.util.ArrayList;
 
 
 public class UCS {
-	
-	//list of registered users
+
 	private RegisteredUserList registeredUserList;
 
-	//construct Model.UCS
-	//receives registered UserList from database query
 	public UCS(RegisteredUserList registeredUserList) {
 		setRegisteredUserList(registeredUserList);
 	}
