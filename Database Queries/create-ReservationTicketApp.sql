@@ -5,8 +5,8 @@ USE TicketReservationApp;
 DROP TABLE IF EXISTS THEATRE;
 CREATE TABLE THEATRE (
 	TheatreID    integer not null,
-    Theatre_name  varchar(20) not null,
-    Address  varchar(20),
+    Theatre_name  varchar(30) not null,
+    Address  varchar(30),
     primary key(TheatreID)
     );
     

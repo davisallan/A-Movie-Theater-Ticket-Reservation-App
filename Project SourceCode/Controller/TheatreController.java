@@ -2,19 +2,28 @@ package Controller;
 
 import Model.*;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class TheatreController {
 	
-	private TCS tcs;
-	
+	private TCS theatreCtrlSys;
 	private Theatre selectedTheatre;
 	private Movie selectedMovie;
 	private ShowTime selectedShowTime;
 	private ArrayList<Movie> movieList;
 	private ArrayList<ShowTime> showTimeList;
-	private ArrayList<Seat> freeSeatList;
-	
+
+
+	public TheatreController(TCS theatreCtrlSys) {
+		setTheatreCtrlSys(theatreCtrlSys);
+	}
+
+	public void loadTheatres(ResultSet rs) {
+		theatreCtrlSys.loadTheatres(rs);
+	}
+
 	public void setSelectedTheatre(Theatre theatre) {
 		this.selectedTheatre = theatre;
 	}
@@ -26,11 +35,18 @@ public class TheatreController {
 	public void setSelectedShowTime(ShowTime selectedShowTime) {
 		this.selectedShowTime = selectedShowTime;
 	}
-	
+
+	public TCS getTheatreCtrlSys() {
+		return theatreCtrlSys;
+	}
+
+	public void setTheatreCtrlSys(TCS theatreCtrlSys) {
+		this.theatreCtrlSys = theatreCtrlSys;
+	}
+
 	public void getTheatreInfo() {
-		this.movieList = tcs.getMovies(selectedTheatre);
-		this.showTimeList = tcs.getShowTimes(selectedTheatre, selectedMovie);
-		this.freeSeatList = tcs.getFreeSeats(selectedTheatre, selectedMovie, selectedShowTime);
+		this.movieList = theatreCtrlSys.getMovies(selectedTheatre);
+		this.showTimeList = theatreCtrlSys.getShowTimes(selectedTheatre, selectedMovie);
 	}
 
 }

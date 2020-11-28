@@ -20,8 +20,16 @@ public class TheatreList {
                         rs.getString("Theatre_name"),
                         rs.getString("Address")));
             }
+            display();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    //dummy method for testing to display results from query
+    public void display() {
+        for (Theatre t : getTheatres()) {
+            System.out.println(t);
         }
     }
 

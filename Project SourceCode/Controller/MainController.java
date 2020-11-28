@@ -64,6 +64,7 @@ public class MainController {
 
 	public void loadDB() {
 		userCtrl.loadRegisteredUsers(dbCtrl.selectAll("REGISTERED_USER"));
+		theatreCtrl.loadTheatres(dbCtrl.selectAll("THEATRE"));
 	}
 
 	public void updateSelection(Theatre theatre, Movie movie, ShowTime showTime) {
@@ -128,7 +129,7 @@ public class MainController {
 
 	public static void main(String[] args) {
 		UserController userCtrl = new UserController(new UCS(new RegisteredUserList()));
-		TheatreController theatreCtrl = new TheatreController();
+		TheatreController theatreCtrl = new TheatreController(new TCS(new TheatreList()));
 		ReservationController reserveCtrl = new ReservationController();
 		PaymentController paymentCtrl = new PaymentController();
 		GUIController guiCtrl = new GUIController();

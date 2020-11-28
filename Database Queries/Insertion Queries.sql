@@ -12,7 +12,11 @@ VALUES  (2000, 'Bad Boys for Life'),
 		(2010, 'The Whistlers');
  
  INSERT INTO TicketReservationApp.THEATRE(TheatreID, Theatre_name, Address)
-VALUES	(100, 'Cineplex Odeon', '205 E Hills Blvd SE');
+VALUES	(100, 'Cineplex Odeon', '205 E Hills Blvd SE'),
+		(101, 'Landmark Cinemas', '3412 49 St NW'),
+		(102, 'Globe Cinema', '617 8 Ave SW'),
+		(103, 'Scotiabank Theatre Chinook', '6455 Macleod Trail SW'),
+		(104, 'Landmark Cinemas 10 Shawnessy', '16061 Macleod Trail SE');
 
 
  INSERT INTO TicketReservationApp.AUDITORIUM(AuditoriumID, Auditorium_name)

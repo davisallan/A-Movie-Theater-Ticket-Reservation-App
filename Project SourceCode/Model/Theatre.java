@@ -51,5 +51,11 @@ public class Theatre {
 	public ArrayList<Movie> getMovieList(){
 		return movieList;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "TheatreID: " + getTheatreID() + "\n" +
+				"Theatre Name: " + getTheatreName() + "\n" +
+				"Address: " + getAddress() + "\n";
+	}
 }
