@@ -15,16 +15,18 @@ public class MainController {
 	TheatreController theatreCtrl;
 	ReservationController reserveCtrl;
 	PaymentController paymentCtrl;
+	DBController dbCtrl;
 	GUIController guiCtrl;
 
 	public MainController(UserController userCtrl, TheatreController theatreCtrl,
 						  ReservationController reserveCtrl, PaymentController paymentCtrl,
-						  GUIController guiCtrl) {
+						  GUIController guiCtrl, DBController dbCtrl) {
 		setUserCtrl(userCtrl);
 		setTheatreCtrl(theatreCtrl);
 		setReserveCtrl(reserveCtrl);
 		setPaymentCtrl(paymentCtrl);
 		setGuiCtrl(guiCtrl);
+		setDbCtrl(dbCtrl);
 	}
 
 	//login and set the loggedInUser attribute to keep track of the user that is logged in
@@ -56,7 +58,11 @@ public class MainController {
 			reserveCtrl.cancel(loggedInUser, ticketId, creditCard);
 		}
 	}
-	
+
+	public void loadDB() {
+		userCtrl.loadRegisteredUsers(dbCtrl.selectAll("REGISTERED_USER"));
+	}
+
 	public void updateSelection(Theatre theatre, Movie movie, ShowTime showTime) {
 		theatreCtrl.getTheatreInfo();
 	}
@@ -109,13 +115,26 @@ public class MainController {
 		this.guiCtrl = guiCtrl;
 	}
 
+	public DBController getDbCtrl() {
+		return dbCtrl;
+	}
+
+	public void setDbCtrl(DBController dbCtrl) {
+		this.dbCtrl = dbCtrl;
+	}
+
 	public static void main(String[] args) {
-		UserController userCtrl = new UserController();
+		UserController userCtrl = new UserController(new UCS());
 		TheatreController theatreCtrl = new TheatreController();
 		ReservationController reserveCtrl = new ReservationController();
 		PaymentController paymentCtrl = new PaymentController();
 		GUIController guiCtrl = new GUIController();
-		MainController mainCtrl = new MainController(userCtrl, theatreCtrl, reserveCtrl, paymentCtrl, guiCtrl);
+		DBController dbCtrl = new DBController();
+		MainController mainCtrl = new MainController(userCtrl, theatreCtrl, reserveCtrl, paymentCtrl, guiCtrl, dbCtrl);
+
+
+		//Testing things from the command line:
+		mainCtrl.loadDB();
 
 	}
 }

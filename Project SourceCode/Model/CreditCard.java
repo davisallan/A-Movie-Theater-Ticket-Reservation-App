@@ -3,11 +3,11 @@ package Model;
 public class CreditCard {
 
 	private String cardHolderName;
-	private int cardNumber;
+	private String cardNumber;
 	private int CVC;
-	private int expiry;
+	private String expiry;
 	
-	public CreditCard(String cardHolderName, int cardNumber, int CVC, int expiry) {
+	public CreditCard(String cardHolderName, String cardNumber, int CVC, String expiry) {
 		setCardHolderName(cardHolderName);
 		setCardNumber(cardNumber);
 		setCVC(CVC);
@@ -38,11 +38,11 @@ public class CreditCard {
 		this.cardHolderName = cardHolderName;
 	}
 
-	public int getCardNumber() {
+	public String getCardNumber() {
 		return cardNumber;
 	}
 
-	public void setCardNumber(int cardNumber) {
+	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 
@@ -54,11 +54,19 @@ public class CreditCard {
 		this.CVC = CVC;
 	}
 
-	public int getExpiry() {
+	public String getExpiry() {
 		return expiry;
 	}
 
-	public void setExpiry(int expiry) {
+	public void setExpiry(String expiry) {
 		this.expiry = expiry;
+	}
+
+	@Override
+	public String toString() {
+		return "Card Name: " + getCardHolderName() +
+				"CC Number: " + getCardNumber() + "\n" +
+				"CVC: " + getCVC() + "\n" +
+				"Expiry " + getExpiry() + "\n";
 	}
 }

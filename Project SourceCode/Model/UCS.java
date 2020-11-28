@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /*
@@ -14,12 +16,12 @@ import java.util.ArrayList;
 public class UCS {
 	
 	//list of registered users
-	private final ArrayList<RegisteredUser> registeredUserList;
+	private ArrayList<RegisteredUser> registeredUserList;
 
 	//construct Model.UCS
 	//receives registered UserList from database query
-	public UCS(ArrayList<RegisteredUser> registeredUserList) {
-		this.registeredUserList = registeredUserList;
+	public UCS() {
+		registeredUserList = new ArrayList<>();
 	}
 	
 	//login user
@@ -38,10 +40,30 @@ public class UCS {
 	public User createCasualUser() {
 		return new User();
 	}
-	
+
+	public void loadRegisteredUsers(ResultSet rs) {
+		try {
+			while (rs.next()) {
+				getRegisteredUserList().add (new RegisteredUser (
+						rs.getInt("UserID"),
+						rs.getString("FName"),
+						rs.getString("LName"),
+						rs.getString("Email"),
+						rs.getString("UserPassword"),
+						new CreditCard(rs.getString("Card_name"),
+								rs.getString("Credit_card"),
+								rs.getInt("CVC"),
+								rs.getString("Expiry"))));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	//create registered user
-	public RegisteredUser createRegisteredUser(String email, String password, CreditCard creditCard) {
-		RegisteredUser registeredUser = new RegisteredUser(email, password, creditCard);
+	public RegisteredUser createRegisteredUser(int userID, String fName, String lName, String email, String password, CreditCard creditCard) {
+		RegisteredUser registeredUser = new RegisteredUser(userID, fName, lName, email, password, creditCard);
 		getRegisteredUserList().add(registeredUser);
 		return registeredUser;
 	}
