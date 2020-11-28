@@ -4,20 +4,28 @@ import java.util.ArrayList;
 
 public class Theatre {
 
+	private int theatreID;
 	private String theatreName;
 	private String address;
 	private ArrayList<Movie> movieList;
 	private ArrayList<Auditorium> auditoriums;
 	
 	
-	public Theatre(String name, String address) {
+	public Theatre(int theatreID, String name, String address) {
+		setTheatreID(theatreID);
 		setTheatreName(name);
 		setAddress(address);
 		movieList = new ArrayList<>();
 		auditoriums = new ArrayList<>();
 	}
 
+	public int getTheatreID() {
+		return theatreID;
+	}
 
+	public void setTheatreID(int theatreID) {
+		this.theatreID = theatreID;
+	}
 
 	public String getTheatreName() {
 		return theatreName;

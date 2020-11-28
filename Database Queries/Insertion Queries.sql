@@ -11,7 +11,7 @@ VALUES  (2000, 'Bad Boys for Life'),
 		(2009, 'The Beach House'),
 		(2010, 'The Whistlers');
  
- INSERT INTO TicketReservationApp.THEATER(TheaterID, Theater_name, Address)
+ INSERT INTO TicketReservationApp.THEATRE(TheatreID, Theatre_name, Address)
 VALUES	(100, 'Cineplex Odeon', '205 E Hills Blvd SE');
 
 
@@ -42,7 +42,7 @@ VALUES  (001, 'Davis', 'Allan', 'davis.allan@ucalgary.ca', 'davis11', 'Davis All
         (003, 'Khaled', 'Behairy', 'khaled.behairy@ucalgary.ca', 'behairy1',  'Khaled Behairy', 399238340644334, 153, 3622),
         (004, 'Michael', 'Adelure', 'micheal.adelure@ucalgary.ca', 'micheal1', 'Micheal Adelure', 128994830843044, 182, 4823);
         
-INSERT INTO TicketReservationApp.TICKET(TicketID, MovieID, TheaterID)
+INSERT INTO TicketReservationApp.TICKET(TicketID, MovieID, TheatreID)
 VALUES  (1, 2001, 100),
 		(2, 2002, 100),
         (3, 2002, 100),

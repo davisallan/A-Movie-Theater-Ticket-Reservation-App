@@ -2,22 +2,22 @@ DROP DATABASE IF EXISTS TicketReservationApp;
 CREATE DATABASE TicketReservationApp;
 USE TicketReservationApp;
 
-DROP TABLE IF EXISTS THEATER;
-CREATE TABLE THEATER (
-	TheaterID    integer not null,
-    Theater_name  varchar(20) not null,
+DROP TABLE IF EXISTS THEATRE;
+CREATE TABLE THEATRE (
+	TheatreID    integer not null,
+    Theatre_name  varchar(20) not null,
     Address  varchar(20),
-    primary key(TheaterID)
+    primary key(TheatreID)
     );
     
 DROP TABLE IF EXISTS AUDITORIUM;
 CREATE TABLE AUDITORIUM (
 	AuditoriumID    integer not null,
     Auditorium_name  varchar(20) not null,
-    TheaterID		integer, 
+    TheatreID		integer, 
     seats  varchar(20),
     primary key(AuditoriumID),
-    foreign key (TheaterID) references THEATER(TheaterID)
+    foreign key (TheatreID) references THEATRE(TheatreID)
     );
     
 DROP TABLE IF EXISTS MOVIE;
@@ -47,10 +47,10 @@ CREATE TABLE REGISTERED_USER (
 CREATE TABLE TICKET (
 	TicketID    integer not null,
     MovieID  integer not null,
-    TheaterID  integer not null,
+    TheatreID  integer not null,
     primary key(TicketID),
     foreign key (MovieID) references MOVIE(MovieID),
-    foreign key (TheaterID) references THEATER(TheaterID)
+    foreign key (TheatreID) references THEATRE(TheatreID)
     );
     
         DROP TABLE IF EXISTS RESERVATION;

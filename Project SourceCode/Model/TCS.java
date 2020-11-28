@@ -2,6 +2,7 @@ package Model;
 
 import Controller.TheatreController;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /*
@@ -13,10 +14,14 @@ import java.util.ArrayList;
 
 public class TCS {
 
-	private Theatre theatre;
+	private TheatreList theatreList;
 
-	public TCS(Theatre theatre) {
-		setTheatre(theatre);
+	public TCS(TheatreList theatreList) {
+		setTheatreList(theatreList);
+	}
+
+	public void loadTheatres(ResultSet rs) {
+		theatreList.loadTheatres(rs);
 	}
 
 	public ArrayList<Movie> getMovies(Theatre selectedTheatre){
@@ -41,11 +46,11 @@ public class TCS {
 		return seatList;
 	}
 
-	public Theatre getTheatre() {
-		return theatre;
+	public TheatreList getTheatreList() {
+		return theatreList;
 	}
 
-	public void setTheatre(Theatre theatre) {
-		this.theatre = theatre;
+	public void setTheatreList(TheatreList theatreList) {
+		this.theatreList = theatreList;
 	}
 }
