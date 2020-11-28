@@ -127,7 +127,7 @@ public class MainController {
 	}
 
 	public static void main(String[] args) {
-		UserController userCtrl = new UserController(new UCS());
+		UserController userCtrl = new UserController(new UCS(new RegisteredUserList()));
 		TheatreController theatreCtrl = new TheatreController();
 		ReservationController reserveCtrl = new ReservationController();
 		PaymentController paymentCtrl = new PaymentController();

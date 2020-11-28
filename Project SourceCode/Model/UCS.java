@@ -16,19 +16,19 @@ import java.util.ArrayList;
 public class UCS {
 	
 	//list of registered users
-	private ArrayList<RegisteredUser> registeredUserList;
+	private RegisteredUserList registeredUserList;
 
 	//construct Model.UCS
 	//receives registered UserList from database query
-	public UCS() {
-		registeredUserList = new ArrayList<>();
+	public UCS(RegisteredUserList registeredUserList) {
+		setRegisteredUserList(registeredUserList);
 	}
 	
 	//login user
 	public boolean login(String email, String password) {
 		boolean loginVerified = false;
 		
-		for(RegisteredUser u: registeredUserList) {
+		for(RegisteredUser u: registeredUserList.getRegisteredUsers()) {
 			if(u.getEmail().contentEquals(email) && u.getPassword().contentEquals(password)) {
 				loginVerified = true;
 			}
@@ -38,7 +38,7 @@ public class UCS {
 
 	public RegisteredUser getRegisteredUser(String email, String password) {
 		RegisteredUser loggedInUser = null;
-		for(RegisteredUser u: getRegisteredUserList()) {
+		for(RegisteredUser u: registeredUserList.getRegisteredUsers()) {
 			if(u.getEmail().contentEquals(email) && u.getPassword().contentEquals(password)) {
 				loggedInUser = u;
 			}
@@ -53,41 +53,27 @@ public class UCS {
 
 	//building registeredUserList from db query
 	public void loadRegisteredUsers(ResultSet rs) {
-		try {
-			while (rs.next()) {
-				getRegisteredUserList().add (new RegisteredUser (
-						rs.getInt("UserID"),
-						rs.getString("FName"),
-						rs.getString("LName"),
-						rs.getString("Email"),
-						rs.getString("UserPassword"),
-						new CreditCard(rs.getString("Card_name"),
-								rs.getString("Credit_card"),
-								rs.getInt("CVC"),
-								rs.getString("Expiry"))));
-
-			}
-			display();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		registeredUserList.loadRegisteredUsers(rs);
 	}
 
 	//create registered user
 	public RegisteredUser createRegisteredUser(int userID, String fName, String lName, String email, String password, CreditCard creditCard) {
 		RegisteredUser registeredUser = new RegisteredUser(userID, fName, lName, email, password, creditCard);
-		getRegisteredUserList().add(registeredUser);
+		getRegisteredUserList().getRegisteredUsers().add(registeredUser);
 		return registeredUser;
 	}
 
 	public void display() {
-		for (RegisteredUser user : getRegisteredUserList()) {
+		for (RegisteredUser user : getRegisteredUserList().getRegisteredUsers()) {
 			System.out.println(user);
 		}
 	}
 
-	public ArrayList<RegisteredUser> getRegisteredUserList() {
+	public RegisteredUserList getRegisteredUserList() {
 		return registeredUserList;
 	}
-	
+
+	public void setRegisteredUserList(RegisteredUserList registeredUserList) {
+		this.registeredUserList = registeredUserList;
+	}
 }

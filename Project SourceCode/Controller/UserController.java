@@ -37,7 +37,7 @@ public class UserController {
 	}
 	
 	public ArrayList<RegisteredUser> getRegisteredUserList(){
-		return userCtrlSys.getRegisteredUserList();
+		return userCtrlSys.getRegisteredUserList().getRegisteredUsers();
 	}
 
 	public UCS getUserCtrlSys() {
