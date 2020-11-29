@@ -10,22 +10,29 @@ import java.awt.event.ActionListener;
 
 public class GUIController {
 
-    private MainGUI mainGUI;
+    private LoginForm loginForm;
+    private RegistrationForm registrationForm;
+    private MainController mainController;
 
-    public GUIController(MainGUI mainGUI) {
-        setMainGUI(mainGUI);
-        mainGUI.getLoginForm().signUpButton(new registerButton());
+    public GUIController(LoginForm loginForm) {
+        setLoginForm(loginForm);
+
+        loginForm.signUpButton(new SignUpButton());
     }
 
-    public void setMainGUI(MainGUI mainGUI) {
-        this.mainGUI = mainGUI;
+    public void setLoginForm(LoginForm loginForm) {
+        this.loginForm = loginForm;
     }
 
-    private class registerButton implements ActionListener {
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
+    private class SignUpButton implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            mainGUI.setContentPane(mainGUI.getRegistrationForm().getContentPane());
+
         }
     }
 }

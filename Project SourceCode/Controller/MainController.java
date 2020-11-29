@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.*;
-import View.MainGUI;
+import View.*;
 
 /*
  * Main Controller
@@ -136,7 +136,7 @@ public class MainController {
 		TheatreController theatreCtrl = new TheatreController(new TCS());
 		ReservationController reserveCtrl = new ReservationController();
 		PaymentController paymentCtrl = new PaymentController();
-		GUIController guiCtrl = new GUIController(new MainGUI());
+		GUIController guiCtrl = new GUIController(new LoginForm());
 		DBController dbCtrl = new DBController();
 		MainController mainCtrl = new MainController(userCtrl, theatreCtrl, reserveCtrl, paymentCtrl, guiCtrl, dbCtrl);
 
@@ -144,10 +144,10 @@ public class MainController {
 		//Testing things from the command line:
 		mainCtrl.loadDB();
 
-		mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getTheatre().display();
+//		mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getTheatre().display();
 
-		System.out.println("Testing login...");
-		boolean success = mainCtrl.login("davis.allan@ucalgary.ca", "davis11");
+//		System.out.println("Testing login...");
+//		boolean success = mainCtrl.login("davis.allan@ucalgary.ca", "davis11");
 
 
 	}
