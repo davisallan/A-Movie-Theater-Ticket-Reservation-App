@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class RegisterPage {
-    private JTextField textField1;
     private JTextField textField2;
     private JTextField textField3;
     private JButton signUpButton;
     private JPanel panel1;
     private JPasswordField passwordField1;
+    private JTextField textField1;
 
     public RegisterPage(){
 
