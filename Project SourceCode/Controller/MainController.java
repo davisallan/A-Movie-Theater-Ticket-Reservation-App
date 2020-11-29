@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import View.MainGUI;
 
 /*
  * Main Controller
@@ -135,7 +136,7 @@ public class MainController {
 		TheatreController theatreCtrl = new TheatreController(new TCS());
 		ReservationController reserveCtrl = new ReservationController();
 		PaymentController paymentCtrl = new PaymentController();
-		GUIController guiCtrl = new GUIController();
+		GUIController guiCtrl = new GUIController(new MainGUI());
 		DBController dbCtrl = new DBController();
 		MainController mainCtrl = new MainController(userCtrl, theatreCtrl, reserveCtrl, paymentCtrl, guiCtrl, dbCtrl);
 

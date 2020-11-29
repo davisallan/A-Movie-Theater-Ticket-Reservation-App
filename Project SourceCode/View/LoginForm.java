@@ -1,6 +1,7 @@
 package View;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class LoginForm extends JFrame {
     private JTextField textField1;
@@ -15,7 +16,19 @@ public class LoginForm extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setLocationRelativeTo(null);
-        setVisible(true);
+
+    }
+
+    public void signUpButton(ActionListener actionListener) {
+        signUpButton.addActionListener(actionListener);
+    }
+
+    public void loginButton (ActionListener actionListener) {
+        loginButton.addActionListener(actionListener);
+    }
+
+    public void continueAsGuestButton (ActionListener actionListener) {
+        continueAsGuestButton.addActionListener(actionListener);
     }
 
     public static void main(String[] args) {
