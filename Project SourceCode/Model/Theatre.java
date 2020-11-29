@@ -65,6 +65,9 @@ public class Theatre {
 
 	public void display() {
 		System.out.println(this);
+		for (Auditorium aud: getAuditoriumList()) {
+			System.out.println(aud);
+		}
 		System.out.println("Movies playing here: ");
 		for (Movie movie: movieList) {
 			System.out.println(movie);
@@ -109,7 +112,6 @@ public class Theatre {
 		return auditoriumList;
 	}
 
-	// get movie list for this theatre
 	public ArrayList<Movie> getMovieList(){
 		return movieList;
 	}
