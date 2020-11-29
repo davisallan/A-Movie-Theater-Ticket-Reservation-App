@@ -182,6 +182,8 @@ public class GUIController {
             JList selection = (JList)me.getSource();
             int index = selection.locationToIndex(me.getPoint());
             ShowTime selected = mainController.getTheatreCtrl().getSelectedMovie().getShowTimeList().get(index);
+            System.out.println(mainController.getTheatreCtrl().getSelectedMovie());
+            System.out.println(mainController.getTheatreCtrl().getSelectedMovie().getShowTimeList().get(index));
             //setting the selected showtime in the theatre controller
             mainController.getTheatreCtrl().setSelectedShowTime(selected);
         }
@@ -198,11 +200,13 @@ public class GUIController {
     }
 
     //action listener for continuing to the seat selection page from the reservation page
+    //TODO: this event needs to take the selection and get the seat list for that showtime, and update the seat selection pg
     private class SeatSelection implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-
+            reservationForm.setVisible(false);
+            seatSelectionForm.setVisible(true);
         }
     }
 
