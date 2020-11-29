@@ -54,7 +54,6 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "\tMovieID: " + getMovieID() + "\n" +
-				"\tMovieName: " + getMovieName();
+		return getMovieName();
 	}
 }
