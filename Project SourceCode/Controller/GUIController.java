@@ -217,8 +217,10 @@ public class GUIController {
             JList selection = (JList)me.getSource();
             int index = selection.locationToIndex(me.getPoint());
             ShowTime selected = mainController.getTheatreCtrl().getSelectedMovie().getShowTimeList().get(index);
-            System.out.println(mainController.getTheatreCtrl().getSelectedMovie());
-            System.out.println(mainController.getTheatreCtrl().getSelectedMovie().getShowTimeList().get(index));
+
+//            System.out.println(mainController.getTheatreCtrl().getSelectedMovie());
+//            System.out.println(mainController.getTheatreCtrl().getSelectedMovie().getShowTimeList().get(index));
+
             //setting the selected showtime in the theatre controller
             mainController.getTheatreCtrl().setSelectedShowTime(selected);
         }

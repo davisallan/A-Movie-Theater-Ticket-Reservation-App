@@ -2,11 +2,11 @@
 VALUES	(100, 'Cineplex Odeon', '205 E Hills Blvd SE');
 
 INSERT INTO TicketReservationApp.MOVIE(MovieID, Mov_name, TheatreID)
-VALUES  (2000, 'Star Wars: Revenge of the Sith', 100),
+VALUES  (2000, 'Iron Man', 100),
 		(2001, 'John Wick: Chapter 3', 100),
 		(2002, 'Tenet', 100),
 		(2003, 'Avengers Endgame', 100),
-        (2004, 'Toy Story', 100);
+        (2004, 'Star Wars', 100);
  
  INSERT INTO TicketReservationApp.AUDITORIUM(AuditoriumID, Auditorium_name, MovieID)
 VALUES  (001, 1, 2000),
