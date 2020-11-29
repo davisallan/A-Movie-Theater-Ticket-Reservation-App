@@ -86,15 +86,32 @@ public class SeatSelectionForm extends JFrame {
         }
     }
 
+    public void returnToReservation (ActionListener actionListener) {
+
+    }
+
+    public void resetButtons() {
+        for (JRadioButton button : buttons) {
+            button.setText("");
+            button.setSelected(false);
+        }
+    }
+
+    public void clearTextFields() {
+        selection.setText("");
+        price.setText("");
+    }
+
     public void updateSeatMap (ArrayList<Seat> seatMap) {
         int i = 0;
+        resetButtons();
+        clearTextFields();
         for (Seat seat: seatMap) {
             if (seat.isReserved()){
                 buttons.get(i).setText("x");
             }
             i++;
         }
-
     }
 
     public JTextField getSelection() {

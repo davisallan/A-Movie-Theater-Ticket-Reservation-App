@@ -53,6 +53,8 @@ public class GUIController {
         reservationForm.seatSelection(new SeatSelection());
 
         seatSelectionForm.seatButtonListener(new SeatButton());
+        seatSelectionForm.confirmSelection(new ConfirmSelection());
+        paymentForm.returnToReservation(new ReturnToReservation());
 
         loginForm.setVisible(true);
     }
@@ -202,7 +204,6 @@ public class GUIController {
     }
 
     //action listener for continuing to the seat selection page from the reservation page
-    //TODO: this event needs to take the selection and get the seat list for that showtime, and update the seat selection pg
     private class SeatSelection implements ActionListener {
 
         @Override
@@ -213,6 +214,7 @@ public class GUIController {
         }
     }
 
+    //action listener for the radio buttons when you are selecting a seat, updates selection and price text fields
     private class SeatButton implements ActionListener {
 
         @Override
@@ -229,6 +231,35 @@ public class GUIController {
             }
             seatSelectionForm.getSelection().setText(selection.toString());
             seatSelectionForm.getPrice().setText(String.valueOf(numSelected * 21.50));
+        }
+    }
+
+    private class ConfirmSelection implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            seatSelectionForm.setVisible(false);
+            paymentForm.getSubTotal().setText(seatSelectionForm.getPrice().getText());
+            paymentForm.getSeatsSelected().setText(seatSelectionForm.getSelection().getText());
+
+            if (mainController.getLoggedInUser() != null) {
+                paymentForm.getCardName().setText(mainController.getLoggedInUser().getCreditCard().getCardHolderName());
+                paymentForm.getCcNum().setText(mainController.getLoggedInUser().getCreditCard().getCardNumber());
+                paymentForm.getExpiry().setText(mainController.getLoggedInUser().getCreditCard().getExpiry());
+                paymentForm.getCvc().setText(String.valueOf(mainController.getLoggedInUser().getCreditCard().getCVC()));
+            }
+
+            paymentForm.setVisible(true);
+        }
+    }
+
+    private class ReturnToReservation implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            seatSelectionForm.setVisible(false);
+            paymentForm.setVisible(false);
+            reservationForm.setVisible(true);
         }
     }
 

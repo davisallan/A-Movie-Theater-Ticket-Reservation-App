@@ -145,12 +145,12 @@ public class MainController {
 		//Testing things from the command line:
 		mainCtrl.loadDB();
 
-//		Movie movie = mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getMovies().get(0);
-//		ShowTime time = movie.getShowTimeList().get(0);
-//		ArrayList<Seat> seats = time.getSeats();
-//		for (int i = 0; i < 20; i++) {
-//			seats.get(i).setReserved();
-//		}
+		Movie movie = mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getMovies().get(0);
+		ShowTime time = movie.getShowTimeList().get(0);
+		ArrayList<Seat> seats = time.getSeats();
+		for (int i = 0; i < 20; i++) {
+			seats.get(i).setReserved();
+		}
 
 
 //		mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getTheatre().display();
