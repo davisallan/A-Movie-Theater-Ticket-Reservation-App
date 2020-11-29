@@ -62,12 +62,13 @@ public class SeatSelectionForm extends JFrame {
     private JRadioButton radioButton48;
     private JRadioButton radioButton49;
     private JRadioButton radioButton50;
+    private JButton returnToMovieSelectionButton;
     private ArrayList<JRadioButton> buttons;
 
     public SeatSelectionForm() {
         setContentPane(panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(700,350));
+        setPreferredSize(new Dimension(700,375));
         selection.setEditable(false);
         price.setEditable(false);
         buttons = new ArrayList<>();
@@ -87,7 +88,7 @@ public class SeatSelectionForm extends JFrame {
     }
 
     public void returnToReservation (ActionListener actionListener) {
-
+        returnToMovieSelectionButton.addActionListener(actionListener);
     }
 
     public void resetButtons() {
@@ -178,6 +179,7 @@ public class SeatSelectionForm extends JFrame {
         buttons.add(radioButton49);
         buttons.add(radioButton50);
     }
+
 
     public ArrayList<JRadioButton> getButtons() {
         return buttons;

@@ -25,6 +25,15 @@ public class AnnualFeeForm extends JFrame {
         submitPaymentButton.addActionListener(actionListener);
     }
 
+    public void clearAllTextFields() {
+        cardName.setText("");
+        ccNum.setText("");
+        expiry.setText("");
+        cvc.setText("");
+        subTotal.setText("");
+        email.setText("");
+    }
+
     public JTextField getCardName() {
         return cardName;
     }

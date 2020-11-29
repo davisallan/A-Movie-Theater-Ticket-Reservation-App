@@ -57,6 +57,7 @@ public class GUIController {
 
         seatSelectionForm.seatButtonListener(new SeatButton());
         seatSelectionForm.confirmSelection(new ConfirmSelection());
+        seatSelectionForm.returnToReservation(new ReturnToReservation());
 
         annualFeeForm.submitAnnualFeePayment(new SubmitAnnualFeePayment());
 
@@ -143,6 +144,7 @@ public class GUIController {
         public void actionPerformed(ActionEvent actionEvent) {
             JOptionPane.showMessageDialog(null, "Thank you! Payment accepted, account now ready for use!");
             annualFeeForm.setVisible(false);
+            annualFeeForm.clearAllTextFields();
             loginForm.setVisible(true);
         }
     }
