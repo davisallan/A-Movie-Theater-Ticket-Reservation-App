@@ -20,7 +20,9 @@ public class GUIController {
         setLoginForm(new LoginForm());
         setRegistrationForm(new RegistrationForm());
 
+        //setting up all action listeners
         loginForm.signUpButton(new SignUpButton());
+        loginForm.loginButton(new LoginButton());
         registrationForm.registerButton(new RegisterButton());
 
         loginForm.setVisible(true);
@@ -52,6 +54,19 @@ public class GUIController {
                             registrationForm.getCvc().getText()));
             registrationForm.setVisible(false);
             loginForm.setVisible(true);
+        }
+    }
+
+    private class LoginButton implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            boolean login = mainController.login(loginForm.getEmail().getText(), new String((loginForm.getPassword().getPassword())));
+            if (login) {
+                System.out.println("LOGGED IN!");
+            } else {
+                loginForm.getErrorMsg().setText("Incorrect email or password");
+            }
         }
     }
 

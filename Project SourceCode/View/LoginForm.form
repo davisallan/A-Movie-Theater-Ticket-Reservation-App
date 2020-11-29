@@ -47,7 +47,7 @@
           <text value="Password"/>
         </properties>
       </component>
-      <component id="d3933" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="d3933" class="javax.swing.JTextField" binding="email">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -79,9 +79,17 @@
           <text value="Sign Up"/>
         </properties>
       </component>
-      <component id="60973" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
+      <component id="60973" class="javax.swing.JPasswordField" binding="password">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="da065" class="javax.swing.JTextField" binding="errorMsg">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
