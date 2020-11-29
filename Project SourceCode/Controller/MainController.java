@@ -9,7 +9,6 @@ import Model.*;
 
 public class MainController {
 
-
 	RegisteredUser loggedInUser; // keeps track of user that is currently logged in
 	UserController userCtrl;
 	TheatreController theatreCtrl;
@@ -68,6 +67,7 @@ public class MainController {
 		//TODO: need to set the theatre that was created for the reservation system
 		theatreCtrl.loadMovies(dbCtrl.selectAll("MOVIE"));
 		theatreCtrl.loadShowTimes(dbCtrl.selectAll("SHOW_TIME"));
+		theatreCtrl.loadAuditoriums(dbCtrl.selectAll("AUDITORIUM"));
 	}
 
 	public void updateSelection(Theatre theatre, Movie movie, ShowTime showTime) {

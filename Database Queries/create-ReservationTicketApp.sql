@@ -10,16 +10,6 @@ CREATE TABLE THEATRE (
     primary key(TheatreID)
     );
     
-DROP TABLE IF EXISTS AUDITORIUM;
-CREATE TABLE AUDITORIUM (
-	AuditoriumID    integer not null,
-    Auditorium_name  varchar(20) not null,
-    TheatreID		integer, 
-    seats  varchar(20),
-    primary key(AuditoriumID),
-    foreign key (TheatreID) references THEATRE(TheatreID)
-    );
-    
 DROP TABLE IF EXISTS MOVIE;
 CREATE TABLE MOVIE (
     MovieID 		INTEGER NOT NULL,
@@ -28,6 +18,17 @@ CREATE TABLE MOVIE (
     PRIMARY KEY (MovieID),
     FOREIGN KEY (TheatreID) REFERENCES THEATRE(TheatreID)
 );
+
+DROP TABLE IF EXISTS AUDITORIUM;
+CREATE TABLE AUDITORIUM (
+	AuditoriumID    integer not null,
+    Auditorium_name  varchar(20) not null,
+    TheatreID		integer, 
+    MovieID			integer,
+    primary key(AuditoriumID),
+    foreign key (TheatreID) references THEATRE(TheatreID),
+    foreign key (MovieID) references MOVIE(MovieID)
+    );
 
 DROP TABLE IF EXISTS REGISTERED_USER;
 CREATE TABLE REGISTERED_USER (

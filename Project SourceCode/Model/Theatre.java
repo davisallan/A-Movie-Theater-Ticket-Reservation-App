@@ -10,7 +10,7 @@ public class Theatre {
 	private String theatreName;
 	private String address;
 	private ArrayList<Movie> movieList;
-	private ArrayList<Auditorium> auditoriums;
+	private ArrayList<Auditorium> auditoriumList;
 	
 	
 	public Theatre(int theatreID, String name, String address) {
@@ -18,7 +18,7 @@ public class Theatre {
 		setTheatreName(name);
 		setAddress(address);
 		movieList = new ArrayList<>();
-		auditoriums = new ArrayList<>();
+		auditoriumList = new ArrayList<>();
 	}
 
 	public void loadMovies(ResultSet rs) {
@@ -51,6 +51,18 @@ public class Theatre {
 		}
 	}
 
+	public void loadAuditoriums(ResultSet rs) {
+		try {
+			while (rs.next()) {
+				addAuditorium(new Auditorium(
+						rs.getString("Auditorium_name"),
+						rs.getInt("MovieID")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void display() {
 		System.out.println(this);
 		System.out.println("Movies playing here: ");
@@ -62,6 +74,9 @@ public class Theatre {
 		}
 	}
 
+	public void addAuditorium (Auditorium auditorium) {
+		auditoriumList.add(auditorium);
+	}
 	public void addMovie (Movie movie) {
 		movieList.add(movie);
 	}
@@ -90,8 +105,8 @@ public class Theatre {
 		this.address = address;
 	}
 
-	public ArrayList<Auditorium> getAuditoriums() {
-		return auditoriums;
+	public ArrayList<Auditorium> getAuditoriumList() {
+		return auditoriumList;
 	}
 
 	// get movie list for this theatre

@@ -32,6 +32,10 @@ public class TheatreController {
 		theatreCtrlSys.loadShowTimes(rs);
 	}
 
+	public void loadAuditoriums(ResultSet rs) {
+		theatreCtrlSys.loadAuditoriums(rs);
+	}
+
 	public void setSelectedTheatre(Theatre theatre) {
 		this.selectedTheatre = theatre;
 	}

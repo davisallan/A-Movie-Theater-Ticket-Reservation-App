@@ -8,12 +8,12 @@ VALUES  (2000, 'Spiderman', 100),
 		(2003, 'The Avengers', 100),
         (2004, 'Toy Story', 100);
  
- INSERT INTO TicketReservationApp.AUDITORIUM(AuditoriumID, Auditorium_name)
-VALUES  (001, 1),
-		(002, 2),
-		(003, 3),
-        (004, 4),
-        (005, 5);
+ INSERT INTO TicketReservationApp.AUDITORIUM(AuditoriumID, Auditorium_name, MovieID)
+VALUES  (001, 1, 2000),
+		(002, 2, 2001),
+		(003, 3, 2002),
+        (004, 4, 2003),
+        (005, 5, 2004);
         
  INSERT INTO TicketReservationApp.SHOW_TIME(ShowTimeID, MovieID, ShowDate, ShowTime)
 VALUES  
