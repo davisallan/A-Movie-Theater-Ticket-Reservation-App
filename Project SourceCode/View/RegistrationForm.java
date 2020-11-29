@@ -19,7 +19,6 @@ public class RegistrationForm extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setLocationRelativeTo(null);
-//        setVisible(true);
     }
 
     public void registerButton (ActionListener actionListener) {
