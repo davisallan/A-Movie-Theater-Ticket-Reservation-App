@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Arrays;
 
 /**
  * Controller for the GUI
@@ -314,6 +313,7 @@ public class GUIController {
             }
 
             //TODO create an actual "ticket object" and add it to the masterTicketList and display the ticketID so they can use that to cancel
+            //TODO also need to allow for the payment to occur by giving a voucher
 
             JOptionPane.showMessageDialog(null, "Thank you for your purchase! " +
                     "Tickets have been emailed to: " + paymentForm.getEmail().getText());
@@ -328,8 +328,8 @@ public class GUIController {
         public void actionPerformed(ActionEvent actionEvent) {
             JOptionPane.showMessageDialog(null, "We have to still implement this functionality!");
             //TODO Cancel ticket scenario. Need to take the ticketID they enter, confirm the ticket exists, remove it
-            //TODO if they are a registered user (logged in) then give them full refund
-            //TODO if they are a generic user, create a Voucher
+            //TODO if they are a registered user (logged in) then give them full refund (need to display the amount)
+            //TODO if they are a generic user, create a Voucher (need to display the amount)
             cancellationForm.setVisible(false);
             menu.setVisible(true);
         }

@@ -2,8 +2,6 @@ package Controller;
 
 import Model.*;
 
-import java.util.ArrayList;
-
 /*
  * Main Controller
  * talks to all other controllers to coordinate actions based on GUI input
@@ -66,7 +64,10 @@ public class MainController {
 	public void loadDB() {
 		userCtrl.loadRegisteredUsers(dbCtrl.selectAll("REGISTERED_USER"));
 		theatreCtrl.loadTheatres(dbCtrl.selectAll("THEATRE"));
-		//TODO: need to set the theatre that was created for the reservation system
+
+		//setting the aggregation relationship for TRS to point to the same Theatre as TCS
+		reserveCtrl.getTicketReserveSys().setTheatre(theatreCtrl.getTheatreCtrlSys().getTheatre());
+
 		theatreCtrl.loadMovies(dbCtrl.selectAll("MOVIE"));
 		theatreCtrl.loadShowTimes(dbCtrl.selectAll("SHOW_TIME"));
 		theatreCtrl.loadAuditoriums(dbCtrl.selectAll("AUDITORIUM"));
@@ -135,22 +136,22 @@ public class MainController {
 	public static void main(String[] args) {
 		UserController userCtrl = new UserController(new UCS(new RegisteredUserList()));
 		TheatreController theatreCtrl = new TheatreController(new TCS());
-		ReservationController reserveCtrl = new ReservationController();
+		ReservationController reserveCtrl = new ReservationController(new TRS());
 		PaymentController paymentCtrl = new PaymentController();
 		GUIController guiCtrl = new GUIController();
 		DBController dbCtrl = new DBController();
 		MainController mainCtrl = new MainController(userCtrl, theatreCtrl, reserveCtrl, paymentCtrl, guiCtrl, dbCtrl);
 		guiCtrl.setMainController(mainCtrl);
 
-		//Testing things from the command line:
+		//load the database
 		mainCtrl.loadDB();
 
-		Movie movie = mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getMovies().get(0);
-		ShowTime time = movie.getShowTimeList().get(0);
-		ArrayList<Seat> seats = time.getSeats();
-		for (int i = 0; i < 20; i++) {
-			seats.get(i).setReserved();
-		}
+//		Movie movie = mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getMovies().get(0);
+//		ShowTime time = movie.getShowTimeList().get(0);
+//		ArrayList<Seat> seats = time.getSeats();
+//		for (int i = 0; i < 20; i++) {
+//			seats.get(i).setReserved();
+//		}
 
 
 //		mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getTheatre().display();
