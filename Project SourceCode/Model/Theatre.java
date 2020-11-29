@@ -73,6 +73,9 @@ public class Theatre {
 			System.out.println(movie);
 			for (ShowTime time: movie.getShowTimeList()) {
 				System.out.println("\t\t" + time);
+				for (Seat seat: time.getSeats()) {
+					System.out.println(seat);
+				}
 			}
 		}
 	}

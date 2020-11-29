@@ -24,4 +24,9 @@ public class Seat {
 	public void setSeatNumber(int seatNumber) {
 		this.seatNumber = seatNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "Seat #" + getSeatNumber() + ", Reserved: " + isReserved();
+	}
 }

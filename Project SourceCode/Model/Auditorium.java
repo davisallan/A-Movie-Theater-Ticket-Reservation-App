@@ -17,7 +17,7 @@ public class Auditorium {
 
     public void createSeats() {
         //creating auditorium to have 50 seats
-        for (int i = 0; i < 50; i++) {
+        for (int i = 1; i < 51; i++) {
             seats.add(new Seat(i));
         }
     }
