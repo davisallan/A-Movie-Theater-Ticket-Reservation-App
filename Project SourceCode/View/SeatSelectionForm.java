@@ -97,6 +97,14 @@ public class SeatSelectionForm extends JFrame {
 
     }
 
+    public JTextField getSelection() {
+        return selection;
+    }
+
+    public JTextField getPrice() {
+        return price;
+    }
+
     public void groupButtons() {
         buttons.add(radioButton1);
         buttons.add(radioButton2);
@@ -150,4 +158,7 @@ public class SeatSelectionForm extends JFrame {
         buttons.add(radioButton50);
     }
 
+    public ArrayList<JRadioButton> getButtons() {
+        return buttons;
+    }
 }

@@ -52,6 +52,8 @@ public class GUIController {
         reservationForm.showTimeList(new ShowTimeList());
         reservationForm.seatSelection(new SeatSelection());
 
+        seatSelectionForm.seatButtonListener(new SeatButton());
+
         loginForm.setVisible(true);
     }
 
@@ -208,6 +210,25 @@ public class GUIController {
             reservationForm.setVisible(false);
             seatSelectionForm.updateSeatMap(mainController.getTheatreCtrl().getSelectedShowTime().getSeats());
             seatSelectionForm.setVisible(true);
+        }
+    }
+
+    private class SeatButton implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            int index = 0;
+            int numSelected = 0;
+            StringBuilder selection = new StringBuilder();
+            for (JRadioButton seat: seatSelectionForm.getButtons()) {
+                if (seat.isSelected()) {
+                    selection.append(index + 1).append(", ");
+                    numSelected++;
+                }
+                index++;
+            }
+            seatSelectionForm.getSelection().setText(selection.toString());
+            seatSelectionForm.getPrice().setText(String.valueOf(numSelected * 21.50));
         }
     }
 
