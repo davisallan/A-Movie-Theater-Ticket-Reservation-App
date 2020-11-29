@@ -33,11 +33,32 @@ public class Theatre {
 		}
 	}
 
+	public void loadShowTimes(ResultSet rs) {
+		try {
+			while (rs.next()) {
+				int movieID = rs.getInt("MovieID");
+				for (Movie movie: getMovieList()) {
+					if (movieID == movie.getMovieID()) {
+						movie.addShowTime(new ShowTime (
+								rs.getInt("MovieID"),
+								rs.getString("ShowDate"),
+								rs.getString("ShowTime")));
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void display() {
 		System.out.println(this);
 		System.out.println("Movies playing here: ");
 		for (Movie movie: movieList) {
 			System.out.println(movie);
+			for (ShowTime time: movie.getShowTimeList()) {
+				System.out.println("\t\t" + time);
+			}
 		}
 	}
 

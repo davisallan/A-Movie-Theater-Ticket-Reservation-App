@@ -35,4 +35,9 @@ public class ShowTime {
 	public void setMovieId(int movieId) {
 		this.movieId = movieId;
 	}
+
+	@Override
+	public String toString() {
+		return "Date: " + getDate() + ", Time: " + getTime();
+	}
 }

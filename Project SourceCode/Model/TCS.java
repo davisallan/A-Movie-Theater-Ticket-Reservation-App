@@ -12,8 +12,6 @@ import java.util.ArrayList;
  * used by reservation GUI to display theatres, movies, showtimes and seats
  */
 
-//TODO add theatreID to the movie table so that diff theatres have diff movies - update queries and then build the movie/auditorium lists
-
 public class TCS {
 
 	private Theatre theatre;
@@ -25,9 +23,9 @@ public class TCS {
 	public void loadTheatres(ResultSet rs) {
 		try {
 			while (rs.next()) {
-				theatre = new Theatre(rs.getInt("TheatreID"),
+				setTheatre(new Theatre(rs.getInt("TheatreID"),
 						rs.getString("Theatre_name"),
-						rs.getString("Address"));
+						rs.getString("Address")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -36,6 +34,10 @@ public class TCS {
 
 	public void loadMovies(ResultSet rs) {
 		theatre.loadMovies(rs);
+	}
+
+	public void loadShowTimes(ResultSet rs) {
+		theatre.loadShowTimes(rs);
 	}
 
 	public ArrayList<Movie> getMovies(Theatre selectedTheatre){

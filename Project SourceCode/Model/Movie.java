@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Movie {
@@ -53,6 +55,6 @@ public class Movie {
 	@Override
 	public String toString() {
 		return "\tMovieID: " + getMovieID() + "\n" +
-				"\tMovieName: " + getMovieName() + "\n";
+				"\tMovieName: " + getMovieName();
 	}
 }

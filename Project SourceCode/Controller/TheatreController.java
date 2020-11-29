@@ -28,6 +28,10 @@ public class TheatreController {
 		theatreCtrlSys.loadMovies(rs);
 	}
 
+	public void loadShowTimes(ResultSet rs) {
+		theatreCtrlSys.loadShowTimes(rs);
+	}
+
 	public void setSelectedTheatre(Theatre theatre) {
 		this.selectedTheatre = theatre;
 	}

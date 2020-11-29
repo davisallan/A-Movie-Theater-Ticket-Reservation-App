@@ -66,8 +66,8 @@ public class MainController {
 		userCtrl.loadRegisteredUsers(dbCtrl.selectAll("REGISTERED_USER"));
 		theatreCtrl.loadTheatres(dbCtrl.selectAll("THEATRE"));
 		//TODO: need to set the theatre that was created for the reservation system
-
 		theatreCtrl.loadMovies(dbCtrl.selectAll("MOVIE"));
+		theatreCtrl.loadShowTimes(dbCtrl.selectAll("SHOW_TIME"));
 	}
 
 	public void updateSelection(Theatre theatre, Movie movie, ShowTime showTime) {
