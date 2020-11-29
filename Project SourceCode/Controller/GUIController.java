@@ -55,6 +55,9 @@ public class GUIController {
         reservationForm.showTimeList(new ShowTimeList());
         reservationForm.seatSelection(new SeatSelection());
 
+        cancellationForm.returnToMenu(new ReturnToMenu());
+        cancellationForm.cancelTicket(new CancelTicket());
+
         seatSelectionForm.seatButtonListener(new SeatButton());
         seatSelectionForm.confirmSelection(new ConfirmSelection());
         seatSelectionForm.returnToReservation(new ReturnToReservation());
@@ -173,7 +176,8 @@ public class GUIController {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-
+            menu.setVisible(false);
+            cancellationForm.setVisible(true);
         }
     }
 
@@ -226,6 +230,7 @@ public class GUIController {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             reservationForm.setVisible(false);
+            cancellationForm.setVisible(false);
             menu.setVisible(true);
         }
     }
@@ -306,11 +311,24 @@ public class GUIController {
                 mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
             }
 
-            //TODO create an actual "ticket object" and add it to the masterTicketList
+            //TODO create an actual "ticket object" and add it to the masterTicketList and display the ticketID so they can use that to cancel
 
             JOptionPane.showMessageDialog(null, "Thank you for your purchase! " +
-                    "Tickets have been emailed to :" + paymentForm.getEmail().getText());
+                    "Tickets have been emailed to: " + paymentForm.getEmail().getText());
             paymentForm.setVisible(false);
+            menu.setVisible(true);
+        }
+    }
+
+    private class CancelTicket implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            JOptionPane.showMessageDialog(null, "We have to still implement this functionality!");
+            //TODO Cancel ticket scenario. Need to take the ticketID they enter, confirm the ticket exists, remove it
+            //TODO if they are a registered user (logged in) then give them full refund
+            //TODO if they are a generic user, create a Voucher
+            cancellationForm.setVisible(false);
             menu.setVisible(true);
         }
     }
