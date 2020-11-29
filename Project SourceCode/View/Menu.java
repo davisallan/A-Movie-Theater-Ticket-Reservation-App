@@ -1,6 +1,7 @@
 package View;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class Menu extends JFrame {
@@ -12,6 +13,7 @@ public class Menu extends JFrame {
     public Menu () {
         setContentPane(panel1);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(250,250));
         pack();
         setLocationRelativeTo(null);
     }

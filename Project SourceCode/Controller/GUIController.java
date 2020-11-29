@@ -27,6 +27,7 @@ public class GUIController {
         loginForm.signUpButton(new SignUpButton());
         loginForm.loginButton(new LoginButton());
         loginForm.continueAsGuestButton(new ContinueAsGuest());
+        menu.logoutButton(new LogoutButton());
         registrationForm.registerButton(new RegisterButton());
 
         loginForm.setVisible(true);
@@ -72,26 +73,51 @@ public class GUIController {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
+
+            try {
+                mainController.getUserCtrl().createRegisteredUser(500,
+                        registrationForm.getFirstName().getText(),
+                        registrationForm.getLastName().getText(),
+                        registrationForm.getEmail().getText(),
+                        registrationForm.getPassword().getText(),
+                        new CreditCard(registrationForm.getFirstName().getText()
+                                + " " + registrationForm.getLastName().getText(),
+                                registrationForm.getCcNum().getText(),
+                                Integer.parseInt(registrationForm.getExpiry().getText()),
+                                registrationForm.getCvc().getText()));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "An error occurred, please try again");
+                return;
+            }
             JOptionPane.showMessageDialog(null, "Thank you! Account created!");
-            mainController.getUserCtrl().createRegisteredUser(500,
-                    registrationForm.getFirstName().getText(),
-                    registrationForm.getLastName().getText(),
-                    registrationForm.getEmail().getText(),
-                    registrationForm.getPassword().getText(),
-                    new CreditCard(registrationForm.getFirstName().getText()
-                            + " " + registrationForm.getLastName().getText(),
-                            registrationForm.getCcNum().getText(),
-                            Integer.parseInt(registrationForm.getExpiry().getText()),
-                            registrationForm.getCvc().getText()));
+            //TODO clear all of the text fields before making the form go away
             registrationForm.setVisible(false);
             loginForm.setVisible(true);
         }
     }
-    private class MakeReservation implements ActionListener {
+    private class MakeReservationButton implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
 
+        }
+    }
+
+    private class CancelReservationButton implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+
+        }
+    }
+
+    private class LogoutButton implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            menu.setVisible(false);
+            mainController.setLoggedInUser(null);
+            loginForm.setVisible(true);
         }
     }
 
