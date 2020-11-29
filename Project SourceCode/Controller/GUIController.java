@@ -107,7 +107,7 @@ public class GUIController {
                 return;
             }
             JOptionPane.showMessageDialog(null, "Thank you! Account created!");
-            //TODO clear all of the text fields before making the form go away
+            registrationForm.clearAllFields();
             registrationForm.setVisible(false);
             loginForm.setVisible(true);
         }
@@ -147,6 +147,7 @@ public class GUIController {
         public void actionPerformed(ActionEvent actionEvent) {
             menu.setVisible(false);
             mainController.setLoggedInUser(null);
+            loginForm.clearAllFields();
             loginForm.setVisible(true);
         }
     }
@@ -158,6 +159,8 @@ public class GUIController {
             JList selection = (JList)me.getSource();
             int index = selection.locationToIndex(me.getPoint());
             Movie selected = mainController.getTheatreCtrl().getTheatreCtrlSys().getMovies().get(index);
+            //setting the selected movie in the theatre controller
+            mainController.getTheatreCtrl().setSelectedMovie(selected);
             DefaultListModel<String> model = new DefaultListModel<>();
             for (ShowTime time: selected.getShowTimeList()) {
                 model.addElement("Date: " + time.getDate() + ", Time: " + time.getTime());
@@ -172,6 +175,9 @@ public class GUIController {
         public void mouseClicked(MouseEvent me) {
             JList selection = (JList)me.getSource();
             int index = selection.locationToIndex(me.getPoint());
+            ShowTime selected = mainController.getTheatreCtrl().getSelectedMovie().getShowTimeList().get(index);
+            //setting the selected showtime in the theatre controller
+            mainController.getTheatreCtrl().setSelectedShowTime(selected);
         }
     }
 

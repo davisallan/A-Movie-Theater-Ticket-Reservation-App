@@ -3,13 +3,11 @@ package Controller;
 import Model.*;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class TheatreController {
 	
 	private TCS theatreCtrlSys;
-	private Theatre selectedTheatre;
 	private Movie selectedMovie;
 	private ShowTime selectedShowTime;
 	private ArrayList<Movie> movieList;
@@ -35,10 +33,6 @@ public class TheatreController {
 	public void loadAuditoriums(ResultSet rs) {
 		theatreCtrlSys.loadAuditoriums(rs);
 	}
-
-	public void setSelectedTheatre(Theatre theatre) {
-		this.selectedTheatre = theatre;
-	}
 	
 	public void setSelectedMovie(Movie movie) {
 		this.selectedMovie = movie;
@@ -46,6 +40,14 @@ public class TheatreController {
 	
 	public void setSelectedShowTime(ShowTime selectedShowTime) {
 		this.selectedShowTime = selectedShowTime;
+	}
+
+	public Movie getSelectedMovie() {
+		return selectedMovie;
+	}
+
+	public ShowTime getSelectedShowTime() {
+		return selectedShowTime;
 	}
 
 	public TCS getTheatreCtrlSys() {

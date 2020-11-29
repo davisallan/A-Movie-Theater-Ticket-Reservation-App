@@ -26,6 +26,16 @@ public class RegistrationForm extends JFrame {
         getRegisterButton().addActionListener(actionListener);
     }
 
+    public void clearAllFields() {
+        firstName.setText("");
+        lastName.setText("");
+        email.setText("");
+        password.setText("");
+        ccNum.setText("");
+        expiry.setText("");
+        cvc.setText("");
+    }
+
     public JButton getRegisterButton() {
         return registerButton;
     }

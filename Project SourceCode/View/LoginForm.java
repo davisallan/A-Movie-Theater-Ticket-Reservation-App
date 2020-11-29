@@ -33,6 +33,12 @@ public class LoginForm extends JFrame {
         continueAsGuestButton.addActionListener(actionListener);
     }
 
+    public void clearAllFields() {
+        email.setText("");
+        password.setText("");
+        errorMsg.setText("");
+    }
+
     public JTextField getEmail() {
         return email;
     }
