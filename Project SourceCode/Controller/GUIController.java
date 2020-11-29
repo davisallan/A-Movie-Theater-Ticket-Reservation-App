@@ -22,6 +22,9 @@ public class GUIController {
     private RegistrationForm registrationForm;
     private Menu menu;
     private ReservationForm reservationForm;
+    private PaymentForm paymentForm;
+    private SeatSelectionForm seatSelectionForm;
+    private CancellationForm cancellationForm;
     private MainController mainController;
 
     public GUIController() {
@@ -29,6 +32,9 @@ public class GUIController {
         setRegistrationForm(new RegistrationForm());
         setMenu(new Menu());
         setReservationForm(new ReservationForm());
+        setCancellationForm(new CancellationForm());
+        setPaymentForm(new PaymentForm());
+        setSeatSelectionForm(new SeatSelectionForm());
 
         //setting up all action listeners
         loginForm.signUpButton(new SignUpButton());
@@ -234,6 +240,30 @@ public class GUIController {
 
     public RegistrationForm getRegistrationForm() {
         return registrationForm;
+    }
+
+    public PaymentForm getPaymentForm() {
+        return paymentForm;
+    }
+
+    public void setPaymentForm(PaymentForm paymentForm) {
+        this.paymentForm = paymentForm;
+    }
+
+    public SeatSelectionForm getSeatSelectionForm() {
+        return seatSelectionForm;
+    }
+
+    public void setSeatSelectionForm(SeatSelectionForm seatSelectionForm) {
+        this.seatSelectionForm = seatSelectionForm;
+    }
+
+    public CancellationForm getCancellationForm() {
+        return cancellationForm;
+    }
+
+    public void setCancellationForm(CancellationForm cancellationForm) {
+        this.cancellationForm = cancellationForm;
     }
 
     public void setMainController(MainController mainController) {
