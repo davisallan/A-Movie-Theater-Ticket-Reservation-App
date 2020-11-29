@@ -136,10 +136,10 @@ public class MainController {
 		TheatreController theatreCtrl = new TheatreController(new TCS());
 		ReservationController reserveCtrl = new ReservationController();
 		PaymentController paymentCtrl = new PaymentController();
-		GUIController guiCtrl = new GUIController(new LoginForm());
+		GUIController guiCtrl = new GUIController();
 		DBController dbCtrl = new DBController();
 		MainController mainCtrl = new MainController(userCtrl, theatreCtrl, reserveCtrl, paymentCtrl, guiCtrl, dbCtrl);
-
+		guiCtrl.setMainController(mainCtrl);
 
 		//Testing things from the command line:
 		mainCtrl.loadDB();

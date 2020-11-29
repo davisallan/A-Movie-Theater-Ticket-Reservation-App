@@ -1,16 +1,17 @@
 package View;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class RegistrationForm extends JFrame {
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
+    private JTextField firstName;
+    private JTextField lastName;
+    private JTextField email;
+    private JTextField password;
     private JButton registerButton;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JTextField textField7;
+    private JTextField ccNum;
+    private JTextField expiry;
+    private JTextField cvc;
     private JPanel panel;
 
     public RegistrationForm() {
@@ -18,7 +19,42 @@ public class RegistrationForm extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setLocationRelativeTo(null);
-
+//        setVisible(true);
     }
 
+    public void registerButton (ActionListener actionListener) {
+        getRegisterButton().addActionListener(actionListener);
+    }
+
+    public JButton getRegisterButton() {
+        return registerButton;
+    }
+
+    public JTextField getFirstName() {
+        return firstName;
+    }
+
+    public JTextField getLastName() {
+        return lastName;
+    }
+
+    public JTextField getEmail() {
+        return email;
+    }
+
+    public JTextField getPassword() {
+        return password;
+    }
+
+    public JTextField getCcNum() {
+        return ccNum;
+    }
+
+    public JTextField getExpiry() {
+        return expiry;
+    }
+
+    public JTextField getCvc() {
+        return cvc;
+    }
 }

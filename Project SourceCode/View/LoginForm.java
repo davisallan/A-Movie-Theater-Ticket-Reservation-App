@@ -16,7 +16,7 @@ public class LoginForm extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setLocationRelativeTo(null);
-        setVisible(true);
+//        setVisible(true);
     }
 
     public void signUpButton(ActionListener actionListener) {
