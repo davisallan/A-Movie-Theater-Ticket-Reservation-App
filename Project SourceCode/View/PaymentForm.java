@@ -16,6 +16,7 @@ public class PaymentForm extends JFrame {
     private JPanel panel;
     private JTextField subTotal;
     private JTextField seatsSelected;
+    private JTextField email;
 
     public PaymentForm() {
         setContentPane(panel);
@@ -35,12 +36,17 @@ public class PaymentForm extends JFrame {
     }
 
     public void clearTextFields() {
+        email.setText("");
         cardName.setText("");
         ccNum.setText("");
         expiry.setText("");
         cvc.setText("");
         subTotal.setText("");
         seatsSelected.setText("");
+    }
+
+    public JTextField getEmail() {
+        return email;
     }
 
     public JRadioButton getCreditCardRadioButton() {

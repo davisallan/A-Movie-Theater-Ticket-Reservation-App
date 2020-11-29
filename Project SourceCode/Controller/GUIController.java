@@ -234,6 +234,7 @@ public class GUIController {
         }
     }
 
+    //action listener to confirm seat selection and open up the payment form, if the user is logged in it will remember their credit card
     private class ConfirmSelection implements ActionListener {
 
         @Override
@@ -243,6 +244,7 @@ public class GUIController {
             paymentForm.getSeatsSelected().setText(seatSelectionForm.getSelection().getText());
 
             if (mainController.getLoggedInUser() != null) {
+                paymentForm.getEmail().setText(mainController.getLoggedInUser().getEmail());
                 paymentForm.getCardName().setText(mainController.getLoggedInUser().getCreditCard().getCardHolderName());
                 paymentForm.getCcNum().setText(mainController.getLoggedInUser().getCreditCard().getCardNumber());
                 paymentForm.getExpiry().setText(mainController.getLoggedInUser().getCreditCard().getExpiry());
@@ -253,6 +255,7 @@ public class GUIController {
         }
     }
 
+    //action listener for the payment form to return to the reservation page
     private class ReturnToReservation implements ActionListener {
 
         @Override
