@@ -7,7 +7,7 @@ public class TRS {
 	private ArrayList<Theatre> theatreList;
 	private ArrayList<Ticket> masterTicketList;
 	private ArrayList<Cancellation> cancellationList;
-	private static int ticketId = 0;
+	private static int ticketId = 1000;
 
 	
 	// constructor - Model.TRS should be constructed by database class

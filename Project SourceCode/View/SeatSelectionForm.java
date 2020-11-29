@@ -114,6 +114,10 @@ public class SeatSelectionForm extends JFrame {
         }
     }
 
+    public void reserveSelectedSeats() {
+
+    }
+
     public JTextField getSelection() {
         return selection;
     }

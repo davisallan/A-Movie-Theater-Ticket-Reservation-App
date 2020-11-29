@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 
 /**
  * Controller for the GUI
@@ -54,6 +55,8 @@ public class GUIController {
 
         seatSelectionForm.seatButtonListener(new SeatButton());
         seatSelectionForm.confirmSelection(new ConfirmSelection());
+
+        paymentForm.submitPayment(new SubmitPayment());
         paymentForm.returnToReservation(new ReturnToReservation());
 
         loginForm.setVisible(true);
@@ -263,6 +266,20 @@ public class GUIController {
             seatSelectionForm.setVisible(false);
             paymentForm.setVisible(false);
             reservationForm.setVisible(true);
+        }
+    }
+
+    private class SubmitPayment implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            String[] selection = seatSelectionForm.getSelection().getText().split(",");
+
+            for (int i = 0; i < selection.length - 1; i++) {
+                int seatNum = Integer.parseInt(selection[i].stripLeading());
+                //reserving the selected seats in that particular showtime
+                mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
+            }
         }
     }
 
