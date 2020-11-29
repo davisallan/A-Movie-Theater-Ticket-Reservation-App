@@ -1,6 +1,9 @@
 package View;
 
+import Model.Seat;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -64,6 +67,7 @@ public class SeatSelectionForm extends JFrame {
     public SeatSelectionForm() {
         setContentPane(panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(700,350));
         selection.setEditable(false);
         price.setEditable(false);
         buttons = new ArrayList<>();
@@ -80,6 +84,17 @@ public class SeatSelectionForm extends JFrame {
         for (JRadioButton radioButton : buttons) {
             radioButton.addActionListener(actionListener);
         }
+    }
+
+    public void updateSeatMap (ArrayList<Seat> seatMap) {
+        int i = 0;
+        for (Seat seat: seatMap) {
+            if (seat.isReserved()){
+                buttons.get(i).setText("x");
+            }
+            i++;
+        }
+
     }
 
     public void groupButtons() {

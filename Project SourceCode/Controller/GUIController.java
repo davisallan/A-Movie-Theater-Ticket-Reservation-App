@@ -206,6 +206,7 @@ public class GUIController {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             reservationForm.setVisible(false);
+            seatSelectionForm.updateSeatMap(mainController.getTheatreCtrl().getSelectedShowTime().getSeats());
             seatSelectionForm.setVisible(true);
         }
     }
