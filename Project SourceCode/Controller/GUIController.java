@@ -24,6 +24,7 @@ public class GUIController {
     private Menu menu;
     private ReservationForm reservationForm;
     private PaymentForm paymentForm;
+    private AnnualFeeForm annualFeeForm;
     private SeatSelectionForm seatSelectionForm;
     private CancellationForm cancellationForm;
     private MainController mainController;
@@ -35,6 +36,7 @@ public class GUIController {
         setReservationForm(new ReservationForm());
         setCancellationForm(new CancellationForm());
         setPaymentForm(new PaymentForm());
+        setAnnualFeeForm(new AnnualFeeForm());
         setSeatSelectionForm(new SeatSelectionForm());
 
         //setting up all action listeners
@@ -55,6 +57,8 @@ public class GUIController {
 
         seatSelectionForm.seatButtonListener(new SeatButton());
         seatSelectionForm.confirmSelection(new ConfirmSelection());
+
+        annualFeeForm.submitAnnualFeePayment(new SubmitAnnualFeePayment());
 
         paymentForm.submitPayment(new SubmitPayment());
         paymentForm.returnToReservation(new ReturnToReservation());
@@ -119,9 +123,26 @@ public class GUIController {
                 JOptionPane.showMessageDialog(null, "An error occurred, please try again");
                 return;
             }
-            JOptionPane.showMessageDialog(null, "Thank you! Account created!");
-            registrationForm.clearAllFields();
+            JOptionPane.showMessageDialog(null, "Thank you! Account created! You are now required to pay the annual fee of $20");
+
             registrationForm.setVisible(false);
+            annualFeeForm.getSubTotal().setText("$20.00");
+            annualFeeForm.getEmail().setText(registrationForm.getEmail().getText());
+            annualFeeForm.getCardName().setText(registrationForm.getFirstName().getText() + " " + registrationForm.getLastName().getText());
+            annualFeeForm.getCcNum().setText(registrationForm.getCcNum().getText());
+            annualFeeForm.getExpiry().setText(registrationForm.getExpiry().getText());
+            annualFeeForm.getCvc().setText(registrationForm.getCvc().getText());
+            annualFeeForm.setVisible(true);
+            registrationForm.clearAllFields();
+        }
+    }
+
+    private class SubmitAnnualFeePayment implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            JOptionPane.showMessageDialog(null, "Thank you! Payment accepted, account now ready for use!");
+            annualFeeForm.setVisible(false);
             loginForm.setVisible(true);
         }
     }
@@ -145,6 +166,7 @@ public class GUIController {
     }
 
     //action listener for cancelling a reservation
+    //TODO implement the cancellation of a ticket
     private class CancelReservationButton implements ActionListener {
 
         @Override
@@ -269,6 +291,7 @@ public class GUIController {
         }
     }
 
+    //action listener for submitting payment, reserves the selected seats from the seat selection page
     private class SubmitPayment implements ActionListener {
 
         @Override
@@ -280,7 +303,22 @@ public class GUIController {
                 //reserving the selected seats in that particular showtime
                 mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
             }
+
+            //TODO create an actual "ticket object" and add it to the masterTicketList
+
+            JOptionPane.showMessageDialog(null, "Thank you for your purchase! " +
+                    "Tickets have been emailed to :" + paymentForm.getEmail().getText());
+            paymentForm.setVisible(false);
+            menu.setVisible(true);
         }
+    }
+
+    public AnnualFeeForm getAnnualFeeForm() {
+        return annualFeeForm;
+    }
+
+    public void setAnnualFeeForm(AnnualFeeForm annualFeeForm) {
+        this.annualFeeForm = annualFeeForm;
     }
 
     public ReservationForm getReservationForm() {
