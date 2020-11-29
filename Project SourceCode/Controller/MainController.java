@@ -65,10 +65,9 @@ public class MainController {
 	public void loadDB() {
 		userCtrl.loadRegisteredUsers(dbCtrl.selectAll("REGISTERED_USER"));
 		theatreCtrl.loadTheatres(dbCtrl.selectAll("THEATRE"));
-		//loading movies for each theatre since different movies play at diff theatres
-		for (Theatre theatre: theatreCtrl.getTheatreCtrlSys().getTheatreList().getTheatres()) {
-			theatreCtrl.loadMovies(dbCtrl.selectMovies(theatre.getTheatreID()));
-		}
+		//TODO: need to set the theatre that was created for the reservation system
+
+		theatreCtrl.loadMovies(dbCtrl.selectAll("MOVIE"));
 	}
 
 	public void updateSelection(Theatre theatre, Movie movie, ShowTime showTime) {
@@ -133,7 +132,7 @@ public class MainController {
 
 	public static void main(String[] args) {
 		UserController userCtrl = new UserController(new UCS(new RegisteredUserList()));
-		TheatreController theatreCtrl = new TheatreController(new TCS(new TheatreList()));
+		TheatreController theatreCtrl = new TheatreController(new TCS());
 		ReservationController reserveCtrl = new ReservationController();
 		PaymentController paymentCtrl = new PaymentController();
 		GUIController guiCtrl = new GUIController();
@@ -144,7 +143,7 @@ public class MainController {
 		//Testing things from the command line:
 		mainCtrl.loadDB();
 
-		mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getTheatreList().display();
+		mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getTheatre().display();
 
 		System.out.println("Testing login...");
 		boolean success = mainCtrl.login("davis.allan@ucalgary.ca", "davis11");

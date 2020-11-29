@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Theatre {
@@ -17,6 +19,26 @@ public class Theatre {
 		setAddress(address);
 		movieList = new ArrayList<>();
 		auditoriums = new ArrayList<>();
+	}
+
+	public void loadMovies(ResultSet rs) {
+		try {
+			while (rs.next()) {
+				addMovie(new Movie (
+						rs.getInt("MovieID"),
+						rs.getString("Mov_name")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void display() {
+		System.out.println(this);
+		System.out.println("Movies playing here: ");
+		for (Movie movie: movieList) {
+			System.out.println(movie);
+		}
 	}
 
 	public void addMovie (Movie movie) {

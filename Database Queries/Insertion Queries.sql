@@ -1,45 +1,37 @@
  INSERT INTO TicketReservationApp.THEATRE(TheatreID, Theatre_name, Address)
-VALUES	(100, 'Cineplex Odeon', '205 E Hills Blvd SE'),
-		(101, 'Landmark Cinemas', '3412 49 St NW'),
-		(102, 'Globe Cinema', '617 8 Ave SW'),
-		(103, 'Scotiabank Theatre Chinook', '6455 Macleod Trail SW'),
-		(104, 'Landmark Cinemas 10 Shawnessy', '16061 Macleod Trail SE');
+VALUES	(100, 'Cineplex Odeon', '205 E Hills Blvd SE');
 
 INSERT INTO TicketReservationApp.MOVIE(MovieID, Mov_name, TheatreID)
-VALUES  (2000, 'Bad Boys for Life', 100),
+VALUES  (2000, 'Spiderman', 100),
 		(2001, 'Star Wars', 100),
-		(2002, 'Tenet', 101),
-		(2003, 'The Invisible Man', 100),
-		(2004, 'Fantasy Island', 102),
-		(2005, 'Gretel & Hansel', 102),
-		(2006, 'All I Can Say', 103),
-		(2007, 'Lost Girls', 104),
-		(2008, 'Color Out of Space', 101),
-		(2009, 'The Beach House', 100),
-		(2010, 'The Whistlers', 101);
+		(2002, 'Tenet', 100),
+		(2003, 'The Avengers', 100),
+        (2004, 'Toy Story', 100);
  
-
-
-
  INSERT INTO TicketReservationApp.AUDITORIUM(AuditoriumID, Auditorium_name)
 VALUES  (001, 1),
 		(002, 2),
-		(003, 3);
+		(003, 3),
+        (004, 4),
+        (005, 5);
         
  INSERT INTO TicketReservationApp.SHOW_TIME(ShowTimeID, MovieID, ShowDate, ShowTime)
 VALUES  
-		(1, 2000, '2020-11-11', '21:00:00'),
-		(2, 2000, '2020-11-11', '00:00:00'),
-		(3, 2001, '2020-11-12', '15:00:00'),
-		(4, 2001, '2020-11-12', '18:00:00'),
-		(5, 2001, '2020-11-12', '21:00:00'),
-		(6, 2002, '2020-11-12', '23:00:00'),
-		(7, 2002, '2020-11-12', '15:00:00'),
-		(8, 2002, '2020-11-12', '15:00:00'),
-		(9, 2002, '2020-11-12', '18:00:00'),
-		(10, 2003, '2020-11-12', '15:00:00'),
+		(1, 2000, '2020-11-11', '12:00:00'),
+		(2, 2000, '2020-11-11', '16:00:00'),
+        (3, 2000, '2020-11-11', '19:30:00'),
+		(4, 2001, '2020-11-12', '12:45:00'),
+		(5, 2001, '2020-11-12', '16:40:00'),
+        (6, 2001, '2020-11-11', '19:15:00'),
+		(7, 2002, '2020-11-12', '13:30:00'),
+		(8, 2002, '2020-11-12', '15:45:00'),
+        (9, 2002, '2020-11-11', '21:00:00'),
+		(10, 2003, '2020-11-12', '15:25:00'),
 		(11, 2003, '2020-11-12', '18:00:00'),
-		(12, 2003, '2020-11-12', '22:00:00');
+        (12, 2003, '2020-11-11', '20:00:00'),
+        (13, 2004, '2020-11-12', '16:00:00'),
+        (14, 2004, '2020-11-11', '17:25:00'),
+		(15, 2004, '2020-11-12', '18:50:00');
 
         
 INSERT INTO TicketReservationApp.REGISTERED_USER(UserID, FName, LName, Email, UserPassword, Card_Name, Credit_card, CVC, Expiry)
@@ -52,7 +44,7 @@ INSERT INTO TicketReservationApp.TICKET(TicketID, MovieID, TheatreID)
 VALUES  (1, 2001, 100),
 		(2, 2002, 100),
         (3, 2002, 100),
-        (4, 2006, 100);
+        (4, 2003, 100);
 
 INSERT INTO TicketReservationApp.RESERVATION(ReservationID, TicketID)
 VALUES  (1, 003),

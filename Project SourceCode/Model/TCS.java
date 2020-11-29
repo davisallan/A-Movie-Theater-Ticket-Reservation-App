@@ -3,6 +3,7 @@ package Model;
 import Controller.TheatreController;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /*
@@ -15,18 +16,26 @@ import java.util.ArrayList;
 
 public class TCS {
 
-	private TheatreList theatreList;
+	private Theatre theatre;
 
-	public TCS(TheatreList theatreList) {
-		setTheatreList(theatreList);
+	public TCS() {
+
 	}
 
 	public void loadTheatres(ResultSet rs) {
-		theatreList.loadTheatres(rs);
+		try {
+			while (rs.next()) {
+				theatre = new Theatre(rs.getInt("TheatreID"),
+						rs.getString("Theatre_name"),
+						rs.getString("Address"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void loadMovies(ResultSet rs) {
-		theatreList.loadMovies(rs);
+		theatre.loadMovies(rs);
 	}
 
 	public ArrayList<Movie> getMovies(Theatre selectedTheatre){
@@ -51,11 +60,11 @@ public class TCS {
 		return seatList;
 	}
 
-	public TheatreList getTheatreList() {
-		return theatreList;
+	public Theatre getTheatre() {
+		return theatre;
 	}
 
-	public void setTheatreList(TheatreList theatreList) {
-		this.theatreList = theatreList;
+	public void setTheatre(Theatre theatre) {
+		this.theatre = theatre;
 	}
 }

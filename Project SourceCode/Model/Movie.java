@@ -13,6 +13,7 @@ public class Movie {
 	public Movie(int movieID, String movieName) {
 		setMovieID(movieID);
 		setMovieName(movieName);
+		showTimes = new ArrayList<>();
 	}
 
 	public int getMovieID() {
@@ -31,6 +32,9 @@ public class Movie {
 		this.movieName = movieName;
 	}
 
+	public void addShowTime(ShowTime time) {
+		showTimes.add(time);
+	}
 	// get show time list for this movie
 	public ArrayList<ShowTime> getShowTimeList(){
 		return showTimes;
