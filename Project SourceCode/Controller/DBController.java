@@ -41,4 +41,16 @@ public class DBController implements DBCredentials {
         }
         return rs;
     }
+
+    public ResultSet selectMovies(int theatreID) {
+        try {
+            String query = "SELECT * FROM MOVIE WHERE TheatreID = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, theatreID);
+            rs = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
 }

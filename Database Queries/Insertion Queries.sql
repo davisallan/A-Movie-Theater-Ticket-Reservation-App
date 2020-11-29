@@ -1,22 +1,24 @@
-INSERT INTO TicketReservationApp.MOVIE(MovieID, Mov_name)
-VALUES  (2000, 'Bad Boys for Life'),
-		(2001, 'Birds of Prey'),
-		(2002, 'Tenet'),
-		(2003, 'The Invisible Man'),
-		(2004, 'Fantasy Island'),
-		(2005, 'Gretel & Hansel'),
-		(2006, 'All I Can Say'),
-		(2007, 'Lost Girls'),
-		(2008, 'Color Out of Space'),
-		(2009, 'The Beach House'),
-		(2010, 'The Whistlers');
- 
  INSERT INTO TicketReservationApp.THEATRE(TheatreID, Theatre_name, Address)
 VALUES	(100, 'Cineplex Odeon', '205 E Hills Blvd SE'),
 		(101, 'Landmark Cinemas', '3412 49 St NW'),
 		(102, 'Globe Cinema', '617 8 Ave SW'),
 		(103, 'Scotiabank Theatre Chinook', '6455 Macleod Trail SW'),
 		(104, 'Landmark Cinemas 10 Shawnessy', '16061 Macleod Trail SE');
+
+INSERT INTO TicketReservationApp.MOVIE(MovieID, Mov_name, TheatreID)
+VALUES  (2000, 'Bad Boys for Life', 100),
+		(2001, 'Star Wars', 100),
+		(2002, 'Tenet', 101),
+		(2003, 'The Invisible Man', 100),
+		(2004, 'Fantasy Island', 102),
+		(2005, 'Gretel & Hansel', 102),
+		(2006, 'All I Can Say', 103),
+		(2007, 'Lost Girls', 104),
+		(2008, 'Color Out of Space', 101),
+		(2009, 'The Beach House', 100),
+		(2010, 'The Whistlers', 101);
+ 
+
 
 
  INSERT INTO TicketReservationApp.AUDITORIUM(AuditoriumID, Auditorium_name)

@@ -19,6 +19,10 @@ public class Theatre {
 		auditoriums = new ArrayList<>();
 	}
 
+	public void addMovie (Movie movie) {
+		movieList.add(movie);
+	}
+
 	public int getTheatreID() {
 		return theatreID;
 	}

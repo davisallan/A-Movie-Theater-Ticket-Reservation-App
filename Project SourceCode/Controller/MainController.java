@@ -65,6 +65,10 @@ public class MainController {
 	public void loadDB() {
 		userCtrl.loadRegisteredUsers(dbCtrl.selectAll("REGISTERED_USER"));
 		theatreCtrl.loadTheatres(dbCtrl.selectAll("THEATRE"));
+		//loading movies for each theatre since different movies play at diff theatres
+		for (Theatre theatre: theatreCtrl.getTheatreCtrlSys().getTheatreList().getTheatres()) {
+			theatreCtrl.loadMovies(dbCtrl.selectMovies(theatre.getTheatreID()));
+		}
 	}
 
 	public void updateSelection(Theatre theatre, Movie movie, ShowTime showTime) {
@@ -139,6 +143,8 @@ public class MainController {
 
 		//Testing things from the command line:
 		mainCtrl.loadDB();
+
+		mainCtrl.getTheatreCtrl().getTheatreCtrlSys().getTheatreList().display();
 
 		System.out.println("Testing login...");
 		boolean success = mainCtrl.login("davis.allan@ucalgary.ca", "davis11");

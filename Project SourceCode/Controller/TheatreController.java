@@ -24,6 +24,10 @@ public class TheatreController {
 		theatreCtrlSys.loadTheatres(rs);
 	}
 
+	public void loadMovies(ResultSet rs) {
+		theatreCtrlSys.loadMovies(rs);
+	}
+
 	public void setSelectedTheatre(Theatre theatre) {
 		this.selectedTheatre = theatre;
 	}

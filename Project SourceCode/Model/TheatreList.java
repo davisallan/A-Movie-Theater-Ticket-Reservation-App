@@ -20,16 +20,35 @@ public class TheatreList {
                         rs.getString("Theatre_name"),
                         rs.getString("Address")));
             }
-            display();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    public void loadMovies(ResultSet rs) {
+        try {
+            while (rs.next()) {
+                int theatreID = rs.getInt("TheatreID");
+                for (Theatre theatre: theatres) {
+                    if(theatre.getTheatreID() == theatreID) {
+                        theatre.addMovie(new Movie (
+                                rs.getInt("MovieID"),
+                                rs.getString("Mov_Name")));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     //dummy method for testing to display results from query
     public void display() {
         for (Theatre t : getTheatres()) {
             System.out.println(t);
+            System.out.println("Movies playing here:");
+            for (Movie m: t.getMovieList()) {
+                System.out.println(m);
+            }
         }
     }
 
