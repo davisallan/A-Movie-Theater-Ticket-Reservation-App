@@ -44,9 +44,8 @@ public class TCS {
 		theatre.loadAuditoriums(rs);
 	}
 
-	public ArrayList<Movie> getMovies(Theatre selectedTheatre){
-		ArrayList<Movie> movieList = selectedTheatre.getMovieList();
-		return movieList;
+	public ArrayList<Movie> getMovies(){
+		return theatre.getMovieList();
 	}
 	
 	public ArrayList<ShowTime> getShowTimes(Theatre selectedTheatre, Movie selectedMovie){	

@@ -56,9 +56,5 @@ public class TheatreController {
 		this.theatreCtrlSys = theatreCtrlSys;
 	}
 
-	public void getTheatreInfo() {
-		this.movieList = theatreCtrlSys.getMovies(selectedTheatre);
-		this.showTimeList = theatreCtrlSys.getShowTimes(selectedTheatre, selectedMovie);
-	}
 
 }

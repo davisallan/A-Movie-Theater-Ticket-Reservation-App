@@ -2,6 +2,7 @@ package Controller;
 
 import Model.CreditCard;
 import Model.Movie;
+import Model.ShowTime;
 import Model.Theatre;
 import View.*;
 
@@ -156,6 +157,12 @@ public class GUIController {
         public void mouseClicked(MouseEvent me) {
             JList selection = (JList)me.getSource();
             int index = selection.locationToIndex(me.getPoint());
+            Movie selected = mainController.getTheatreCtrl().getTheatreCtrlSys().getMovies().get(index);
+            DefaultListModel<String> model = new DefaultListModel<>();
+            for (ShowTime time: selected.getShowTimeList()) {
+                model.addElement("Date: " + time.getDate() + ", Time: " + time.getTime());
+            }
+            reservationForm.getShowtimes().setModel(model);
         }
     }
 

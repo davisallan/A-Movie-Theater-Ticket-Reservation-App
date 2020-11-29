@@ -71,7 +71,7 @@ public class MainController {
 	}
 
 	public void updateSelection(Theatre theatre, Movie movie, ShowTime showTime) {
-		theatreCtrl.getTheatreInfo();
+
 	}
 
 	public RegisteredUser getLoggedInUser() {
