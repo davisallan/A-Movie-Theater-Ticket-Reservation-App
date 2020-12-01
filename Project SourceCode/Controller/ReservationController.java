@@ -4,14 +4,25 @@ import Model.*;
 
 public class ReservationController {
 	
-	private TRS trs;
-	
+	private TRS ticketReserveSys;
+
+	public ReservationController(TRS ticketReserveSys) {
+		setTicketReserveSys(ticketReserveSys);
+	}
+
 	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, Seat seat) {
-		trs.reserve(user, theatre, movie, showTime, seat);
+		ticketReserveSys.reserve(user, theatre, movie, showTime, seat);
 	}
 	
 	public void cancel(User user, int ticketId, CreditCard cc) {
-		trs.cancelReservation(user, ticketId, cc);
+		ticketReserveSys.cancelReservation(user, ticketId, cc);
 	}
 
+	public TRS getTicketReserveSys() {
+		return ticketReserveSys;
+	}
+
+	public void setTicketReserveSys(TRS ticketReserveSys) {
+		this.ticketReserveSys = ticketReserveSys;
+	}
 }

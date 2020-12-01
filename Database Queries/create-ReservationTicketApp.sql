@@ -1,61 +1,58 @@
--- DROP TABLE IF EXISTS TicketReservationApp;
+DROP DATABASE IF EXISTS TicketReservationApp;
 CREATE DATABASE TicketReservationApp;
 USE TicketReservationApp;
 
-DROP TABLE IF EXISTS APP_USER;
-CREATE TABLE APP_USER (
-	UserID    integer not null,
-    Email varchar(20),
-    UserPassword varchar(8), 
-    TicketID  varchar(20) ,
-    VoucherID  integer,
-    primary key(UserID),
-    foreign key (TicketID) references TICKET(TicketID),
-    foreign key (VoucherID) references Voucher(VoucherID)
-    );
-
-DROP TABLE IF EXISTS REGISTERED_USER;
-CREATE TABLE REGISTERED_USER (
-	UserID    integer not null,
-    Credit_card integer not null,
-    Card_Name varchar(20),
-    primary key(Credit_card),
-    foreign key (UserID) references APP_USER(UserID)
-    );
-
-DROP TABLE IF EXISTS THEATER;
-CREATE TABLE THEATER (
-	TheaterID    integer not null,
-    Theater_name  varchar(20) not null,
-    Address  varchar(20),
-    primary key(TheaterID)
-    );
-    
-    
-DROP TABLE IF EXISTS AUDITORIUM;
-CREATE TABLE AUDITORIUM (
-	AuditorimID    integer not null,
-    Auditorium_name  varchar(20) not null,
-    seats  varchar(20),
-    primary key(AuditorimID)
+DROP TABLE IF EXISTS THEATRE;
+CREATE TABLE THEATRE (
+	TheatreID    integer not null,
+    Theatre_name  varchar(30) not null,
+    Address  varchar(30),
+    primary key(TheatreID)
     );
     
 DROP TABLE IF EXISTS MOVIE;
 CREATE TABLE MOVIE (
-	MovieID    integer not null,
-    Mov_Name  varchar(20) not null,
-    showTime  varchar(20),
-    primary key(MovieID)
+    MovieID 		INTEGER NOT NULL,
+    Mov_Name 		VARCHAR(30) NOT NULL,
+    TheatreID		integer, 
+    PRIMARY KEY (MovieID),
+    FOREIGN KEY (TheatreID) REFERENCES THEATRE(TheatreID)
+);
+
+DROP TABLE IF EXISTS AUDITORIUM;
+CREATE TABLE AUDITORIUM (
+	AuditoriumID    integer not null,
+    Auditorium_name  varchar(20) not null,
+    TheatreID		integer, 
+    MovieID			integer,
+    primary key(AuditoriumID),
+    foreign key (TheatreID) references THEATRE(TheatreID),
+    foreign key (MovieID) references MOVIE(MovieID)
     );
-    
+
+DROP TABLE IF EXISTS REGISTERED_USER;
+CREATE TABLE REGISTERED_USER (
+	UserID    		integer not null,
+    FName			varchar(30),
+    LName			varchar(30),
+    Email 			varchar(30),
+    UserPassword 	varchar(8),
+    Card_Name 		varchar(30),
+    Credit_card 	varchar(30) not null,
+    CVC				integer, 
+    Expiry			varchar(5),
+    primary key(UserId)
+    );
+
+
     DROP TABLE IF EXISTS TICKET;
 CREATE TABLE TICKET (
 	TicketID    integer not null,
     MovieID  integer not null,
-    TheaterID  integer not null,
+    TheatreID  integer not null,
     primary key(TicketID),
     foreign key (MovieID) references MOVIE(MovieID),
-    foreign key (TheaterID) references THEATER(TheaterID)
+    foreign key (TheatreID) references THEATRE(TheatreID)
     );
     
         DROP TABLE IF EXISTS RESERVATION;
@@ -73,7 +70,16 @@ CREATE TABLE PAYMENT (
 	TicketID    integer not null,
     Price integer not null,
     primary key(PaymentID),
-    foreign key (UserID) references APP_USER(UserID),
+    foreign key (UserID) references REGISTERED_USER(UserID),
     foreign key (TicketID) references TICKET(TicketID)
     );   
     
+DROP TABLE IF EXISTS SHOW_TIME;
+CREATE TABLE SHOW_TIME (
+	ShowTimeID		integer not null, 
+    MovieID			integer,
+    ShowDate		date,
+    ShowTime		time,
+    primary key (ShowTimeID),
+    foreign key (MovieID) references MOVIE(MovieID)
+    );

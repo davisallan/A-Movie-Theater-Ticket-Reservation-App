@@ -1,72 +1,75 @@
-INSERT INTO TicketReservationApp.MOVIE(MovieID, Mov_name)
-VALUES  (2000, 'Bad Boys for Life'),
-		(2001, 'Birds of Prey'),
-		(2002, 'Tenet'),
-		(2003, 'The Invisible Man'),
-		(2004, 'Fantasy Island'),
-		(2005, 'Gretel & Hansel'),
-		(2006, 'All I Can Say'),
-		(2007, 'Lost Girls'),
-		(2008, 'Color Out of Space'),
-		(2009, 'The Beach House'),
-		(2010, 'The Whistlers');
+ INSERT INTO TicketReservationApp.THEATRE(TheatreID, Theatre_name, Address)
+VALUES	(100, 'Cineplex Odeon', '205 E Hills Blvd SE');
+
+INSERT INTO TicketReservationApp.MOVIE(MovieID, Mov_name, TheatreID)
+VALUES  (2000, 'Iron Man', 100),
+		(2001, 'John Wick: Chapter 3', 100),
+		(2002, 'Tenet', 100),
+		(2003, 'Avengers Endgame', 100),
+        (2004, 'Star Wars', 100);
  
- INSERT INTO TicketReservationApp.THEATER(TheaterID, Theater_name, Address)
-VALUES  (111, 'Landmark Cinemas', '3412 49 St NW'),
-		(112, 'Globe Cinema', '617 8 Ave SW'),
-		(113, 'Scotiabank Theatre Chinook', '6455 Macleod Trail SW'),
-		(114, 'Landmark Cinemas 10 Shawnessy', '16061 Macleod Trail SE'),
-		(115, 'Cineplex Odeon', '205 E Hills Blvd SE');
-
-
- INSERT INTO TicketReservationApp.AUDITORIUM(AuditoriumID, TheaterID)
-VALUES  (005, 115),
-		(004, 115),
-		(002, 115);
+ INSERT INTO TicketReservationApp.AUDITORIUM(AuditoriumID, Auditorium_name, MovieID)
+VALUES  (001, 1, 2000),
+		(002, 2, 2001),
+		(003, 3, 2002),
+        (004, 4, 2003),
+        (005, 5, 2004);
         
- INSERT INTO TicketReservationApp.SHOW_TIME(MovieID, ShowDate, ShowTime)
+ INSERT INTO TicketReservationApp.SHOW_TIME(ShowTimeID, MovieID, ShowDate, ShowTime)
 VALUES  
-		(2000, '2020-11-11', '21:00:00'),
-		(2000, '2020-11-11', '00:00:00'),
-		(2001, '2020-11-12', '15:00:00'),
-		(2001, '2020-11-12', '18:00:00'),
-		(2001, '2020-11-12', '21:00:00'),
-		(2002, '2020-11-12', '23:00:00'),
-		(2002, '2020-11-12', '15:00:00'),
-		(2002, '2020-11-12', '15:00:00'),
-		(2002, '2020-11-12', '18:00:00'),
-		(2003, '2020-11-12', '15:00:00'),
-		(2003, '2020-11-12', '18:00:00'),
-		(2003, '2020-11-12', '22:00:00')
-;
+		(1, 2000, '2020-12-04', '12:00:00'),
+		(2, 2000, '2020-12-04', '16:00:00'),
+        (3, 2000, '2020-12-04', '19:30:00'),
+        (4, 2000, '2020-12-05', '10:00:00'),
+		(5, 2000, '2020-12-05', '16:45:00'),
+        (6, 2000, '2020-12-05', '18:30:00'),
+		(7, 2001, '2020-12-04', '12:45:00'),
+		(8, 2001, '2020-12-04', '16:40:00'),
+        (9, 2001, '2020-12-04', '19:15:00'),
+        (10, 2001, '2020-12-05', '12:45:00'),
+		(11, 2001, '2020-12-05', '14:40:00'),
+        (12, 2001, '2020-12-05', '17:15:00'),
+		(13, 2002, '2020-12-04', '13:30:00'),
+		(14, 2002, '2020-12-04', '15:45:00'),
+        (15, 2002, '2020-12-04', '21:00:00'),
+        (16, 2002, '2020-12-05', '14:35:00'),
+		(17, 2002, '2020-12-05', '16:55:00'),
+        (18, 2002, '2020-12-05', '20:15:00'),
+		(19, 2003, '2020-12-04', '15:25:00'),
+		(20, 2003, '2020-12-04', '18:00:00'),
+        (21, 2003, '2020-12-04', '20:00:00'),
+        (22, 2003, '2020-12-05', '12:25:00'),
+		(23, 2003, '2020-12-05', '17:25:00'),
+        (24, 2003, '2020-12-05', '19:15:00'),
+        (25, 2004, '2020-12-04', '16:00:00'),
+        (26, 2004, '2020-12-04', '17:25:00'),
+		(27, 2004, '2020-12-04', '18:50:00'),
+        (28, 2004, '2020-12-05', '15:20:00'),
+        (29, 2004, '2020-12-05', '17:25:00'),
+		(30, 2004, '2020-12-05', '18:30:00');
 
-INSERT INTO TicketReservationApp.APP_USER(UserID, Email, UserPassword, TicketID)
-VALUES  (001, 'davis.allan@ucalgary.ca', 'davido11', null),
-		(002, 'bright.anorchie@ucalgary.ca', 'bright11', null),
-        (003, 'khaled.behairy@ucalgary.ca', 'behairy1', null),
-        (004, 'micheal.adelure@ucalgary.ca', 'micheal1', null);
         
-INSERT INTO TicketReservationApp.REGISTERED_USER(UserID, Credit_card, Card_Name)
-VALUES  (001, 734694398475946, 'Davis Allan'),
-		(002, 893749304504546, 'Bright Anorchie'),
-        (003, 399238340644334, 'Khaled Behairy'),
-        (004, 128994830843044, 'Micheal Adelure');
+INSERT INTO TicketReservationApp.REGISTERED_USER(UserID, FName, LName, Email, UserPassword, Card_Name, Credit_card, CVC, Expiry)
+VALUES  (001, 'Davis', 'Allan', 'davis.allan@ucalgary.ca', 'davis11', 'Davis Allan', 734694398475946, 123, 2220),
+		(002, 'Bright', 'Anorchie', 'bright.anorchie@ucalgary.ca', 'bright11', 'Bright Anorchie', 893749304504546, 234, 1521),
+        (003, 'Khaled', 'Behairy', 'khaled.behairy@ucalgary.ca', 'behairy1',  'Khaled Behairy', 399238340644334, 153, 3622),
+        (004, 'Michael', 'Adelure', 'micheal.adelure@ucalgary.ca', 'micheal1', 'Micheal Adelure', 128994830843044, 182, 4823);
         
-INSERT INTO TicketReservationApp.TICKET(TicketID, MovieID, TheaterID)
-VALUES  (011, 2001, 112),
-		(022, 2002, 115),
-        (043, 2002, 113),
-        (084, 2006, 115);
+INSERT INTO TicketReservationApp.TICKET(TicketID, MovieID, TheatreID)
+VALUES  (1, 2001, 100),
+		(2, 2002, 100),
+        (3, 2002, 100),
+        (4, 2003, 100);
 
 INSERT INTO TicketReservationApp.RESERVATION(ReservationID, TicketID)
 VALUES  (1, 003),
-		(22, 001),
-        (43, 004);
+		(2, 001),
+        (3, 004);
         
 INSERT INTO TicketReservationApp.PAYMENT(PaymentID, UserID, TicketID, Price)
 VALUES  (001, 1, 2, 49.00),
-		(002, 2, 11, 22.00),
-        (003, 3, 22, 10.00);
+		(002, 2, 2, 22.00),
+        (003, 3, 3, 10.00);
 
 UPDATE TicketReservationApp.APP_USER
 SET TicketID = 2

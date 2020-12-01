@@ -4,28 +4,17 @@ import java.util.ArrayList;
 
 public class TRS {
 
-	private ArrayList<Theatre> theatreList;
+	private Theatre theatre;
 	private ArrayList<Ticket> masterTicketList;
 	private ArrayList<Cancellation> cancellationList;
-	private static int ticketId = 0;
+	private static int ticketId = 1000;
 
 	
-	// constructor - Model.TRS should be constructed by database class
-	public TRS(ArrayList<Theatre> theatreList, ArrayList<RegisteredUser> registeredUserList) {
-		this.theatreList = theatreList;
+
+	public TRS() {
+
 	}
-	
-	// search for the provided theatre in the theatreList and return that theatre
-	public Theatre searchTheatre(Theatre theatre) {
-		Theatre myTheatre = null;
-		for(Theatre t: theatreList) {
-			if(t.equals(theatre)) {
-				myTheatre = t;
-			}
-		}
-		return myTheatre;
-	}
-	
+
 	// search for the provided movie in the movieList of the selected theatre and return that movie
 	public Movie searchMovie(Theatre theatre, Movie movie) {
 		Movie myMovie = null;
@@ -60,7 +49,7 @@ public class TRS {
 	
 	// create a ticket and make the reservation for selected theatre, movie, showtime and seat
 	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, Seat seat) {
-		Theatre myTheatre = searchTheatre(theatre);
+		Theatre myTheatre = theatre;
 		Movie myMovie = searchMovie(theatre, movie);
 		ShowTime myShowTime = searchShowTime(theatre, movie, showTime);
 		ticketId += 1;
@@ -85,9 +74,32 @@ public class TRS {
 		Movie myMovie = myTicket.getMovie();
 		myMovie.cancel(myTicket);
 		masterTicketList.remove(myTicket);
-		//create voucher and give to user if not regestired
+		//create voucher and give to user if not registered
 		Voucher newVoucher = new Voucher();
 		user.setVoucher(newVoucher);
 	}
-	
+
+	public Theatre getTheatre() {
+		return theatre;
+	}
+
+	public void setTheatre(Theatre theatre) {
+		this.theatre = theatre;
+	}
+
+	public ArrayList<Ticket> getMasterTicketList() {
+		return masterTicketList;
+	}
+
+	public void setMasterTicketList(ArrayList<Ticket> masterTicketList) {
+		this.masterTicketList = masterTicketList;
+	}
+
+	public ArrayList<Cancellation> getCancellationList() {
+		return cancellationList;
+	}
+
+	public void setCancellationList(ArrayList<Cancellation> cancellationList) {
+		this.cancellationList = cancellationList;
+	}
 }
