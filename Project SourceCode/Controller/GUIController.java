@@ -397,10 +397,17 @@ public class GUIController {
             if (successful && mainController.getLoggedInUser() == null) {
                 Voucher voucher = new Voucher(ticketToCancel.getAmount() * 0.85);
                 mainController.getReserveCtrl().addCancellation(new Cancellation(voucher));
+
+                //cancelling the seats from that showtime
+                mainController.getTheatreCtrl().getSelectedShowTime().cancelSeats(ticketToCancel.getSeat());
+
                 JOptionPane.showMessageDialog(null, "Thank you for your cancellation, " +
                         "you will receive a voucher for future use:\n" + voucher);
             } else if (successful && mainController.getLoggedInUser() != null) {
                 Refund refund = new Refund(ticketToCancel.getAmount());
+
+                //cancelling the seats from that showtime
+                mainController.getTheatreCtrl().getSelectedShowTime().cancelSeats(ticketToCancel.getSeat());
                 JOptionPane.showMessageDialog(null, "Thank you for your cancellation, " +
                         "you will receive a full refund:\n" + refund);
             }
@@ -408,6 +415,8 @@ public class GUIController {
             cancellationForm.setVisible(false);
             menu.setVisible(true);
         }
+
+
     }
 
     public AnnualFeeForm getAnnualFeeForm() {

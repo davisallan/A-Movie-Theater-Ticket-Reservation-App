@@ -17,6 +17,10 @@ public class Seat {
 		reserved = true;
 	}
 
+	public void setNotReserved() {
+		reserved = false;
+	}
+
 	public int getSeatNumber() {
 		return seatNumber;
 	}

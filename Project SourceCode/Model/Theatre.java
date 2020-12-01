@@ -63,26 +63,10 @@ public class Theatre {
 		}
 	}
 
-	public void display() {
-		System.out.println(this);
-		for (Auditorium aud: getAuditoriumList()) {
-			System.out.println(aud);
-		}
-		System.out.println("Movies playing here: ");
-		for (Movie movie: movieList) {
-			System.out.println(movie);
-			for (ShowTime time: movie.getShowTimeList()) {
-				System.out.println("\t\t" + time);
-				for (Seat seat: time.getSeats()) {
-					System.out.println(seat);
-				}
-			}
-		}
-	}
-
 	public void addAuditorium (Auditorium auditorium) {
 		auditoriumList.add(auditorium);
 	}
+
 	public void addMovie (Movie movie) {
 		movieList.add(movie);
 	}
