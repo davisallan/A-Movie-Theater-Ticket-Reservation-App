@@ -110,6 +110,9 @@ public class SeatSelectionForm extends JFrame {
         for (Seat seat: seatMap) {
             if (seat.isReserved()){
                 buttons.get(i).setText("x");
+                buttons.get(i).setEnabled(false);
+            } else {
+                buttons.get(i).setEnabled(true);
             }
             i++;
         }

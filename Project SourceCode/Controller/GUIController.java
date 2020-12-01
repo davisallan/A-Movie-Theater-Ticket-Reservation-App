@@ -360,7 +360,7 @@ public class GUIController {
         }
 
         public void createTicketRegisteredUser(ArrayList<Seat> seats) {
-            mainController.getReserveCtrl().getTicketReserveSys().reserve(
+            mainController.getReserveCtrl().reserve(
                     mainController.getLoggedInUser(),
                     mainController.getTheatreCtrl().getTheatreCtrlSys().getTheatre(),
                     mainController.getTheatreCtrl().getSelectedMovie(),
@@ -369,7 +369,7 @@ public class GUIController {
         }
 
         public void createTicketGenericUser(ArrayList<Seat> seats) {
-            mainController.getReserveCtrl().getTicketReserveSys().reserve(
+            mainController.getReserveCtrl().reserve(
                     mainController.getUserCtrl().createCasualUser(),
                     mainController.getTheatreCtrl().getTheatreCtrlSys().getTheatre(),
                     mainController.getTheatreCtrl().getSelectedMovie(),

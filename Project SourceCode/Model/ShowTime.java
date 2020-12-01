@@ -27,7 +27,6 @@ public class ShowTime {
 	public void cancelSeats(ArrayList<Seat> seats) {
 		for (Seat seat: seats) {
 			seat.setNotReserved();
-			System.out.println("Seat removed: " + seat);
 		}
 	}
 

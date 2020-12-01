@@ -12,6 +12,5 @@ public class CancellationList {
 
     public void addCancellation(Cancellation cancellation) {
         cancellations.add(cancellation);
-        System.out.println("Cancellation added!");
     }
 }
