@@ -38,8 +38,6 @@ public class MasterTicketList {
 
 	public void removeTicket(Ticket ticketToRemove) {
 		ticketList.remove(ticketToRemove);
-		System.out.println("Ticket cancelled!");
-		displayAllTickets();
 	}
 	
 }

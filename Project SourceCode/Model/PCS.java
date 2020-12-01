@@ -1,11 +1,10 @@
 package Model;
 
-import java.util.ArrayList;
 
 public class PCS {
 
     private Payment pay;
-    PaymentList payment;
+    private PaymentList payment;
 
     public PCS(){
         payment = new PaymentList();
@@ -16,5 +15,12 @@ public class PCS {
         payment.addPayment(pay);
     }
 
+    public Payment getPay() {
+        return pay;
+    }
+
+    public PaymentList getPayment() {
+        return payment;
+    }
 }
 

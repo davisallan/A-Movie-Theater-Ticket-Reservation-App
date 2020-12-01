@@ -10,9 +10,7 @@ public class PaymentList {
         paymentList = new ArrayList<>();
     }
 
-
     public void addPayment(Payment pay){
         paymentList.add(pay);
-        System.out.println("Added payemnt" + pay);
     }
 }
