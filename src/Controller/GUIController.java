@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.CreditCard;
-import Model.Movie;
-import Model.ShowTime;
-import Model.Theatre;
+import Model.*;
 import View.*;
 
 import javax.swing.*;
@@ -11,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 /**
  * Controller for the GUI
@@ -312,10 +310,20 @@ public class GUIController {
                 mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
             }
 
+           // ReservationController reservationController = new ReservationController();
+          /*  TRS trs = new TRS();
+            trs.reserve(mainController.loggedInUser, mainController.theatreCtrl.getTheatreCtrlSys().getTheatre(),
+                    mainController.theatreCtrl.getSelectedMovie(),mainController.theatreCtrl.getSelectedShowTime(),new Seat(45) );*/
+            Ticket ticket = new Ticket(23,new Theatre(2,"MichaelTheatre","Calgary"),new Movie(45,"Michael Movies"),
+                    new ShowTime(45,"12/1/2020","7:46AM"), new Seat(56));
+             ArrayList<Ticket> tempList = new ArrayList<>();
+            tempList.add(ticket);
+            TRS trs = new TRS();
+            trs.setMasterTicketList(tempList);
             //TODO create an actual "ticket object" and add it to the masterTicketList and display the ticketID so they can use that to cancel
             //TODO also need to allow for the payment to occur by giving a voucher
 
-            JOptionPane.showMessageDialog(null, "Thank you for your purchase! " +
+            JOptionPane.showMessageDialog(null, "Thank you for your purchase! with ticket id: " +ticket.getTicketId()+ "\n"+
                     "Tickets have been emailed to: " + paymentForm.getEmail().getText());
             paymentForm.setVisible(false);
             menu.setVisible(true);
@@ -326,11 +334,21 @@ public class GUIController {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            JOptionPane.showMessageDialog(null, "We have to still implement this functionality!");
+            //JOptionPane.showMessageDialog(null, "We have to still implement this functionality!");
             //TODO Cancel ticket scenario. Need to take the ticketID they enter, confirm the ticket exists, remove it
             //TODO if they are a registered user (logged in) then give them full refund (need to display the amount)
             //TODO if they are a generic user, create a Voucher (need to display the amount)
-            cancellationForm.setVisible(false);
+            int tkID = Integer.parseInt(cancellationForm.getTextField1().getText());
+            System.out.println(tkID);
+            Ticket suppliedTiket = mainController.getReserveCtrl().getTicketReserveSys().searchTicket(tkID);
+            if(suppliedTiket != null){
+                JOptionPane.showMessageDialog(null, "Ticket exists in the system" +
+                        "\nThe ticket with the following information has been canceled "+ suppliedTiket.toString());
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "does not exist");
+            }
+            cancellationForm.setVisible(true);
             menu.setVisible(true);
         }
     }

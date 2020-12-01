@@ -14,9 +14,15 @@ public class DBController implements DBCredentials {
 
     public void initializeConnection() {
         try {
-            Driver driver = new com.mysql.cj.jdbc.Driver();
-            DriverManager.registerDriver(driver);
-            conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+            Driver driver;/*
+            driver = new com.mysql.cj.jdbc.Driver();*/
+           conn
+                    = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+            /*DriverManager.registerDriver(driver);
+            conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);*/
+           /* conn =
+                    DriverManager.getConnection("jdbc:mysql://localhost/test?" +
+                            "user=minty&password=greatsqldb")*/
         } catch (SQLException e) {
             System.out.println("Problem");
             e.printStackTrace();

@@ -6,7 +6,7 @@ public interface DBCredentials {
     static final String DB_URL = "jdbc:mysql://localhost/ticketreservationapp";
 
     //  Database credentials
-    static final String USERNAME = "davis";
-    static final String PASSWORD = "Davisallan123!";
+    static final String USERNAME = "root";
+    static final String PASSWORD = "Holines1981";
 
 }

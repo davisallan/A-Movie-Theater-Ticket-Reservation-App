@@ -38,18 +38,21 @@ public class TRS {
 	
 	public Ticket searchTicket(int ticketId) {
 		Ticket myTicket = null;
-		for(Ticket t: masterTicketList) {
+		Ticket ticket = new Ticket(23,new Theatre(2,"MichaelTheatre","Calgary"),new Movie(45,"Michael Movies"),
+				new ShowTime(45,"12/1/2020","7:46AM"), new Seat(56));
+		//masterTicketList.add(ticket);
+	/*	for(Ticket t: masterTicketList) {
 			if(t.getTicketId() == ticketId) {
 				myTicket = t;
 			}
-		}
-		return myTicket;
+		}*/
+		return ticket;
 	}
 	
 	
 	// create a ticket and make the reservation for selected theatre, movie, showtime and seat
 	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, Seat seat) {
-		Theatre myTheatre = theatre;
+		Theatre myTheatre = theatre;//????
 		Movie myMovie = searchMovie(theatre, movie);
 		ShowTime myShowTime = searchShowTime(theatre, movie, showTime);
 		ticketId += 1;
@@ -60,6 +63,8 @@ public class TRS {
 		myMovie.reserve(newTicket);
 		//add ticket to masterTicketList (for tracking)
 		masterTicketList.add(newTicket);
+
+		System.out.println(newTicket.toString());
 		//give user the ticket
 		user.setTicket(newTicket);
 	}
