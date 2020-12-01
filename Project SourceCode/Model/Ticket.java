@@ -1,6 +1,5 @@
 package Model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Ticket {
@@ -13,8 +12,9 @@ public class Ticket {
 	private User user;
 
 	
-	public Ticket(int ticketId, Theatre theatre, Movie movie, ShowTime showTime,  ArrayList<Seat> seat) {
+	public Ticket(int ticketId, User user, Theatre theatre, Movie movie, ShowTime showTime,  ArrayList<Seat> seat) {
 		setTicketId(ticketId);
+		setUser(user);
 		setTheatre(theatre);
 		setMovie(movie);
 		setShowTime(showTime);

@@ -5,47 +5,16 @@ import java.util.ArrayList;
 public class TRS {
 
 	private Theatre theatre;
-	private ArrayList<Ticket> masterTicketList;
+	private MasterTicketList masterTicketList;
 	private ArrayList<Cancellation> cancellationList;
 	private static int ticketId = 1000;
 
 
-	public TRS() {
-		masterTicketList = new ArrayList<>();
+	public TRS(MasterTicketList masterTicketList) {
+		setMasterTicketList(masterTicketList);
 		cancellationList = new ArrayList<>();
 	}
 
-//	// search for the provided movie in the movieList of the selected theatre and return that movie
-//	public Movie searchMovie(Theatre theatre, Movie movie) {
-//		Movie myMovie = null;
-//		for(Movie m: theatre.getMovieList()) {
-//			if(m.equals(movie)) {
-//				myMovie = m;
-//			}
-//		}
-//		return myMovie;
-//	}
-//
-//	public ShowTime searchShowTime(Theatre theatre, Movie movie, ShowTime showTime) {
-//		ShowTime myShowTime = null;
-//		for(ShowTime s: movie.getShowTimeList()) {
-//			if(s.equals(showTime)) {
-//				myShowTime = s;
-//			}
-//		}
-//		return myShowTime;
-//	}
-	
-	public Ticket searchTicket(int ticketId) {
-		Ticket myTicket = null;
-		for(Ticket t: masterTicketList) {
-			if(t.getTicketId() == ticketId) {
-				myTicket = t;
-			}
-		}
-		return myTicket;
-	}
-	
 	
 	// create a ticket and make the reservation for selected theatre, movie, showtime and seat
 	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, ArrayList<Seat> seats) {
@@ -53,11 +22,11 @@ public class TRS {
 		ticketId += 1;
 		int myTicketId = ticketId;
 		//create mew ticket
-		Ticket newTicket = new Ticket(myTicketId, theatre, movie, showTime, seats);
+		Ticket newTicket = new Ticket(myTicketId, user, theatre, movie, showTime, seats);
 		//reserve ticket for specified movie and showtime
 
 		//add ticket to masterTicketList (for tracking)
-		masterTicketList.add(newTicket);
+		masterTicketList.getTicketList().add(newTicket);
 		System.out.println("Added ticket " + newTicket);
 		//give user the ticket
 		user.setTicket(newTicket);
@@ -69,10 +38,10 @@ public class TRS {
 	// TODO: user should get the created voucher (non registered)
 	// TODO: registered should get the refund confirmation (registerd)
 	public void cancelReservation(User user, int ticketId, CreditCard cc) {
-		Ticket myTicket = searchTicket(ticketId);
-		Movie myMovie = myTicket.getMovie();
-		myMovie.cancel(myTicket);
-		masterTicketList.remove(myTicket);
+//		Ticket myTicket = searchTicket(ticketId);
+//		Movie myMovie = myTicket.getMovie();
+//		myMovie.cancel(myTicket);
+//		masterTicketList.remove(myTicket);
 		//create voucher and give to user if not registered
 		Voucher newVoucher = new Voucher();
 		user.setVoucher(newVoucher);
@@ -86,11 +55,11 @@ public class TRS {
 		this.theatre = theatre;
 	}
 
-	public ArrayList<Ticket> getMasterTicketList() {
+	public MasterTicketList getMasterTicketList() {
 		return masterTicketList;
 	}
 
-	public void setMasterTicketList(ArrayList<Ticket> masterTicketList) {
+	public void setMasterTicketList(MasterTicketList masterTicketList) {
 		this.masterTicketList = masterTicketList;
 	}
 

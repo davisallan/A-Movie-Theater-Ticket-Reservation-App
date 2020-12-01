@@ -344,6 +344,12 @@ public class GUIController {
                 mainController.getPaymentCtrl().createPayment(paymentForm.getCardName().getText(), card, null);
             }
 
+            mainController.getReserveCtrl().getTicketReserveSys().reserve(
+                    mainController.getUserCtrl().createCasualUser(),
+                    mainController.getTheatreCtrl().getTheatreCtrlSys().getTheatre(),
+                    mainController.getTheatreCtrl().getSelectedMovie(),
+                    mainController.getTheatreCtrl().getSelectedShowTime(),
+                    seats);
 
             //TODO create an actual "ticket object" and add it to the masterTicketList and display the ticketID so they can use that to cancel
             //TODO also need to allow for the payment to occur by giving a voucher

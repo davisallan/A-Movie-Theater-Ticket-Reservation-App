@@ -136,7 +136,7 @@ public class MainController {
 	public static void main(String[] args) {
 		UserController userCtrl = new UserController(new UCS(new RegisteredUserList()));
 		TheatreController theatreCtrl = new TheatreController(new TCS());
-		ReservationController reserveCtrl = new ReservationController(new TRS());
+		ReservationController reserveCtrl = new ReservationController(new TRS(new MasterTicketList()));
 		PaymentController paymentCtrl = new PaymentController(new PCS());
 		GUIController guiCtrl = new GUIController();
 		DBController dbCtrl = new DBController();
