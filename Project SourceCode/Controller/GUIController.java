@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.CreditCard;
-import Model.Movie;
-import Model.ShowTime;
-import Model.Theatre;
+import Model.*;
 import View.*;
 
 import javax.swing.*;
@@ -137,12 +134,12 @@ public class GUIController {
             annualFeeForm.getCvc().setText(registrationForm.getCvc().getText());
             annualFeeForm.setVisible(true);
 
-            CreditCard card = new CreditCard(registrationForm.getFirstName().getText() + " " + registrationForm.getLastName().getText(),
-                    registrationForm.getCcNum().getText(),
-                    Integer.parseInt(registrationForm.getCvc().getText()),
-                    registrationForm.getExpiry().getText());
-            mainController.getPaymentCtrl().createPayment(registrationForm.getFirstName().getText() + " " + registrationForm.getLastName().getText(),
-                    card, null);
+//            CreditCard card = new CreditCard(registrationForm.getFirstName().getText() + " " + registrationForm.getLastName().getText(),
+//                    registrationForm.getCcNum().getText(),
+//                    Integer.parseInt(registrationForm.getCvc().getText()),
+//                    registrationForm.getExpiry().getText());
+//            mainController.getPaymentCtrl().createPayment(registrationForm.getFirstName().getText() + " " + registrationForm.getLastName().getText(),
+//                    card, null);
 
             registrationForm.clearAllFields();
         }
@@ -157,6 +154,10 @@ public class GUIController {
             annualFeeForm.clearAllTextFields();
             loginForm.setVisible(true);
 
+
+            RegisteredUser user = mainController.getUserCtrl().getRegisteredUserList().get(mainController.getUserCtrl().getRegisteredUserList().size()-1);
+            mainController.getPaymentCtrl().createPayment(user.getfName()+ " " + user.getlName(),
+                    user.getCreditCard(), user);
         }
     }
 
@@ -291,7 +292,6 @@ public class GUIController {
                 paymentForm.getCcNum().setText(mainController.getLoggedInUser().getCreditCard().getCardNumber());
                 paymentForm.getExpiry().setText(mainController.getLoggedInUser().getCreditCard().getExpiry());
                 paymentForm.getCvc().setText(String.valueOf(mainController.getLoggedInUser().getCreditCard().getCVC()));
-
             }
 
 
@@ -325,8 +325,18 @@ public class GUIController {
 //                        mainController.getLoggedInUser().getCreditCard().getCardNumber(),
 //                        mainController.getLoggedInUser().getCreditCard().getCVC(),
 //                        mainController.getLoggedInUser().getCreditCard().getExpiry());
-                mainController.getPaymentCtrl().createPayment(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
-                        mainController.getLoggedInUser().getCreditCard(), mainController.getLoggedInUser() );
+                if (mainController.getLoggedInUser() != null) {
+                    mainController.getPaymentCtrl().createPayment(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
+                            mainController.getLoggedInUser().getCreditCard(), mainController.getLoggedInUser());
+                }
+                else{
+                        CreditCard card =  new CreditCard(paymentForm.getCardName().getText(),
+                                paymentForm.getCcNum().getText(),
+                                Integer.parseInt(String.valueOf(paymentForm.getExpiry().getText())),
+                                paymentForm.getCvc().getText());
+                                mainController.getPaymentCtrl().createPayment(paymentForm.getCardName().getText() ,
+                                card, null);
+                }
             }
 
             //TODO create an actual "ticket object" and add it to the masterTicketList and display the ticketID so they can use that to cancel
