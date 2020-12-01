@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 /**
  * Controller for the GUI
@@ -316,15 +317,25 @@ public class GUIController {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             String[] selection = seatSelectionForm.getSelection().getText().split(",");
-
+            ArrayList <Seat> seats = new ArrayList<>();
             for (int i = 0; i < selection.length - 1; i++) {
                 int seatNum = Integer.parseInt(selection[i].stripLeading());
                 //reserving the selected seats in that particular showtime
                 mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
+
+                seats.add(mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1));
             }
             if (mainController.getLoggedInUser() != null) {
                 mainController.getPaymentCtrl().createPayment(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
                         mainController.getLoggedInUser().getCreditCard(), mainController.getLoggedInUser());
+
+                //creating a ticket for a registered user and adding it to the master ticket list
+                mainController.getReserveCtrl().getTicketReserveSys().reserve(
+                        mainController.getLoggedInUser(),
+                        mainController.getTheatreCtrl().getTheatreCtrlSys().getTheatre(),
+                        mainController.getTheatreCtrl().getSelectedMovie(),
+                        mainController.getTheatreCtrl().getSelectedShowTime(),
+                        seats);
             } else {
                 CreditCard card = new CreditCard(paymentForm.getCardName().getText(),
                         paymentForm.getCcNum().getText(),
@@ -336,6 +347,8 @@ public class GUIController {
 
             //TODO create an actual "ticket object" and add it to the masterTicketList and display the ticketID so they can use that to cancel
             //TODO also need to allow for the payment to occur by giving a voucher
+
+
 
             JOptionPane.showMessageDialog(null, "Thank you for your purchase! " +
                     "Tickets have been emailed to: " + paymentForm.getEmail().getText());

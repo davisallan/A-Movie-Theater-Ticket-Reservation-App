@@ -2,6 +2,8 @@ package Controller;
 
 import Model.*;
 
+import java.util.ArrayList;
+
 public class ReservationController {
 	
 	private TRS ticketReserveSys;
@@ -10,7 +12,7 @@ public class ReservationController {
 		setTicketReserveSys(ticketReserveSys);
 	}
 
-	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, Seat seat) {
+	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, ArrayList<Seat> seat) {
 		ticketReserveSys.reserve(user, theatre, movie, showTime, seat);
 	}
 	

@@ -1,16 +1,19 @@
 package Model;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Ticket {
 
 	private int ticketId;
 	private Theatre theatre;
 	private Movie movie;
 	private ShowTime showTime;
-	private Seat seat;
+	private ArrayList<Seat> seats;
 	private User user;
 
 	
-	public Ticket(int ticketId, Theatre theatre, Movie movie, ShowTime showTime,  Seat seat) {
+	public Ticket(int ticketId, Theatre theatre, Movie movie, ShowTime showTime,  ArrayList<Seat> seat) {
 		setTicketId(ticketId);
 		setTheatre(theatre);
 		setMovie(movie);
@@ -34,8 +37,8 @@ public class Ticket {
 		this.showTime = showTime;
 	}
 
-	public void setSeat(Seat seat) {
-		this.seat = seat;
+	public void setSeat(ArrayList<Seat> seat) {
+		this.seats = seat;
 	}
 
 	public void setUser(User user) {
@@ -58,8 +61,8 @@ public class Ticket {
 		return showTime;
 	}
 	
-	public Seat getSeat() {
-		return seat;
+	public ArrayList<Seat> getSeat() {
+		return seats;
 	}
 
 	@Override

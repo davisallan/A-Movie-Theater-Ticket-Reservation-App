@@ -41,13 +41,13 @@ public class MainController {
 		return successful;
 	}
 
-	public void createReservation(Theatre theatre, Movie movie, ShowTime showTime, Seat seat) {
-		User user = null;
-		if(loggedInUser == null) {
-			user = userCtrl.createCasualUser();
-		}
-		reserveCtrl.reserve(user, theatre, movie, showTime, seat);
-	}
+//	public void createReservation(Theatre theatre, Movie movie, ShowTime showTime, Seat seat) {
+//		User user = null;
+//		if(loggedInUser == null) {
+//			user = userCtrl.createCasualUser();
+//		}
+//		reserveCtrl.reserve(user, theatre, movie, showTime, seat);
+//	}
 	
 	public void cancelReservation(int ticketId) {
 		if(loggedInUser != null) {

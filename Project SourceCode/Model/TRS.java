@@ -9,32 +9,32 @@ public class TRS {
 	private ArrayList<Cancellation> cancellationList;
 	private static int ticketId = 1000;
 
-	
 
 	public TRS() {
-
+		masterTicketList = new ArrayList<>();
+		cancellationList = new ArrayList<>();
 	}
 
-	// search for the provided movie in the movieList of the selected theatre and return that movie
-	public Movie searchMovie(Theatre theatre, Movie movie) {
-		Movie myMovie = null;
-		for(Movie m: theatre.getMovieList()) {
-			if(m.equals(movie)) {
-				myMovie = m;
-			}
-		}
-		return myMovie;
-	}
-	
-	public ShowTime searchShowTime(Theatre theatre, Movie movie, ShowTime showTime) {
-		ShowTime myShowTime = null;
-		for(ShowTime s: movie.getShowTimeList()) {
-			if(s.equals(showTime)) {
-				myShowTime = s;
-			}
-		}
-		return myShowTime;
-	}
+//	// search for the provided movie in the movieList of the selected theatre and return that movie
+//	public Movie searchMovie(Theatre theatre, Movie movie) {
+//		Movie myMovie = null;
+//		for(Movie m: theatre.getMovieList()) {
+//			if(m.equals(movie)) {
+//				myMovie = m;
+//			}
+//		}
+//		return myMovie;
+//	}
+//
+//	public ShowTime searchShowTime(Theatre theatre, Movie movie, ShowTime showTime) {
+//		ShowTime myShowTime = null;
+//		for(ShowTime s: movie.getShowTimeList()) {
+//			if(s.equals(showTime)) {
+//				myShowTime = s;
+//			}
+//		}
+//		return myShowTime;
+//	}
 	
 	public Ticket searchTicket(int ticketId) {
 		Ticket myTicket = null;
@@ -48,18 +48,17 @@ public class TRS {
 	
 	
 	// create a ticket and make the reservation for selected theatre, movie, showtime and seat
-	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, Seat seat) {
-		Theatre myTheatre = theatre;
-		Movie myMovie = searchMovie(theatre, movie);
-		ShowTime myShowTime = searchShowTime(theatre, movie, showTime);
+	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, ArrayList<Seat> seats) {
+
 		ticketId += 1;
 		int myTicketId = ticketId;
 		//create mew ticket
-		Ticket newTicket = new Ticket(myTicketId, myTheatre, myMovie, myShowTime, seat);
+		Ticket newTicket = new Ticket(myTicketId, theatre, movie, showTime, seats);
 		//reserve ticket for specified movie and showtime
-		myMovie.reserve(newTicket);
+
 		//add ticket to masterTicketList (for tracking)
 		masterTicketList.add(newTicket);
+		System.out.println("Added ticket " + newTicket);
 		//give user the ticket
 		user.setTicket(newTicket);
 	}
