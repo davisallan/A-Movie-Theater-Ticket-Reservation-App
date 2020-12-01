@@ -16,8 +16,8 @@ public class ReservationController {
 		ticketReserveSys.reserve(user, theatre, movie, showTime, seat);
 	}
 	
-	public void cancel(User user, int ticketId, CreditCard cc) {
-		ticketReserveSys.cancelReservation(user, ticketId, cc);
+	public boolean cancel(User user, int ticketId) {
+		return ticketReserveSys.cancelReservation(user, ticketId);
 	}
 
 	public TRS getTicketReserveSys() {

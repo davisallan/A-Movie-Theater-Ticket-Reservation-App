@@ -15,7 +15,7 @@ public class TRS {
 		cancellationList = new ArrayList<>();
 	}
 
-	
+
 	// create a ticket and make the reservation for selected theatre, movie, showtime and seat
 	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, ArrayList<Seat> seats) {
 
@@ -27,24 +27,26 @@ public class TRS {
 
 		//add ticket to masterTicketList (for tracking)
 		masterTicketList.getTicketList().add(newTicket);
-		System.out.println("Added ticket " + newTicket);
 		//give user the ticket
 		user.setTicket(newTicket);
 	}
-	
+
 	// search ticket by ticketId in the master ticketList (all reservations for in the system for all theatres, movies, showtimes, seats)
 	// cancel the reservation by removing that ticket from the master ticketList and the ticketList for the corresponding movie
 	// TODO: add voucher creation (non registered user)
 	// TODO: user should get the created voucher (non registered)
 	// TODO: registered should get the refund confirmation (registerd)
-	public void cancelReservation(User user, int ticketId, CreditCard cc) {
-//		Ticket myTicket = searchTicket(ticketId);
-//		Movie myMovie = myTicket.getMovie();
-//		myMovie.cancel(myTicket);
-//		masterTicketList.remove(myTicket);
+	public boolean cancelReservation(User user, int ticketId) {
+		Ticket ticketToCancel = masterTicketList.searchTicket(ticketId);
+		if (ticketToCancel == null) {
+			return false;
+		}
+
+		masterTicketList.removeTicket(ticketToCancel);
 		//create voucher and give to user if not registered
 		Voucher newVoucher = new Voucher();
-		user.setVoucher(newVoucher);
+//		user.setVoucher(newVoucher);
+		return true;
 	}
 
 	public Theatre getTheatre() {

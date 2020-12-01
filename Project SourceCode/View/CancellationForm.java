@@ -23,4 +23,8 @@ public class CancellationForm extends JFrame {
     public void cancelTicket (ActionListener actionListener) {
         cancelTicketButton.addActionListener(actionListener);
     }
+
+    public JTextField getTextField1() {
+        return textField1;
+    }
 }

@@ -390,6 +390,9 @@ public class GUIController {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             JOptionPane.showMessageDialog(null, "We have to still implement this functionality!");
+
+            mainController.getReserveCtrl().cancel(mainController.getLoggedInUser(),
+                    Integer.parseInt(cancellationForm.getTextField1().getText()));
             //TODO Cancel ticket scenario. Need to take the ticketID they enter, confirm the ticket exists, remove it
             //TODO if they are a registered user (logged in) then give them full refund (need to display the amount)
             //TODO if they are a generic user, create a Voucher (need to display the amount)

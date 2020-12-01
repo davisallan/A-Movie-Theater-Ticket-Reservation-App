@@ -6,7 +6,6 @@ public class MasterTicketList {
 
 	private ArrayList<Ticket> ticketList;
 
-
 	public MasterTicketList() {
 		ticketList = new ArrayList<>();
 	}
@@ -29,6 +28,18 @@ public class MasterTicketList {
 			}
 		}
 		return myTicket;
+	}
+
+	public void displayAllTickets() {
+		for (Ticket t: ticketList) {
+			System.out.println(t);
+		}
+	}
+
+	public void removeTicket(Ticket ticketToRemove) {
+		ticketList.remove(ticketToRemove);
+		System.out.println("Ticket cancelled!");
+		displayAllTickets();
 	}
 	
 }

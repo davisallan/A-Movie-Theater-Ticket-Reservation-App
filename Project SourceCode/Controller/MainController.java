@@ -41,26 +41,6 @@ public class MainController {
 		return successful;
 	}
 
-//	public void createReservation(Theatre theatre, Movie movie, ShowTime showTime, Seat seat) {
-//		User user = null;
-//		if(loggedInUser == null) {
-//			user = userCtrl.createCasualUser();
-//		}
-//		reserveCtrl.reserve(user, theatre, movie, showTime, seat);
-//	}
-	
-	public void cancelReservation(int ticketId) {
-		if(loggedInUser != null) {
-			CreditCard creditCard = null;
-			for(RegisteredUser u: userCtrl.getRegisteredUserList()) {
-				if(u.getEmail().contentEquals(loggedInUser.getEmail()) && u.getPassword().contentEquals(loggedInUser.getPassword())) {
-					creditCard = u.getCreditCard();
-				}
-			}
-			reserveCtrl.cancel(loggedInUser, ticketId, creditCard);
-		}
-	}
-
 	public void loadDB() {
 		userCtrl.loadRegisteredUsers(dbCtrl.selectAll("REGISTERED_USER"));
 		theatreCtrl.loadTheatres(dbCtrl.selectAll("THEATRE"));
