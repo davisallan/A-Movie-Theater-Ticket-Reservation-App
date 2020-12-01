@@ -13,5 +13,6 @@ public class PaymentList {
 
     public void addPayment(Payment pay){
         paymentList.add(pay);
+        System.out.println("Added payemnt" + pay);
     }
 }

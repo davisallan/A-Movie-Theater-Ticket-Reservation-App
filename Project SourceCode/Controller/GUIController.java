@@ -155,8 +155,8 @@ public class GUIController {
             loginForm.setVisible(true);
 
 
-            RegisteredUser user = mainController.getUserCtrl().getRegisteredUserList().get(mainController.getUserCtrl().getRegisteredUserList().size()-1);
-            mainController.getPaymentCtrl().createPayment(user.getfName()+ " " + user.getlName(),
+            RegisteredUser user = mainController.getUserCtrl().getRegisteredUserList().get(mainController.getUserCtrl().getRegisteredUserList().size() - 1);
+            mainController.getPaymentCtrl().createPayment(user.getfName() + " " + user.getlName(),
                     user.getCreditCard(), user);
         }
     }
@@ -170,7 +170,7 @@ public class GUIController {
 
             DefaultListModel<String> model = new DefaultListModel<>();
             Theatre theatre = mainController.getTheatreCtrl().getTheatreCtrlSys().getTheatre();
-            for (Movie movie: theatre.getMovieList()) {
+            for (Movie movie : theatre.getMovieList()) {
                 model.addElement(movie.getMovieName());
             }
             reservationForm.getMovies().setModel(model);
@@ -206,13 +206,13 @@ public class GUIController {
     private class MovieList extends MouseAdapter {
 
         public void mouseClicked(MouseEvent me) {
-            JList selection = (JList)me.getSource();
+            JList selection = (JList) me.getSource();
             int index = selection.locationToIndex(me.getPoint());
             Movie selected = mainController.getTheatreCtrl().getTheatreCtrlSys().getMovies().get(index);
             //setting the selected movie in the theatre controller
             mainController.getTheatreCtrl().setSelectedMovie(selected);
             DefaultListModel<String> model = new DefaultListModel<>();
-            for (ShowTime time: selected.getShowTimeList()) {
+            for (ShowTime time : selected.getShowTimeList()) {
                 model.addElement("Date: " + time.getDate() + ", Time: " + time.getTime());
             }
             reservationForm.getShowtimes().setModel(model);
@@ -223,7 +223,7 @@ public class GUIController {
     private class ShowTimeList extends MouseAdapter {
 
         public void mouseClicked(MouseEvent me) {
-            JList selection = (JList)me.getSource();
+            JList selection = (JList) me.getSource();
             int index = selection.locationToIndex(me.getPoint());
             ShowTime selected = mainController.getTheatreCtrl().getSelectedMovie().getShowTimeList().get(index);
 
@@ -265,7 +265,7 @@ public class GUIController {
             int index = 0;
             int numSelected = 0;
             StringBuilder selection = new StringBuilder();
-            for (JRadioButton seat: seatSelectionForm.getButtons()) {
+            for (JRadioButton seat : seatSelectionForm.getButtons()) {
                 if (seat.isSelected()) {
                     selection.append(index + 1).append(", ");
                     numSelected++;
@@ -321,23 +321,18 @@ public class GUIController {
                 int seatNum = Integer.parseInt(selection[i].stripLeading());
                 //reserving the selected seats in that particular showtime
                 mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
-//                CreditCard card = new CreditCard(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
-//                        mainController.getLoggedInUser().getCreditCard().getCardNumber(),
-//                        mainController.getLoggedInUser().getCreditCard().getCVC(),
-//                        mainController.getLoggedInUser().getCreditCard().getExpiry());
-                if (mainController.getLoggedInUser() != null) {
-                    mainController.getPaymentCtrl().createPayment(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
-                            mainController.getLoggedInUser().getCreditCard(), mainController.getLoggedInUser());
-                }
-                else{
-                        CreditCard card =  new CreditCard(paymentForm.getCardName().getText(),
-                                paymentForm.getCcNum().getText(),
-                                Integer.parseInt(String.valueOf(paymentForm.getExpiry().getText())),
-                                paymentForm.getCvc().getText());
-                                mainController.getPaymentCtrl().createPayment(paymentForm.getCardName().getText() ,
-                                card, null);
-                }
             }
+            if (mainController.getLoggedInUser() != null) {
+                mainController.getPaymentCtrl().createPayment(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
+                        mainController.getLoggedInUser().getCreditCard(), mainController.getLoggedInUser());
+            } else {
+                CreditCard card = new CreditCard(paymentForm.getCardName().getText(),
+                        paymentForm.getCcNum().getText(),
+                        Integer.parseInt(String.valueOf(paymentForm.getExpiry().getText())),
+                        paymentForm.getCvc().getText());
+                mainController.getPaymentCtrl().createPayment(paymentForm.getCardName().getText(), card, null);
+            }
+
 
             //TODO create an actual "ticket object" and add it to the masterTicketList and display the ticketID so they can use that to cancel
             //TODO also need to allow for the payment to occur by giving a voucher
