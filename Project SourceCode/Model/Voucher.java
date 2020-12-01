@@ -46,6 +46,6 @@ public class Voucher {
 
 	@Override
 	public String toString() {
-		return "VoucherID: " + getVoucherId() + "\nAmount: $" + getVoucherValue() + "\nExpiry: " + getExpiry();
+		return String.format("VoucherID: %s \nAmount: $%.2f \nExpiry: %s", getVoucherId(), getVoucherValue(), getExpiry());
 	}
 }

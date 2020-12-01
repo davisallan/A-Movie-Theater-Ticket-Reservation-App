@@ -392,11 +392,13 @@ public class GUIController {
             JOptionPane.showMessageDialog(null, "We have to still implement this functionality!");
             int ticketID = Integer.parseInt(cancellationForm.getTextField1().getText());
             Ticket ticketToCancel = mainController.getReserveCtrl().getTicketReserveSys().getMasterTicketList().searchTicket(ticketID);
-            boolean successful = mainController.getReserveCtrl().cancelTicket(mainController.getLoggedInUser(), ticketID);
+            boolean successful = mainController.getReserveCtrl().cancelTicket(ticketID);
 
             if (successful && mainController.getLoggedInUser() == null) {
                 Voucher voucher = new Voucher(ticketToCancel.getAmount() * 0.85);
-                JOptionPane.showMessageDialog(null, "Thank you for your cancellation, you will receive a voucher for future use:" + voucher);
+                mainController.getReserveCtrl().addCancellation(new Cancellation(voucher));
+                JOptionPane.showMessageDialog(null, "Thank you for your cancellation, " +
+                        "you will receive a voucher for future use:\n" + voucher);
             }
             //TODO Cancel ticket scenario. Need to take the ticketID they enter, confirm the ticket exists, remove it
             //TODO if they are a registered user (logged in) then give them full refund (need to display the amount)

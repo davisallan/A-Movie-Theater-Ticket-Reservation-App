@@ -6,25 +6,22 @@ public class TRS {
 
 	private Theatre theatre;
 	private MasterTicketList masterTicketList;
-	private ArrayList<Cancellation> cancellationList;
+	private CancellationList cancellationList;
 	private static int ticketId = 1000;
 
 
-	public TRS(MasterTicketList masterTicketList) {
+	public TRS(MasterTicketList masterTicketList, CancellationList cancellationList) {
 		setMasterTicketList(masterTicketList);
-		cancellationList = new ArrayList<>();
+		setCancellationList(cancellationList);
 	}
 
 
 	// create a ticket and make the reservation for selected theatre, movie, showtime and seat
 	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, ArrayList<Seat> seats, double amount) {
-
 		ticketId += 1;
 		int myTicketId = ticketId;
 		//create mew ticket
 		Ticket newTicket = new Ticket(myTicketId, user, theatre, movie, showTime, seats, amount);
-		//reserve ticket for specified movie and showtime
-
 		//add ticket to masterTicketList (for tracking)
 		masterTicketList.getTicketList().add(newTicket);
 		//give user the ticket
@@ -33,20 +30,17 @@ public class TRS {
 
 	// search ticket by ticketId in the master ticketList (all reservations for in the system for all theatres, movies, showtimes, seats)
 	// cancel the reservation by removing that ticket from the master ticketList and the ticketList for the corresponding movie
-	// TODO: add voucher creation (non registered user)
-	// TODO: user should get the created voucher (non registered)
-	// TODO: registered should get the refund confirmation (registerd)
-	public boolean cancelReservation(User user, int ticketId) {
+	public boolean cancelReservation(int ticketId) {
 		Ticket ticketToCancel = masterTicketList.searchTicket(ticketId);
 		if (ticketToCancel == null) {
 			return false;
 		}
-
 		masterTicketList.removeTicket(ticketToCancel);
-		//create voucher and give to user if not registered
-		Voucher newVoucher = new Voucher();
-//		user.setVoucher(newVoucher);
 		return true;
+	}
+
+	public void addCancellation(Cancellation cancellation) {
+		cancellationList.addCancellation(cancellation);
 	}
 
 	public Theatre getTheatre() {
@@ -65,11 +59,11 @@ public class TRS {
 		this.masterTicketList = masterTicketList;
 	}
 
-	public ArrayList<Cancellation> getCancellationList() {
+	public CancellationList getCancellationList() {
 		return cancellationList;
 	}
 
-	public void setCancellationList(ArrayList<Cancellation> cancellationList) {
+	public void setCancellationList(CancellationList cancellationList) {
 		this.cancellationList = cancellationList;
 	}
 }
