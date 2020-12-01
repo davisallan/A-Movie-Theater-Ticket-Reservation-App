@@ -10,15 +10,17 @@ public class Ticket {
 	private ShowTime showTime;
 	private ArrayList<Seat> seats;
 	private User user;
+	private double amount;
 
 	
-	public Ticket(int ticketId, User user, Theatre theatre, Movie movie, ShowTime showTime,  ArrayList<Seat> seat) {
+	public Ticket(int ticketId, User user, Theatre theatre, Movie movie, ShowTime showTime, ArrayList<Seat> seat, double amount) {
 		setTicketId(ticketId);
 		setUser(user);
 		setTheatre(theatre);
 		setMovie(movie);
 		setShowTime(showTime);
 		setSeat(seat);
+		setAmount(amount);
 	}
 
 	public void setTicketId(int ticketId) {
@@ -65,8 +67,17 @@ public class Ticket {
 		return seats;
 	}
 
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
 	@Override
 	public String toString() {
-		return "TicketID: " + getTicketId() + "\nMovie: " + getMovie() + "\nShowtime: " + getShowTime() + "\nSeats: " + getSeat();
+		return "TicketID: " + getTicketId() + "\nMovie: " + getMovie() + "\nShowtime: "
+				+ getShowTime() + "\nSeats: " + getSeat() + "\nAmount: $" + getAmount();
 	}
 }

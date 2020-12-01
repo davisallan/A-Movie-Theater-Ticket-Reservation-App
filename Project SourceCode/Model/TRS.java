@@ -17,12 +17,12 @@ public class TRS {
 
 
 	// create a ticket and make the reservation for selected theatre, movie, showtime and seat
-	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, ArrayList<Seat> seats) {
+	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, ArrayList<Seat> seats, double amount) {
 
 		ticketId += 1;
 		int myTicketId = ticketId;
 		//create mew ticket
-		Ticket newTicket = new Ticket(myTicketId, user, theatre, movie, showTime, seats);
+		Ticket newTicket = new Ticket(myTicketId, user, theatre, movie, showTime, seats, amount);
 		//reserve ticket for specified movie and showtime
 
 		//add ticket to masterTicketList (for tracking)

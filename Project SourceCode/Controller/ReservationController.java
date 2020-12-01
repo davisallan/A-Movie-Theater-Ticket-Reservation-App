@@ -12,11 +12,11 @@ public class ReservationController {
 		setTicketReserveSys(ticketReserveSys);
 	}
 
-	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, ArrayList<Seat> seat) {
-		ticketReserveSys.reserve(user, theatre, movie, showTime, seat);
+	public void reserve(User user, Theatre theatre, Movie movie, ShowTime showTime, ArrayList<Seat> seat, double amount) {
+		ticketReserveSys.reserve(user, theatre, movie, showTime, seat, amount);
 	}
 	
-	public boolean cancel(User user, int ticketId) {
+	public boolean cancelTicket(User user, int ticketId) {
 		return ticketReserveSys.cancelReservation(user, ticketId);
 	}
 
