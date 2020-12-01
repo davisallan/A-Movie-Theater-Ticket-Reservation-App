@@ -317,49 +317,71 @@ public class GUIController {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             String[] selection = seatSelectionForm.getSelection().getText().split(",");
-            ArrayList <Seat> seats = new ArrayList<>();
-            for (int i = 0; i < selection.length - 1; i++) {
-                int seatNum = Integer.parseInt(selection[i].stripLeading());
-                //reserving the selected seats in that particular showtime
-                mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
+            ArrayList<Seat> seats = new ArrayList<>();
+            boolean paymentComplete = false;
 
-                seats.add(mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1));
-            }
-            if (mainController.getLoggedInUser() != null) {
-                mainController.getPaymentCtrl().createPayment(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
-                        mainController.getLoggedInUser().getCreditCard(), mainController.getLoggedInUser());
+            if (paymentForm.getCreditCardRadioButton().isSelected()) {
+                for (int i = 0; i < selection.length - 1; i++) {
+                    int seatNum = Integer.parseInt(selection[i].stripLeading());
+                    //reserving the selected seats in that particular showtime
+                    mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
 
-                //creating a ticket for a registered user and adding it to the master ticket list
-                mainController.getReserveCtrl().getTicketReserveSys().reserve(
-                        mainController.getLoggedInUser(),
-                        mainController.getTheatreCtrl().getTheatreCtrlSys().getTheatre(),
-                        mainController.getTheatreCtrl().getSelectedMovie(),
-                        mainController.getTheatreCtrl().getSelectedShowTime(),
-                        seats);
+                    seats.add(mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1));
+                }
+                if (mainController.getLoggedInUser() != null) {
+                    mainController.getPaymentCtrl().createPayment(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
+                            mainController.getLoggedInUser().getCreditCard(), mainController.getLoggedInUser());
+
+                    //creating a ticket for a registered user and adding it to the master ticket list
+                    createTicketRegisteredUser(seats);
+                } else {
+                    CreditCard card = new CreditCard(paymentForm.getCardName().getText(),
+                            paymentForm.getCcNum().getText(),
+                            Integer.parseInt(String.valueOf(paymentForm.getExpiry().getText())),
+                            paymentForm.getCvc().getText());
+                    mainController.getPaymentCtrl().createPayment(paymentForm.getCardName().getText(), card, null);
+                    //creating a ticket for a generic user and adding it to the masterTicketList
+                    createTicketGenericUser(seats);
+                }
+                displayTicketPurchase();
+                paymentComplete = true;
+            } else if (paymentForm.getVoucherRadioButton().isSelected()) {
+                //TODO Pay with voucher
             } else {
-                CreditCard card = new CreditCard(paymentForm.getCardName().getText(),
-                        paymentForm.getCcNum().getText(),
-                        Integer.parseInt(String.valueOf(paymentForm.getExpiry().getText())),
-                        paymentForm.getCvc().getText());
-                mainController.getPaymentCtrl().createPayment(paymentForm.getCardName().getText(), card, null);
+                JOptionPane.showMessageDialog(null, "Please select one of the forms of " +
+                        "payment and fill out the required information");
             }
 
+            if (paymentComplete) {
+                paymentForm.setVisible(false);
+                menu.setVisible(true);
+            }
+
+        }
+
+        public void createTicketRegisteredUser(ArrayList<Seat> seats) {
+            mainController.getReserveCtrl().getTicketReserveSys().reserve(
+                    mainController.getLoggedInUser(),
+                    mainController.getTheatreCtrl().getTheatreCtrlSys().getTheatre(),
+                    mainController.getTheatreCtrl().getSelectedMovie(),
+                    mainController.getTheatreCtrl().getSelectedShowTime(),
+                    seats);
+        }
+
+        public void createTicketGenericUser(ArrayList<Seat> seats) {
             mainController.getReserveCtrl().getTicketReserveSys().reserve(
                     mainController.getUserCtrl().createCasualUser(),
                     mainController.getTheatreCtrl().getTheatreCtrlSys().getTheatre(),
                     mainController.getTheatreCtrl().getSelectedMovie(),
                     mainController.getTheatreCtrl().getSelectedShowTime(),
                     seats);
+        }
 
-            //TODO create an actual "ticket object" and add it to the masterTicketList and display the ticketID so they can use that to cancel
-            //TODO also need to allow for the payment to occur by giving a voucher
+        public void displayTicketPurchase() {
+            Ticket ticket = mainController.getReserveCtrl().getTicketReserveSys().getMasterTicketList().getMostRecentTicket();
 
-
-
-            JOptionPane.showMessageDialog(null, "Thank you for your purchase! " +
-                    "Tickets have been emailed to: " + paymentForm.getEmail().getText());
-            paymentForm.setVisible(false);
-            menu.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Thank you for your purchase!\n" +
+                    "Tickets have been emailed to: " + paymentForm.getEmail().getText() + "\n" + ticket);
         }
     }
 

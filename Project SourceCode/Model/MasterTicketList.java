@@ -15,6 +15,11 @@ public class MasterTicketList {
 		return ticketList;
 	}
 
+	public Ticket getMostRecentTicket() {
+		int index = ticketList.size();
+		return ticketList.get(index - 1);
+	}
+
 	// search for ticket by ticketId and return that ticket
 	public Ticket searchTicket(int ticketId) {
 		Ticket myTicket = null;

@@ -27,6 +27,6 @@ public class Seat {
 
 	@Override
 	public String toString() {
-		return "Seat #" + getSeatNumber() + ", Reserved: " + isReserved();
+		return "Seat #" + getSeatNumber();
 	}
 }
