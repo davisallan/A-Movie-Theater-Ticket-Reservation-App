@@ -136,6 +136,14 @@ public class GUIController {
             annualFeeForm.getExpiry().setText(registrationForm.getExpiry().getText());
             annualFeeForm.getCvc().setText(registrationForm.getCvc().getText());
             annualFeeForm.setVisible(true);
+
+            CreditCard card = new CreditCard(registrationForm.getFirstName().getText() + " " + registrationForm.getLastName().getText(),
+                    registrationForm.getCcNum().getText(),
+                    Integer.parseInt(registrationForm.getCvc().getText()),
+                    registrationForm.getExpiry().getText());
+            mainController.getPaymentCtrl().createPayment(registrationForm.getFirstName().getText() + " " + registrationForm.getLastName().getText(),
+                    card, null);
+
             registrationForm.clearAllFields();
         }
     }
@@ -148,6 +156,7 @@ public class GUIController {
             annualFeeForm.setVisible(false);
             annualFeeForm.clearAllTextFields();
             loginForm.setVisible(true);
+
         }
     }
 
@@ -283,12 +292,6 @@ public class GUIController {
                 paymentForm.getExpiry().setText(mainController.getLoggedInUser().getCreditCard().getExpiry());
                 paymentForm.getCvc().setText(String.valueOf(mainController.getLoggedInUser().getCreditCard().getCVC()));
 
-                CreditCard card = new CreditCard(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
-                        mainController.getLoggedInUser().getCreditCard().getCardNumber(),
-                        mainController.getLoggedInUser().getCreditCard().getCVC(),
-                        mainController.getLoggedInUser().getCreditCard().getExpiry());
-                mainController.getPaymentCtrl().createPayment(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
-                        card, mainController.getLoggedInUser() );
             }
 
 
@@ -318,6 +321,12 @@ public class GUIController {
                 int seatNum = Integer.parseInt(selection[i].stripLeading());
                 //reserving the selected seats in that particular showtime
                 mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
+//                CreditCard card = new CreditCard(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
+//                        mainController.getLoggedInUser().getCreditCard().getCardNumber(),
+//                        mainController.getLoggedInUser().getCreditCard().getCVC(),
+//                        mainController.getLoggedInUser().getCreditCard().getExpiry());
+                mainController.getPaymentCtrl().createPayment(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
+                        mainController.getLoggedInUser().getCreditCard(), mainController.getLoggedInUser() );
             }
 
             //TODO create an actual "ticket object" and add it to the masterTicketList and display the ticketID so they can use that to cancel

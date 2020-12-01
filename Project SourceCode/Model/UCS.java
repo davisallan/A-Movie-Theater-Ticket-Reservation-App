@@ -58,6 +58,8 @@ public class UCS {
 		return registeredUser;
 	}
 
+
+
 	public void display() {
 		for (RegisteredUser user : getRegisteredUserList().getRegisteredUsers()) {
 			System.out.println(user);
