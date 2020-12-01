@@ -399,10 +399,12 @@ public class GUIController {
                 mainController.getReserveCtrl().addCancellation(new Cancellation(voucher));
                 JOptionPane.showMessageDialog(null, "Thank you for your cancellation, " +
                         "you will receive a voucher for future use:\n" + voucher);
+            } else if (successful && mainController.getLoggedInUser() != null) {
+                Refund refund = new Refund(ticketToCancel.getAmount());
+                JOptionPane.showMessageDialog(null, "Thank you for your cancellation, " +
+                        "you will receive a full refund:\n" + refund);
             }
-            //TODO Cancel ticket scenario. Need to take the ticketID they enter, confirm the ticket exists, remove it
-            //TODO if they are a registered user (logged in) then give them full refund (need to display the amount)
-            //TODO if they are a generic user, create a Voucher (need to display the amount)
+
             cancellationForm.setVisible(false);
             menu.setVisible(true);
         }
