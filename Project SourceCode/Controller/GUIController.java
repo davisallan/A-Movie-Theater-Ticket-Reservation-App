@@ -319,15 +319,9 @@ public class GUIController {
             String[] selection = seatSelectionForm.getSelection().getText().split(",");
             ArrayList<Seat> seats = new ArrayList<>();
             boolean paymentComplete = false;
-
+            getSeatsSelected(seats, selection);
             if (paymentForm.getCreditCardRadioButton().isSelected()) {
-                for (int i = 0; i < selection.length - 1; i++) {
-                    int seatNum = Integer.parseInt(selection[i].stripLeading());
-                    //reserving the selected seats in that particular showtime
-                    mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
 
-                    seats.add(mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1));
-                }
                 if (mainController.getLoggedInUser() != null) {
                     mainController.getPaymentCtrl().createPayment(mainController.getLoggedInUser().getCreditCard().getCardHolderName(),
                             mainController.getLoggedInUser().getCreditCard(), mainController.getLoggedInUser());
@@ -346,7 +340,20 @@ public class GUIController {
                 displayTicketPurchase();
                 paymentComplete = true;
             } else if (paymentForm.getVoucherRadioButton().isSelected()) {
-                //TODO Pay with voucher
+                int voucherID = Integer.parseInt(paymentForm.getVoucherID().getText());
+                boolean voucherExists = mainController.getReserveCtrl().getTicketReserveSys().getCancellationList().searchVoucher(voucherID);
+                if (voucherExists) {
+                    if (mainController.getLoggedInUser() != null) {
+                        createTicketRegisteredUser(seats);
+                    } else {
+                        createTicketGenericUser(seats);
+                    }
+                    displayTicketPurchase();
+                    paymentComplete = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Voucher does not exist, please try again");
+                }
+
             } else {
                 JOptionPane.showMessageDialog(null, "Please select one of the forms of " +
                         "payment and fill out the required information");
@@ -382,6 +389,16 @@ public class GUIController {
 
             JOptionPane.showMessageDialog(null, "Thank you for your purchase!\n" +
                     "Tickets have been emailed to: " + paymentForm.getEmail().getText() + "\n" + ticket);
+        }
+
+        public void getSeatsSelected(ArrayList<Seat> seats, String[] selection) {
+            for (int i = 0; i < selection.length - 1; i++) {
+                int seatNum = Integer.parseInt(selection[i].stripLeading());
+                //reserving the selected seats in that particular showtime
+                mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1).setReserved();
+
+                seats.add(mainController.getTheatreCtrl().getSelectedShowTime().getSeats().get(seatNum - 1));
+            }
         }
     }
 

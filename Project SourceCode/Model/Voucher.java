@@ -5,12 +5,14 @@ import java.util.Date;
 
 public class Voucher {
 	
-	private static int voucherId = 0;
+	private static int globalVoucherID = 100;
+	private int voucherID;
 	private double voucherValue;
 	private Date expiry;
 	
 	public Voucher(double value) {
-		voucherId += 1;
+		globalVoucherID += 1;
+		setVoucherID(globalVoucherID);
 		setVoucherValue(value);
 		Calendar cal = Calendar.getInstance();
 		Date today = cal.getTime();
@@ -19,13 +21,16 @@ public class Voucher {
 		setExpiry(nextYear);
 	}
 
-	public Voucher() {
-		voucherId += 1;
-		setVoucherValue(20);
+	public int getVoucherID() {
+		return voucherID;
 	}
 
-	public static int getVoucherId() {
-		return voucherId;
+	public void setVoucherID(int voucherID) {
+		this.voucherID = voucherID;
+	}
+
+	public int getVoucherId() {
+		return voucherID;
 	}
 
 	public double getVoucherValue() {
