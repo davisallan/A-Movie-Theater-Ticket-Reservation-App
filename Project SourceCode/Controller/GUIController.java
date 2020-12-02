@@ -361,6 +361,7 @@ public class GUIController {
 
             if (paymentComplete) {
                 paymentForm.setVisible(false);
+                paymentForm.clearTextFields();
                 menu.setVisible(true);
             }
 
@@ -406,7 +407,6 @@ public class GUIController {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            JOptionPane.showMessageDialog(null, "We have to still implement this functionality!");
             int ticketID = Integer.parseInt(cancellationForm.getTextField1().getText());
             Ticket ticketToCancel = mainController.getReserveCtrl().getTicketReserveSys().getMasterTicketList().searchTicket(ticketID);
             boolean successful = mainController.getReserveCtrl().cancelTicket(ticketID);
@@ -430,6 +430,7 @@ public class GUIController {
             }
 
             cancellationForm.setVisible(false);
+            cancellationForm.getTextField1().setText("");
             menu.setVisible(true);
         }
 
