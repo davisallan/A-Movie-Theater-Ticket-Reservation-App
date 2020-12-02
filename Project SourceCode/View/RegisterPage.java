@@ -3,6 +3,9 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The type Register page.
+ */
 public class RegisterPage {
     private JTextField textField2;
     private JTextField textField3;
@@ -11,6 +14,9 @@ public class RegisterPage {
     private JPasswordField passwordField1;
     private JTextField textField1;
 
+    /**
+     * Instantiates a new Register page.
+     */
     public RegisterPage(){
 
         JFrame frame = new JFrame("Registration");

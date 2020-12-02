@@ -1,6 +1,5 @@
 package View;
 
-import View.MainGuiController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,9 +36,4 @@ public class LoginPage {
         guestButton.addActionListener(actionListener);
     }
 
-    public static void main(String[] args) {
-        LoginPage view = new LoginPage();
-        MainGuiController mc = new MainGuiController(view);
-
-    }
 }

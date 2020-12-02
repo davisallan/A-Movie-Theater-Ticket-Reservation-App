@@ -3,7 +3,13 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The type Reservation page.
+ */
 public class ReservationPage {
+    /**
+     * The Frame.
+     */
     public JFrame frame;
     private JPanel panel1;
     private JTextField textField1;
@@ -25,9 +31,11 @@ public class ReservationPage {
     private JButton seat10Button;
     private JPanel panel2 = new JPanel();
 
-//    JButton buttons1[] = new JButton[9];
 
 
+    /**
+     * Instantiates a new Reservation page.
+     */
     public ReservationPage(){
 
         frame = new JFrame("Main Reservation Page");

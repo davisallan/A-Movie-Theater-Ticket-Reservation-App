@@ -13,7 +13,6 @@ import java.util.ArrayList;
 /**
  * Controller for the GUI
  */
-
 public class GUIController {
 
     private LoginForm loginForm;
@@ -26,6 +25,9 @@ public class GUIController {
     private CancellationForm cancellationForm;
     private MainController mainController;
 
+    /**
+     * Instantiates a new Gui controller.
+     */
     public GUIController() {
         setLoginForm(new LoginForm());
         setRegistrationForm(new RegistrationForm());
@@ -367,6 +369,11 @@ public class GUIController {
 
         }
 
+        /**
+         * Create ticket registered user.
+         *
+         * @param seats the seats
+         */
         public void createTicketRegisteredUser(ArrayList<Seat> seats) {
             mainController.getReserveCtrl().reserve(
                     mainController.getLoggedInUser(),
@@ -376,6 +383,11 @@ public class GUIController {
                     seats, Double.parseDouble(seatSelectionForm.getPrice().getText()));
         }
 
+        /**
+         * Create ticket generic user.
+         *
+         * @param seats the seats
+         */
         public void createTicketGenericUser(ArrayList<Seat> seats) {
             mainController.getReserveCtrl().reserve(
                     mainController.getUserCtrl().createCasualUser(),
@@ -385,6 +397,9 @@ public class GUIController {
                     seats, Double.parseDouble(seatSelectionForm.getPrice().getText()));
         }
 
+        /**
+         * Display ticket purchase.
+         */
         public void displayTicketPurchase() {
             Ticket ticket = mainController.getReserveCtrl().getTicketReserveSys().getMasterTicketList().getMostRecentTicket();
 
@@ -392,6 +407,12 @@ public class GUIController {
                     "Tickets have been emailed to: " + paymentForm.getEmail().getText() + "\n" + ticket);
         }
 
+        /**
+         * Gets seats selected.
+         *
+         * @param seats     the seats
+         * @param selection the selection
+         */
         public void getSeatsSelected(ArrayList<Seat> seats, String[] selection) {
             for (int i = 0; i < selection.length - 1; i++) {
                 int seatNum = Integer.parseInt(selection[i].stripLeading());
@@ -437,74 +458,164 @@ public class GUIController {
 
     }
 
+    /**
+     * Gets annual fee form.
+     *
+     * @return the annual fee form
+     */
     public AnnualFeeForm getAnnualFeeForm() {
         return annualFeeForm;
     }
 
+    /**
+     * Sets annual fee form.
+     *
+     * @param annualFeeForm the annual fee form
+     */
     public void setAnnualFeeForm(AnnualFeeForm annualFeeForm) {
         this.annualFeeForm = annualFeeForm;
     }
 
+    /**
+     * Gets reservation form.
+     *
+     * @return the reservation form
+     */
     public ReservationForm getReservationForm() {
         return reservationForm;
     }
 
+    /**
+     * Sets reservation form.
+     *
+     * @param reservationForm the reservation form
+     */
     public void setReservationForm(ReservationForm reservationForm) {
         this.reservationForm = reservationForm;
     }
 
+    /**
+     * Gets main controller.
+     *
+     * @return the main controller
+     */
     public MainController getMainController() {
         return mainController;
     }
 
+    /**
+     * Gets menu.
+     *
+     * @return the menu
+     */
     public Menu getMenu() {
         return menu;
     }
 
+    /**
+     * Sets menu.
+     *
+     * @param menu the menu
+     */
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
 
+    /**
+     * Sets login form.
+     *
+     * @param loginForm the login form
+     */
     public void setLoginForm(LoginForm loginForm) {
         this.loginForm = loginForm;
     }
 
+    /**
+     * Gets login form.
+     *
+     * @return the login form
+     */
     public LoginForm getLoginForm() {
         return loginForm;
     }
 
+    /**
+     * Sets registration form.
+     *
+     * @param registrationForm the registration form
+     */
     public void setRegistrationForm(RegistrationForm registrationForm) {
         this.registrationForm = registrationForm;
     }
 
+    /**
+     * Gets registration form.
+     *
+     * @return the registration form
+     */
     public RegistrationForm getRegistrationForm() {
         return registrationForm;
     }
 
+    /**
+     * Gets payment form.
+     *
+     * @return the payment form
+     */
     public PaymentForm getPaymentForm() {
         return paymentForm;
     }
 
+    /**
+     * Sets payment form.
+     *
+     * @param paymentForm the payment form
+     */
     public void setPaymentForm(PaymentForm paymentForm) {
         this.paymentForm = paymentForm;
     }
 
+    /**
+     * Gets seat selection form.
+     *
+     * @return the seat selection form
+     */
     public SeatSelectionForm getSeatSelectionForm() {
         return seatSelectionForm;
     }
 
+    /**
+     * Sets seat selection form.
+     *
+     * @param seatSelectionForm the seat selection form
+     */
     public void setSeatSelectionForm(SeatSelectionForm seatSelectionForm) {
         this.seatSelectionForm = seatSelectionForm;
     }
 
+    /**
+     * Gets cancellation form.
+     *
+     * @return the cancellation form
+     */
     public CancellationForm getCancellationForm() {
         return cancellationForm;
     }
 
+    /**
+     * Sets cancellation form.
+     *
+     * @param cancellationForm the cancellation form
+     */
     public void setCancellationForm(CancellationForm cancellationForm) {
         this.cancellationForm = cancellationForm;
     }
 
+    /**
+     * Sets main controller.
+     *
+     * @param mainController the main controller
+     */
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }

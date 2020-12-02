@@ -4,14 +4,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * The type Registered user list.
+ */
 public class RegisteredUserList {
 
     private ArrayList<RegisteredUser> registeredUsers;
 
+    /**
+     * Instantiates a new Registered user list.
+     */
     public RegisteredUserList() {
         registeredUsers = new ArrayList<>();
     }
 
+    /**
+     * Load registered users.
+     *
+     * @param rs the rs
+     */
     public void loadRegisteredUsers(ResultSet rs) {
         try {
             while (rs.next()) {
@@ -33,6 +44,11 @@ public class RegisteredUserList {
         }
     }
 
+    /**
+     * Gets registered users.
+     *
+     * @return the registered users
+     */
     public ArrayList<RegisteredUser> getRegisteredUsers() {
         return registeredUsers;
     }

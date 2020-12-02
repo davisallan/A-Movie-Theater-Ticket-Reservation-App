@@ -4,6 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * The type Theatre.
+ */
 public class Theatre {
 
 	private int theatreID;
@@ -11,8 +14,15 @@ public class Theatre {
 	private String address;
 	private ArrayList<Movie> movieList;
 	private ArrayList<Auditorium> auditoriumList;
-	
-	
+
+
+	/**
+	 * Instantiates a new Theatre.
+	 *
+	 * @param theatreID the theatre id
+	 * @param name      the name
+	 * @param address   the address
+	 */
 	public Theatre(int theatreID, String name, String address) {
 		setTheatreID(theatreID);
 		setTheatreName(name);
@@ -21,6 +31,11 @@ public class Theatre {
 		auditoriumList = new ArrayList<>();
 	}
 
+	/**
+	 * Load movies.
+	 *
+	 * @param rs the rs
+	 */
 	public void loadMovies(ResultSet rs) {
 		try {
 			while (rs.next()) {
@@ -33,6 +48,11 @@ public class Theatre {
 		}
 	}
 
+	/**
+	 * Load show times.
+	 *
+	 * @param rs the rs
+	 */
 	public void loadShowTimes(ResultSet rs) {
 		try {
 			while (rs.next()) {
@@ -51,6 +71,11 @@ public class Theatre {
 		}
 	}
 
+	/**
+	 * Load auditoriums.
+	 *
+	 * @param rs the rs
+	 */
 	public void loadAuditoriums(ResultSet rs) {
 		try {
 			while (rs.next()) {
@@ -63,42 +88,92 @@ public class Theatre {
 		}
 	}
 
+	/**
+	 * Add auditorium.
+	 *
+	 * @param auditorium the auditorium
+	 */
 	public void addAuditorium (Auditorium auditorium) {
 		auditoriumList.add(auditorium);
 	}
 
+	/**
+	 * Add movie.
+	 *
+	 * @param movie the movie
+	 */
 	public void addMovie (Movie movie) {
 		movieList.add(movie);
 	}
 
+	/**
+	 * Gets theatre id.
+	 *
+	 * @return the theatre id
+	 */
 	public int getTheatreID() {
 		return theatreID;
 	}
 
+	/**
+	 * Sets theatre id.
+	 *
+	 * @param theatreID the theatre id
+	 */
 	public void setTheatreID(int theatreID) {
 		this.theatreID = theatreID;
 	}
 
+	/**
+	 * Gets theatre name.
+	 *
+	 * @return the theatre name
+	 */
 	public String getTheatreName() {
 		return theatreName;
 	}
 
+	/**
+	 * Sets theatre name.
+	 *
+	 * @param theatreName the theatre name
+	 */
 	public void setTheatreName(String theatreName) {
 		this.theatreName = theatreName;
 	}
 
+	/**
+	 * Gets address.
+	 *
+	 * @return the address
+	 */
 	public String getAddress() {
 		return address;
 	}
 
+	/**
+	 * Sets address.
+	 *
+	 * @param address the address
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
+	/**
+	 * Gets auditorium list.
+	 *
+	 * @return the auditorium list
+	 */
 	public ArrayList<Auditorium> getAuditoriumList() {
 		return auditoriumList;
 	}
 
+	/**
+	 * Get movie list array list.
+	 *
+	 * @return the array list
+	 */
 	public ArrayList<Movie> getMovieList(){
 		return movieList;
 	}

@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The type Seat selection form.
+ */
 public class SeatSelectionForm extends JFrame {
     private JPanel panel;
     private JButton confirmSelectionButton;
@@ -65,6 +68,9 @@ public class SeatSelectionForm extends JFrame {
     private JButton returnToMovieSelectionButton;
     private ArrayList<JRadioButton> buttons;
 
+    /**
+     * Instantiates a new Seat selection form.
+     */
     public SeatSelectionForm() {
         setContentPane(panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,20 +83,38 @@ public class SeatSelectionForm extends JFrame {
         setLocationRelativeTo(null);
     }
 
+    /**
+     * Confirm selection.
+     *
+     * @param actionListener the action listener
+     */
     public void confirmSelection (ActionListener actionListener) {
         confirmSelectionButton.addActionListener(actionListener);
     }
 
+    /**
+     * Seat button listener.
+     *
+     * @param actionListener the action listener
+     */
     public void seatButtonListener (ActionListener actionListener) {
         for (JRadioButton radioButton : buttons) {
             radioButton.addActionListener(actionListener);
         }
     }
 
+    /**
+     * Return to reservation.
+     *
+     * @param actionListener the action listener
+     */
     public void returnToReservation (ActionListener actionListener) {
         returnToMovieSelectionButton.addActionListener(actionListener);
     }
 
+    /**
+     * Reset buttons.
+     */
     public void resetButtons() {
         for (JRadioButton button : buttons) {
             button.setText("");
@@ -98,11 +122,19 @@ public class SeatSelectionForm extends JFrame {
         }
     }
 
+    /**
+     * Clear text fields.
+     */
     public void clearTextFields() {
         selection.setText("");
         price.setText("");
     }
 
+    /**
+     * Update seat map.
+     *
+     * @param seatMap the seat map
+     */
     public void updateSeatMap (ArrayList<Seat> seatMap) {
         int i = 0;
         resetButtons();
@@ -118,18 +150,34 @@ public class SeatSelectionForm extends JFrame {
         }
     }
 
+    /**
+     * Reserve selected seats.
+     */
     public void reserveSelectedSeats() {
 
     }
 
+    /**
+     * Gets selection.
+     *
+     * @return the selection
+     */
     public JTextField getSelection() {
         return selection;
     }
 
+    /**
+     * Gets price.
+     *
+     * @return the price
+     */
     public JTextField getPrice() {
         return price;
     }
 
+    /**
+     * Group buttons.
+     */
     public void groupButtons() {
         buttons.add(radioButton1);
         buttons.add(radioButton2);
@@ -184,6 +232,11 @@ public class SeatSelectionForm extends JFrame {
     }
 
 
+    /**
+     * Gets buttons.
+     *
+     * @return the buttons
+     */
     public ArrayList<JRadioButton> getButtons() {
         return buttons;
     }
