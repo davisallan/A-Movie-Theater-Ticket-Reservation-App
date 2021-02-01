@@ -1,8 +1,10 @@
 # Movie Theater Ticket Reservation App
 
 # About
-Final project in ENSF619 - Special Topics. The project was split into two sections, Design and Implementation. 
-Details on the design artifacts and details are listed below:
+Final project in ENSF619 - Special Topics. We were tasked with designing and implementing a Java based application using MVC design pattern simulating the purchase and reservation of movie tickets. Other requirements included: ability to log in and out, create accounts, cancel tickets, graphically reserve seats. 
+
+The project was split into two sections, Design and Implementation. 
+Details on the design artifacts and details are listed in the Design Artifacts section:
 
 # Program Demo
 ![](program_demo.gif)
