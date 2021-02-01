@@ -42,4 +42,6 @@ Note: In this stage you need to apply all possible design strategies and techniq
 2. Open and run the sql script "create-ReservationTicketApp.sql" located in "/Database Queries/" to create the schema
 3. Open and run the sql script "Insertion Queries.sql" to populate the database
 4. Run "MainController.java" located in "Project SourceCode/Controller/MainController.java" to launch the GUI
-*Note: "Registered" User account info located in the registered_user table of the database
+
+
+*Note: "Registered" User account info located in the registered_user table of the database*
