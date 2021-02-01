@@ -4,6 +4,9 @@
 Final project in ENSF619 - Special Topics. The project was split into two sections, Design and Implementation. 
 Details on the design artifacts and details are listed below:
 
+# Program Demo
+![](program_demo.gif)
+
 # Design Phase (40 marks)
 To see the final design document, please open "ENSF 619 Term Project - Design Report - Group 1.pdf" in the root of the repo
 
@@ -36,9 +39,6 @@ Note: In this stage you need to apply all possible design strategies and techniq
 1. Java 11
 2. MySQL Workbench
 3. JDBC
-
-# Program Demo
-![](program_demo.gif)
 
 # Running the Program
 1. Clone the repository
