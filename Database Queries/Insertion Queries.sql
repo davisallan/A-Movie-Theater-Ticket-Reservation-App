@@ -71,17 +71,7 @@ VALUES  (001, 1, 2, 49.00),
 		(002, 2, 2, 22.00),
         (003, 3, 3, 10.00);
 
-UPDATE TicketReservationApp.APP_USER
-SET TicketID = 2
-WHERE UserID = 1;
 
-UPDATE TicketReservationApp.APP_USER
-SET TicketID = 11
-WHERE UserID = 2;
-
-UPDATE TicketReservationApp.APP_USER
-SET TicketID = 22
-WHERE UserID = 3;
 
 
 
