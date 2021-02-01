@@ -5,6 +5,9 @@ Final project in ENSF619 - Special Topics. The project was split into two sectio
 Details on the design artifacts and details are listed below:
 
 # Design Phase (40 marks)
+To see the final design document, please open "ENSF 619 Term Project - Design Report - Group 1.pdf" in the root of the repo
+
+## Design Artifacts
 In this phase you should submit a Design Document that includes a clear description of system’s requirements, and design artefacts in the following order:
 
 - Systems use case diagram.
